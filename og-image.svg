@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#fafaf7"></rect>
+  <text x="80" y="180" font-family="Helvetica, Arial, sans-serif" font-weight="900" font-size="120" letter-spacing="-5" fill="#0a0a0a">Design jobs</text>
+  <text x="80" y="310" font-family="Helvetica, Arial, sans-serif" font-weight="900" font-size="120" letter-spacing="-5" fill="#cfcfca">at the</text>
+  <text x="450" y="310" font-family="Helvetica, Arial, sans-serif" font-weight="900" font-style="italic" font-size="120" letter-spacing="-5" fill="#395bff">AI</text>
+  <text x="80" y="440" font-family="Helvetica, Arial, sans-serif" font-weight="900" font-size="120" letter-spacing="-5" fill="#cfcfca">frontier.</text>
+  <g transform="translate(80, 540)">
+    <circle cx="8" cy="8" r="8" fill="#395bff"></circle>
+    <text x="28" y="14" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="22" letter-spacing="2" fill="#0a0a0a">AIDESIGNJOBS.COM</text>
+    <text x="320" y="14" font-family="Helvetica, Arial, sans-serif" font-weight="400" font-size="22" letter-spacing="1" fill="#666">— OpenAI · Anthropic · xAI · Mistral · Cursor · Perplexity</text>
+  </g>
+</svg>

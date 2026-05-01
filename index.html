@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIDesignJobs — Design roles at AI companies</title>
+<meta name="description" content="Curated design jobs at AI companies. Foundation labs, public AI, unicorns and startups. OpenAI, Anthropic, xAI, Mistral, Cursor, Perplexity and more. Updated daily.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AIDesignJobs — Design roles at AI companies">
+<meta property="og:description" content="Curated design jobs at AI companies. From foundation labs to startups, every role verified and updated daily.">
+<meta property="og:image" content="/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AIDesignJobs — Design roles at AI companies">
+<meta name="twitter:description" content="Curated design jobs at AI companies. From foundation labs to startups, every role verified and updated daily.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --black:  #0d0d0d;
+  --white:  #ffffff;
+  --accent: #1a56f0;
+  --gray:   #999;
+  --gray2:  #ccc;
+  --gray3:  #f5f5f5;
+  --border: #e8e8e8;
+  --fs: 'Helvetica Neue', 'Arial', sans-serif;
+  --fm: 'DM Sans', system-ui, sans-serif;
+  --fmono: 'Geist Mono', 'Courier New', monospace;
+
+  /* category dot palette */
+  --c-product: #ff4d2e;   /* orange-red */
+  --c-brand:   #ffcb05;   /* yellow */
+  --c-ux:      #1a56f0;   /* blue */
+  --c-motion:  #ff3ea5;   /* pink */
+  --c-eng:     #00a86b;   /* green */
+  --c-content: #8a4fff;   /* purple */
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--fm);
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── CURSOR ─────────────────────────────────── */
+#cur {
+  width: 7px; height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: fixed; z-index: 9999;
+  pointer-events: none;
+  transform: translate(-50%,-50%);
+  transition: width .2s ease, height .2s ease, opacity .2s;
+}
+body:has(a:hover) #cur,
+body:has(button:hover) #cur { width: 18px; height: 18px; }
+
+a { color: inherit; text-decoration: none; cursor: none; }
+button { cursor: none; }
+
+/* ── NAV ─────────────────────────────────────── */
+nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  transition: transform .45s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  padding: 18px 28px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+.n-left { display: flex; flex-direction: column; gap: 1px; }
+.n-logo { font-family: var(--fs); font-size: 24px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; }
+.n-sub  { font-size: 17px; color: var(--gray); letter-spacing: .02em; }
+.n-date { font-family: var(--fm); font-size: 13px; font-weight: 400; color: var(--gray); letter-spacing: .02em; margin-top: 6px; align-self: flex-start; }
+nav.nav-hidden { transform: translateY(-100%); }
+.n-right { text-align: right; padding-top: 4px; }
+.n-right a { font-size: 14px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); transition: color .2s; }
+.n-right a:hover { color: var(--black); }
+
+/* ── HERO ────────────────────────────────────── */
+.hero {
+  padding: 200px 28px 80px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-inner {
+  max-width: 740px;
+}
+.hero-label {
+  font-size: 14px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-label::before { content: none; }
+.hero-hl {
+  font-family: var(--fs);
+  font-size: clamp(38px, 5.5vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -.03em;
+  font-weight: 700;
+}
+.hero-hl em { font-style: normal; color: #c8c8c8; }
+.hero-body {
+  margin-top: 32px;
+  font-size: 21px; line-height: 1.65; font-weight: 300;
+  color: #555;
+  max-width: 620px;
+}
+.hero-stats {
+  display: flex; gap: 48px;
+  margin-top: 52px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.stat { }
+.stat-n {
+  font-family: var(--fs);
+  font-size: 54px; line-height: 1;
+  font-weight: 700; color: var(--accent);
+}
+.stat-l { font-size: 15px; color: var(--gray); margin-top: 8px; letter-spacing: .02em; }
+
+/* ── SECTION WRAPPER ─────────────────────────── */
+.w { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+/* ── FILTER SECTION ──────────────────────────── */
+.filter-section {
+  padding: 52px 0 0;
+}
+
+/* legend dots in filter pills */
+.fpills[data-group="cat"] .pill[data-v="product"]::before,
+.fpills[data-group="cat"] .pill[data-v="brand"]::before,
+.fpills[data-group="cat"] .pill[data-v="ux"]::before,
+.fpills[data-group="cat"] .pill[data-v="motion"]::before,
+.fpills[data-group="cat"] .pill[data-v="eng"]::before,
+.fpills[data-group="cat"] .pill[data-v="content"]::before {
+  content: ''; display: inline-block;
+  width: 10px; height: 10px; border-radius: 50%;
+  margin-right: 9px; vertical-align: middle;
+  transform: translateY(-1px);
+}
+.fpills[data-group="cat"] .pill[data-v="product"]::before { background: var(--c-product); }
+.fpills[data-group="cat"] .pill[data-v="brand"]::before   { background: var(--c-brand); }
+.fpills[data-group="cat"] .pill[data-v="ux"]::before      { background: var(--c-ux); }
+.fpills[data-group="cat"] .pill[data-v="motion"]::before  { background: var(--c-motion); }
+.fpills[data-group="cat"] .pill[data-v="eng"]::before     { background: var(--c-eng); }
+.fpills[data-group="cat"] .pill[data-v="content"]::before { background: var(--c-content); }
+.filter-section-title {
+  font-size: 14px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 10px;
+}
+.filter-section-title::before { content: none; }
+
+.frows { display: flex; flex-direction: column; }
+
+.frow {
+  display: flex; align-items: baseline;
+  border-top: 1px solid var(--border);
+  padding: 14px 0;
+  gap: 0;
+}
+.fkey {
+  width: 130px; flex-shrink: 0;
+  font-size: 15px; color: var(--gray);
+  letter-spacing: .04em; padding-top: 8px;
+}
+.fpills { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+
+.pill {
+  font-family: var(--fm);
+  font-size: 17px; font-weight: 400;
+  letter-spacing: .01em;
+  padding: 9px 18px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--gray);
+  transition: all .14s;
+  cursor: none;
+  border-radius: 10px;
+}
+.pill:hover { border-color: #bbb; color: var(--black); }
+.pill.on { background: var(--accent); color: var(--white); border-color: var(--accent); }
+
+/* tag pills */
+.pill.t-remote.on { background: var(--accent); color: var(--white); border-color: var(--accent); }
+.pill.t-new.on    { background: var(--accent); color: var(--white); border-color: var(--accent); }
+.pill.t-stage.on  { background: var(--accent); color: var(--white); border-color: var(--accent); }
+
+/* ── RESULTS BAR ─────────────────────────────── */
+.rbar {
+  display: flex; align-items: baseline; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px;
+  padding: 36px 0 0;
+  border-top: 1px solid var(--border);
+  margin-top: 0;
+}
+.rbar-left { display: flex; align-items: baseline; gap: 10px; }
+.rn {
+  font-family: var(--fs);
+  font-size: 64px; line-height: 1; font-weight: 700; color: var(--accent);
+}
+.rlbl { font-size: 21px; color: var(--gray); }
+.sbox {
+  display: flex; align-items: center; gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 10px 18px; min-width: 240px;
+}
+.sbox input {
+  border: none; background: transparent; outline: none;
+  font-family: var(--fm); font-size: 16px; font-weight: 300;
+  color: var(--black); cursor: none; width: 100%;
+}
+.sbox input::placeholder { color: var(--gray2); }
+.sico { color: var(--gray2); font-size: 18px; }
+.rdate { font-size: 14px; color: var(--gray); }
+
+/* ── JOB TABLE ───────────────────────────────── */
+.table-wrap { margin-top: 24px; }
+
+.thead {
+  display: grid;
+  grid-template-columns: 70px 1fr 190px 190px 130px 150px 120px;
+  gap: 16px; padding: 12px 0;
+  border-bottom: 1px solid var(--black);
+  font-size: 14px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--gray); align-items: center;
+}
+
+.job {
+  display: grid;
+  grid-template-columns: 70px 1fr 190px 190px 130px 150px 120px;
+  gap: 16px; padding: 26px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  color: inherit;
+  position: relative; cursor: none;
+  transition: background .15s;
+  user-select: none;
+}
+.job:hover { background: var(--gray3); margin: 0 -28px; padding-left: 28px; padding-right: 28px; }
+.job:hover .jarr { opacity: 1; transform: translateX(0); }
+.job:hover .jco, .job:hover .jloc, .job:hover .jdate { color: #666; }
+
+.jnum { font-size: 15px; color: #555; font-weight: 400; display: flex; align-items: center; gap: 12px; }
+.jdot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; background: var(--gray2); }
+.jdot.product { background: var(--c-product); }
+.jdot.brand   { background: var(--c-brand); }
+.jdot.ux      { background: var(--c-ux); }
+.jdot.motion  { background: var(--c-motion); }
+.jdot.eng     { background: var(--c-eng); }
+.jdot.content { background: var(--c-content); }
+
+.jinfo { min-width: 0; }
+.jtitle {
+  font-family: var(--fs);
+  font-size: 23px; line-height: 1.25; font-weight: 400;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.jco {
+  font-size: 17px; color: #666; font-weight: 300;
+  margin-top: 4px; transition: color .15s;
+}
+
+.bdg {
+  display: inline-block;
+  font-family: var(--fm); font-weight: 300;
+  font-size: 14px; letter-spacing: .02em;
+  padding: 5px 12px;
+  border: 1px solid #ccc;
+  color: #555;
+  white-space: nowrap;
+  border-radius: 8px;
+}
+.bdg.rm { border-color: #b0ccb0; color: #2a5a2a; }
+.bdg.hy { border-color: #ccb888; color: #6a4a10; }
+.bdg.nw { border-color: #9898d8; color: #3030a0; }
+.bdg.f5 { border-color: #aaa; color: #333; }
+.bdg.t1 { border-color: #9aadcc; color: #1a2a80; background: rgba(26,42,128,.06); }
+.bdg.st { border-color: #aa9acc; color: #3a2a80; background: rgba(58,42,128,.06); }
+.bdg.sl { border-color: #ccc; color: #666; font-size: 14px; }
+
+.tags-cell { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+
+.jloc  { font-size: 15px; color: #666; font-weight: 300; transition: color .15s; }
+.jdate { font-size: 14px; color: #888; transition: color .15s; }
+
+/* date tooltip — cursor following pill */
+#date-tip {
+  position: fixed; z-index: 9000;
+  pointer-events: none;
+  background: var(--black); color: var(--white);
+  font-family: var(--fmono); font-size: 14px; letter-spacing: .08em; text-transform: uppercase;
+  padding: 7px 15px; border-radius: 100px;
+  opacity: 0;
+  transition: opacity .15s;
+  white-space: nowrap;
+  transform: translate(14px, -50%);
+}
+
+.jarr {
+  position: absolute; right: 28px; top: 50%; translate: 0 -50%;
+  font-size: 18px; color: var(--accent);
+  opacity: 0; transform: translateX(-6px);
+  transition: all .2s;
+}
+
+.empty {
+  padding: 80px 0; text-align: center;
+  font-family: var(--fs); font-style: italic;
+  font-size: 28px; color: var(--gray2);
+  display: none;
+}
+
+/* ── ABOUT ───────────────────────────────────── */
+.about-section {
+  margin-top: 100px;
+  padding: 64px 0;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+.about-label {
+  font-size: 14px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 24px;
+  display: flex; align-items: center; gap: 10px;
+}
+.about-label::before { content: none; }
+.about-hl {
+  font-family: var(--fs);
+  font-size: clamp(28px, 3.2vw, 48px);
+  line-height: 1.1; font-weight: 700;
+}
+.about-hl em { font-style: normal; color: var(--accent); }
+.about-body {
+  margin-top: 24px;
+  font-size: 19px; line-height: 1.7; font-weight: 300; color: #666;
+}
+
+.co-list { margin-top: 24px; }
+.co-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+  font-size: 20px; font-weight: 400;
+  color: var(--black); transition: color .2s;
+}
+.co-item:hover { color: var(--accent); }
+.co-arrow { font-size: 15px; opacity: 0; transition: opacity .2s; color: var(--accent); }
+.co-item:hover .co-arrow { opacity: 1; }
+
+/* ── POST ────────────────────────────────────── */
+.post-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 68px;
+  padding: 52px 56px;
+  border-radius: 20px;
+  background: var(--black);
+}
+.post-body {
+  margin-top: 18px;
+  font-size: 18px; font-weight: 300; color: rgba(255,255,255,.65);
+  max-width: 460px; line-height: 1.6;
+}
+.post-hl {
+  font-family: var(--fs);
+  font-size: clamp(28px, 3.5vw, 52px);
+  line-height: 1.05; font-weight: 700;
+  color: var(--white);
+}
+.post-hl em { font-style: normal; color: var(--accent); }
+.post-label {
+  font-size: 14px; letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(255,255,255,.65); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.post-label::before { content: none; }
+
+.post-right {
+  display: flex; flex-direction: column;
+  align-items: stretch;
+  gap: 18px;
+  flex-shrink: 0;
+  min-width: 280px;
+}
+
+/* Free badge */
+.free-stamp {
+  display: flex; flex-direction: column;
+  padding: 22px 26px;
+  background: rgba(255,255,255,.06);
+  border: 1.5px solid rgba(255,255,255,.45);
+  border-radius: 3px;
+  pointer-events: none;
+}
+.free-stamp::before { content: none; }
+.free-stamp::after { content: none; }
+.free-stamp-svg { display: none; }
+.free-stamp-core {
+  display: flex; flex-direction: column; gap: 10px;
+  color: var(--white);
+}
+.free-stamp-zero {
+  font-family: var(--fs);
+  font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .18em;
+  color: var(--accent);
+  display: flex; align-items: center; gap: 10px;
+}
+.free-stamp-zero::before {
+  content: '';
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px rgba(57,91,255,.18);
+  animation: stampPulse 2.4s ease-in-out infinite;
+}
+.free-stamp-sub {
+  font-family: var(--fs);
+  font-size: 16px; font-weight: 400;
+  color: rgba(255,255,255,.82);
+  letter-spacing: -.005em;
+  line-height: 1.5;
+}
+.free-stamp-sub strong {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 22px;
+  display: block;
+  letter-spacing: -.02em;
+  margin-bottom: 2px;
+}
+@keyframes stampPulse {
+  0%,100% { box-shadow: 0 0 0 4px rgba(57,91,255,.18); }
+  50%     { box-shadow: 0 0 0 8px rgba(57,91,255,.05); }
+}
+@media (max-width: 720px) {
+  .free-stamp {
+    position: static;
+    margin-bottom: 24px;
+    align-self: flex-start;
+  }
+}
+.btn-post {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--accent); color: var(--white);
+  border: none;
+  padding: 22px 44px;
+  border-radius: 100px;
+  font-family: var(--fm); font-weight: 500; font-size: 17px;
+  letter-spacing: .04em; text-transform: uppercase;
+  transition: all .2s; cursor: none; white-space: nowrap;
+  flex-shrink: 0;
+}
+.btn-post:hover { background: var(--white); color: var(--black); transform: translateY(-2px); }
+
+/* ── FOOTER ──────────────────────────────────── */
+footer {
+  padding: 52px 0 0;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 40px;
+}
+.f-brand-name {
+  font-family: var(--fm); font-size: 16px; font-weight: 500;
+  letter-spacing: .04em; text-transform: uppercase;
+}
+.f-tagline {
+  margin-top: 12px;
+  font-size: 16px; font-weight: 300; color: #999; line-height: 1.6;
+}
+.f-col-title {
+  font-size: 14px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 18px;
+}
+.f-links { display: flex; flex-direction: column; gap: 12px; }
+.f-links a {
+  font-size: 16px; font-weight: 300; color: #999;
+  transition: color .2s;
+}
+.f-links a:hover { color: var(--black); }
+
+.f-bottom {
+  margin-top: 48px;
+  padding: 20px 0 0;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; color: var(--gray); letter-spacing: .04em;
+}
+
+/* ── BIG FOOTER TYPE ─────────────────────────── */
+.big-type {
+  margin-top: 32px;
+  overflow: hidden;
+  user-select: none;
+  container-type: inline-size;
+}
+.big-type-inner {
+  font-family: var(--fs);
+  font-size: clamp(60px, 12.5cqw, 200px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  color: var(--ink);
+  white-space: nowrap;
+  text-align: center;
+}
+.big-type-inner em { font-style: normal; color: var(--accent); }
+
+/* ── RESPONSIVE ──────────────────────────────── */
+/* ── SUBMIT MODAL ────────────────────────────── */
+#submit-bg {
+  position: fixed; inset: 0; z-index: 700;
+  background: rgba(0,0,0,.5);
+  backdrop-filter: blur(4px);
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s;
+}
+#submit-bg.open { opacity: 1; pointer-events: all; }
+
+#submit-modal {
+  position: fixed; top: 50%; left: 50%; z-index: 800;
+  transform: translate(-50%, -48%) scale(.96);
+  width: min(640px, calc(100vw - 32px));
+  max-height: calc(100vh - 64px);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: 0 32px 80px rgba(0,0,0,.18);
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s, transform .25s cubic-bezier(.2,.8,.2,1);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+#submit-modal.open {
+  opacity: 1; pointer-events: all;
+  transform: translate(-50%, -50%) scale(1);
+}
+.sm-head {
+  padding: 28px 32px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+}
+.sm-head h3 {
+  font-family: var(--fs);
+  font-size: 22px; font-weight: 600; letter-spacing: -.02em;
+  margin: 0 0 4px;
+}
+.sm-head p { font-size: 13px; color: var(--ink-2); margin: 0; }
+.sm-close {
+  background: none; border: 0; cursor: pointer;
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-2); font-size: 20px; line-height: 1;
+  transition: background .15s;
+}
+.sm-close:hover { background: var(--bg-2); color: var(--ink); }
+
+.sm-form { padding: 24px 32px 28px; overflow-y: auto; }
+.sm-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.sm-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.sm-label {
+  font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-2);
+}
+.sm-label .req { color: var(--accent); }
+.sm-input, .sm-select, .sm-textarea {
+  font-family: var(--fb); font-size: 14px; color: var(--ink);
+  padding: 11px 13px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--white);
+  transition: border-color .15s;
+  width: 100%;
+}
+.sm-input:focus, .sm-select:focus, .sm-textarea:focus {
+  outline: none; border-color: var(--ink);
+}
+.sm-textarea { resize: vertical; min-height: 88px; font-family: var(--fb); }
+.sm-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; margin-top: 8px;
+}
+.sm-note { font-size: 12px; color: var(--ink-2); }
+.sm-submit {
+  font-family: var(--fs); font-size: 13px; font-weight: 500;
+  background: var(--ink); color: var(--white);
+  border: 0; padding: 13px 22px;
+  border-radius: 3px; cursor: pointer;
+  letter-spacing: .02em;
+  transition: background .15s;
+}
+.sm-submit:hover { background: var(--accent); }
+.sm-submit:disabled { opacity: .6; cursor: wait; }
+.sm-success {
+  padding: 60px 32px;
+  text-align: center;
+  display: none;
+}
+.sm-success.show { display: block; }
+.sm-success h4 {
+  font-family: var(--fs); font-size: 20px; font-weight: 600;
+  margin: 0 0 8px;
+}
+.sm-success p { color: var(--ink-2); font-size: 14px; margin: 0; }
+.sm-error {
+  display: none;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid #d33;
+  background: #fff3f3;
+  color: #b21e1e;
+  font-size: 13px;
+  border-radius: 3px;
+}
+.sm-error.show { display: block; }
+
+@media (max-width: 540px) {
+  .sm-head { padding: 22px 22px 16px; }
+  .sm-form { padding: 20px 22px 24px; }
+  .sm-row { grid-template-columns: 1fr; gap: 0; }
+}
+
+/* ── DRAWER ──────────────────────────────────── */
+#drawer-bg {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(2px);
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s;
+}
+#drawer-bg.open { opacity: 1; pointer-events: all; }
+
+#drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 600;
+  width: 420px; max-width: 100vw;
+  background: var(--white);
+  border-left: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform .35s cubic-bezier(.77,0,.18,1);
+  overflow-y: auto;
+  pointer-events: none;
+}
+#drawer.open { transform: translateX(0); pointer-events: all; }
+
+.dr-header {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+  padding: 32px 28px 24px;
+  border-bottom: 1px solid var(--border);
+}
+.dr-co {
+  font-family: var(--fm); font-size: 15px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 12px;
+}
+.dr-title {
+  font-family: var(--fs); font-size: 30px; font-weight: 700;
+  line-height: 1.15; letter-spacing: -.02em;
+}
+.dr-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.dr-badge {
+  font-family: var(--fm); font-size: 14px; font-weight: 400;
+  padding: 5px 13px; border: 1px solid #ccc; color: #555;
+  border-radius: 100px;
+}
+.dr-badge.dr-new { border-color: var(--accent); color: var(--accent); }
+.dr-close {
+  flex-shrink: 0; width: 32px; height: 32px;
+  border: 1px solid var(--border); background: transparent;
+  font-size: 13px; color: var(--gray);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  transition: all .15s; cursor: none; margin-top: 2px;
+}
+.dr-close:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+
+.dr-body {
+  flex: 1;
+  padding: 8px 28px;
+}
+.dr-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 17px; gap: 16px;
+}
+.dr-key {
+  font-size: 14px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gray); flex-shrink: 0;
+}
+
+.dr-foot {
+  padding: 24px 28px 32px;
+  border-top: 1px solid var(--border);
+}
+.dr-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--black); color: var(--white);
+  padding: 20px 30px; border-radius: 100px;
+  font-family: var(--fm); font-weight: 500; font-size: 17px;
+  letter-spacing: .04em; text-transform: uppercase;
+  transition: all .2s; text-decoration: none; cursor: none;
+  width: 100%;
+}
+.dr-btn:hover { background: var(--accent); color: var(--white); }
+.dr-note {
+  margin-top: 14px; text-align: center;
+  font-size: 15px; color: var(--gray); line-height: 1.5;
+}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 700px) {
+  .thead { display: none; }
+  .job { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+  .jnum, .jdate { display: none; }
+  .jtitle { font-size: 20px; }
+  .about-section { grid-template-columns: 1fr; gap: 48px; }
+  footer { grid-template-columns: 1fr 1fr; }
+  .post-section { flex-direction: column; align-items: flex-start; }
+  nav { grid-template-columns: 1fr 1fr; }
+  .n-center { display: none; }
+  .hero { padding-top: 160px; }
+  .hero-stats { flex-wrap: wrap; gap: 28px; }
+  .fkey { width: 78px; font-size: 9px; }
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="date-tip"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="n-left">
+    <div class="n-logo">AIDesignJobs</div>
+    <div class="n-sub">Design roles at AI companies</div>
+    <div class="n-date" id="n-date"></div>
+  </div>
+  <div class="n-right">
+    <a href="#post">Post a Role</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="w">
+    <div class="hero-inner">
+      <h1 class="hero-hl">
+        Design jobs<br>
+        at the <em>AI</em><br>
+        frontier.
+      </h1>
+      <p class="hero-body">
+        The only job board built for designers at AI companies. From foundation labs to startups—every role verified, linked to source, updated daily.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-n" id="s-roles">74</div>
+          <div class="stat-l">Open roles</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n" id="s-co">35</div>
+          <div class="stat-l">AI companies</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">19</div>
+          <div class="stat-l">Forbes AI 50</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOBS -->
+<section id="jobs">
+<div class="w">
+
+  <!-- FILTERS -->
+  <div class="filter-section">
+    <p class="filter-section-title">Filter roles</p>
+    <div class="frows">
+
+      <div class="frow">
+        <span class="fkey">Role type</span>
+        <div class="fpills" data-group="cat">
+          <button class="pill on" data-v="all">All</button>
+          <button class="pill" data-v="product">Product Design</button>
+          <button class="pill" data-v="brand">Brand</button>
+          <button class="pill" data-v="ux">UX / UI</button>
+          <button class="pill" data-v="motion">Motion</button>
+          <button class="pill" data-v="eng">Design Engineering</button>
+          <button class="pill" data-v="content">Content Design</button>
+        </div>
+      </div>
+
+      <div class="frow">
+        <span class="fkey">Region</span>
+        <div class="fpills" data-group="region">
+          <button class="pill on" data-v="all">Anywhere</button>
+          <button class="pill" data-v="remote">Remote</button>
+          <button class="pill" data-v="us">USA</button>
+          <button class="pill" data-v="eu">Europe</button>
+          <button class="pill" data-v="asia">Asia-Pacific</button>
+        </div>
+      </div>
+
+      <div class="frow">
+        <span class="fkey">Mode</span>
+        <div class="fpills" data-group="mode">
+          <button class="pill on" data-v="all">Any</button>
+          <button class="pill" data-v="remote">Remote only</button>
+          <button class="pill" data-v="hybrid">Hybrid</button>
+          <button class="pill" data-v="onsite">On-site</button>
+        </div>
+      </div>
+
+      <div class="frow">
+        <span class="fkey">Seniority</span>
+        <div class="fpills" data-group="lvl">
+          <button class="pill on" data-v="all">All levels</button>
+          <button class="pill" data-v="junior">Junior</button>
+          <button class="pill" data-v="mid">Mid</button>
+          <button class="pill" data-v="senior">Senior</button>
+          <button class="pill" data-v="lead">Lead / Staff</button>
+        </div>
+      </div>
+
+      <div class="frow">
+        <span class="fkey">Salary</span>
+        <div class="fpills" data-group="sal">
+          <button class="pill on" data-v="all">Any</button>
+          <button class="pill" data-v="u100">Under $100k</button>
+          <button class="pill" data-v="100_150">$100k – $150k</button>
+          <button class="pill" data-v="150_200">$150k – $200k</button>
+          <button class="pill" data-v="200p">$200k+</button>
+          <button class="pill" data-v="undisclosed">Undisclosed</button>
+        </div>
+      </div>
+
+      <div class="frow">
+        <span class="fkey">Quick</span>
+        <div class="fpills">
+          <button class="pill t-remote" id="tg-remote">Remote only</button>
+          <button class="pill t-new"    id="tg-new">New this week</button>
+          <button class="pill t-stage"  id="tg-foundation">Foundation labs</button>
+          <button class="pill t-stage"  id="tg-public">Public AI</button>
+          <button class="pill t-stage"  id="tg-unicorn">Unicorns</button>
+          <button class="pill t-stage"  id="tg-startup">Startups</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RESULTS BAR -->
+  <div class="rbar" style="margin-top:36px">
+    <div class="rbar-left">
+      <span class="rn" id="cnt">41</span>
+      <span class="rlbl">open roles</span>
+    </div>
+    <div class="sbox">
+      <span class="sico">⌕</span>
+      <input type="text" id="srch" placeholder="Search roles or companies..." autocomplete="off">
+    </div>
+    <div class="rdate" id="rdate"></div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <div class="thead">
+      <div></div>
+      <div>Role</div>
+      <div>Category</div>
+      <div>Location</div>
+      <div>Mode</div>
+      <div>Salary</div>
+      <div>Posted</div>
+    </div>
+    <div id="jlist"></div>
+    <div class="empty" id="empty">No roles found.</div>
+  </div>
+
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="w">
+  <div class="about-section">
+    <div>
+      <p class="about-label">About</p>
+      <h2 class="about-hl">
+        Where design<br>meets <em>the future.</em>
+      </h2>
+      <p class="about-body">
+        We track design openings daily across every company shaping
+        artificial intelligence — from foundation model labs like OpenAI
+        and Anthropic, to creative AI tools like Runway and Lovable.
+        Every role is verified directly from source career pages and
+        linked to the original posting.
+      </p>
+      <p class="about-body" style="margin-top:16px">
+        9 of our tracked companies appear on the Forbes AI 50 2026 list —
+        the definitive ranking of the most promising private AI companies.
+        We also track companies from the inaugural TIME100 Most Influential AI Companies 2026,
+        including Meta, Google DeepMind, and Hugging Face.
+      </p>
+    </div>
+    <div>
+      <p class="about-label">Companies tracked</p>
+      <div class="co-list" id="co-list"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- POST -->
+<section id="post">
+<div class="w">
+  <div class="post-card">
+    <div>
+      <p class="post-label">For companies</p>
+      <h2 class="post-hl">
+        Hiring<br><em>designers?</em>
+      </h2>
+      <p class="post-body">Submit your open design role and reach thousands of designers actively looking for opportunities at AI companies. Paid plans with featured placement and analytics arrive later this year.</p>
+    </div>
+    <div class="post-right">
+      <div class="free-stamp" aria-hidden="true">
+        <div class="free-stamp-core">
+          <span class="free-stamp-zero">Free for launch</span>
+          <span class="free-stamp-sub"><strong>$0 per listing</strong> for a limited time only.</span>
+        </div>
+      </div>
+      <a href="#" class="btn-post" onclick="openSubmitModal();return false;">Submit a role →</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<div class="w">
+  <footer>
+    <div>
+      <div class="f-brand-name">AIDesignJobs.com</div>
+      <p class="f-tagline">
+        Curated design jobs at AI companies.<br>
+        Updated daily.
+      </p>
+    </div>
+    <div>
+      <p class="f-col-title">Browse</p>
+      <div class="f-links">
+        <a href="#jobs">All roles</a>
+        <a href="#jobs">Product Design</a>
+        <a href="#jobs">Brand Design</a>
+        <a href="#jobs">Motion</a>
+        <a href="#jobs">Design Engineering</a>
+        <a href="#jobs">Remote only</a>
+      </div>
+    </div>
+    <div>
+      <p class="f-col-title">Info</p>
+      <div class="f-links">
+        <a href="#about">About</a>
+        <a href="#post">Post a role</a>
+        <a href="mailto:jobs@aidesignjobs.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <div class="f-bottom">
+    <span>© 2026 AIDesignJobs.com</span>
+    <span id="f-date"></span>
+  </div>
+  <div class="big-type">
+    <div class="big-type-inner">AI Design<em>—</em>Jobs</div>
+  </div>
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────
+const JOBS = [
+  {id:1,  title:'Product Designer, ChatGPT',          co:'OpenAI',     cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://openai.com/careers/product-designer-chatgpt-san-francisco/'},
+  {id:2,  title:'Product Designer, Codex',             co:'OpenAI',     cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://openai.com/careers/product-designer-codex-san-francisco/'},
+  {id:3,  title:'Product Designer, Platform & Tools',  co:'OpenAI',     cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://openai.com/careers/product-designer-platform-and-tools-san-francisco/'},
+  {id:4,  title:'Lead Product Designer, Health AI',    co:'OpenAI',     cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://openai.com/careers/lead-product-designer-health-ai-san-francisco/'},
+  {id:5,  title:'Product Designer, Growth',            co:'OpenAI',     cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://openai.com/careers/product-designer-growth-san-francisco/'},
+  {id:6,  title:'Product Designer, Consumer Ads',      co:'OpenAI',     cat:'ux',      catL:'UX / UI',         region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://openai.com/careers/product-designer-consumer-ads-experience-san-francisco/'},
+  {id:7,  title:'Product Designer, People Innovation', co:'OpenAI',     cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Mar 2026', url:'https://openai.com/careers/product-designer-people-innovation-labs-san-francisco/'},
+  {id:8,  title:'Product Designer',                    co:'Anthropic',  cat:'product', catL:'Product Design',  region:'us',     city:'SF · NYC · Seattle', mode:'hybrid',  lvl:'senior', salary:385000, salL:'$385k – $460k', f50:true,  nw:true,  date:'Mar 2026', url:'https://www.anthropic.com/careers/jobs'},
+  {id:9,  title:'Product Designer, Claude Code',       co:'Anthropic',  cat:'product', catL:'Product Design',  region:'us',     city:'SF · NYC · Seattle', mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:true,  nw:true,  date:'Mar 2026', url:'https://job-boards.greenhouse.io/anthropic/jobs/5104689008'},
+  {id:10, title:'Brand Designer',                      co:'Anthropic',  cat:'brand',   catL:'Brand',           region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'mid',    salary:151000, salL:'$151k – $189k', f50:true,  nw:false, date:'2026',     url:'https://www.anthropic.com/careers/jobs'},
+  {id:11, title:'Content Designer',                    co:'Anthropic',  cat:'content', catL:'Content Design',  region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'2026',     url:'https://www.anthropic.com/careers/jobs'},
+  {id:12, title:'Design Engineer',                     co:'Anthropic',  cat:'eng',     catL:'Design Eng.',     region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'senior', salary:182000, salL:'$182k – $250k', f50:true,  nw:false, date:'2026',     url:'https://www.anthropic.com/careers/jobs'},
+  {id:13, title:'Product Designer',                    co:'Mistral AI', cat:'product', catL:'Product Design',  region:'eu',     city:'Paris',              mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://jobs.lever.co/mistral/6282ba64-f05b-4d8f-ac8e-c367592604e1'},
+  {id:14, title:'Product Designer, Documentation',     co:'Mistral AI', cat:'ux',      catL:'UX / UI',         region:'eu',     city:'Paris',              mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:true,  date:'Apr 2026', url:'https://jobs.generalcatalyst.com/companies/mistral-ai-2/jobs/75930398-product-designer-documentation'},
+  {id:15, title:'Product Designer, Observability',     co:'Mistral AI', cat:'product', catL:'Product Design',  region:'eu',     city:'Paris',              mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:true,  date:'Apr 2026', url:'https://jobs.generalcatalyst.com/companies/mistral-ai-2/jobs/75930402-product-designer-observability'},
+  {id:16, title:'Product Designer',                    co:'Cursor',     cat:'product', catL:'Product Design',  region:'us',     city:'SF · New York',      mode:'onsite',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://cursor.com/careers/product-designer'},
+  {id:17, title:'Brand Designer',                      co:'Cursor',     cat:'brand',   catL:'Brand',           region:'us',     city:'SF · New York',      mode:'onsite',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://cursor.com/careers/brand-designer'},
+  {id:18, title:'Motion Designer',                     co:'Cursor',     cat:'motion',  catL:'Motion',          region:'us',     city:'SF · New York',      mode:'onsite',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://cursor.com/careers/motion-designer'},
+  {id:19, title:'Design Engineer',                     co:'Cursor',     cat:'eng',     catL:'Design Eng.',     region:'us',     city:'SF · New York',      mode:'onsite',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://cursor.com/careers/design-engineer'},
+  {id:20, title:'Product Designer',                    co:'Lovable',    cat:'product', catL:'Product Design',  region:'eu',     city:'Stockholm',          mode:'onsite',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://lovable.dev/careers/product-designer-cf78be'},
+  {id:21, title:'Staff / Principal Brand Designer',    co:'Lovable',    cat:'brand',   catL:'Brand',           region:'eu',     city:'Stockholm',          mode:'onsite',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://jobs.ashbyhq.com/lovable/2c16cc1e-303e-440e-8c33-bcdcaeb321ff'},
+  {id:22, title:'Brand Designer',                      co:'Lovable',    cat:'brand',   catL:'Brand',           region:'eu',     city:'Stockholm',          mode:'onsite',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://lovable.dev/careers/brand-designer-f75470'},
+  {id:23, title:'Design Engineer (Web & Brand)',       co:'Lovable',    cat:'eng',     catL:'Design Eng.',     region:'eu',     city:'Stockholm · London', mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://lovable.dev/careers/design-engineer-web-and-brand-e5b076'},
+  {id:24, title:'Sr/Staff Design Engineer',            co:'Lovable',    cat:'eng',     catL:'Design Eng.',     region:'eu',     city:'Stockholm · London', mode:'hybrid',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://lovable.dev/careers/senior-staff-design-engineer-web-and-brand-51885a'},
+  {id:25, title:'Sr./Staff Product Designer',          co:'Runway',     cat:'product', catL:'Product Design',  region:'us',     city:'NY · SF · Remote',   mode:'hybrid',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://job-boards.greenhouse.io/runwayml/jobs/4312818005'},
+  {id:26, title:'Senior Brand Designer',               co:'Runway',     cat:'brand',   catL:'Brand',           region:'us',     city:'New York · SF',      mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://app.welcometothejungle.com/jobs/DrSyi4fE'},
+  {id:27, title:'Brand Designer',                      co:'Perplexity', cat:'brand',   catL:'Brand',           region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://job-boards.greenhouse.io/perplexityai/jobs/4465105007'},
+  {id:28, title:'Product Designer, Growth',            co:'Perplexity', cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'2025',     url:'https://boards.greenhouse.io/embed/job_app?token=4854731007'},
+  {id:29, title:'Product Designer, Enterprise',        co:'Perplexity', cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://job-boards.greenhouse.io/perplexityai/jobs/4932067007'},
+  {id:30, title:'Product Designer',                    co:'HeyGen',     cat:'product', catL:'Product Design',  region:'us',     city:'SF · Los Angeles',   mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Nov 2025', url:'https://job-boards.greenhouse.io/heygen/jobs/4978509007'},
+  {id:31, title:'Senior Product Designer, Growth',     co:'HeyGen',     cat:'product', catL:'Product Design',  region:'us',     city:'SF · Los Angeles',   mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://job-boards.greenhouse.io/heygen/jobs/4428148007'},
+  {id:32, title:'Video Editor & Motion Designer',      co:'HeyGen',     cat:'motion',  catL:'Motion',          region:'us',     city:'Los Angeles',        mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:true,  date:'Apr 2026', url:'https://job-boards.greenhouse.io/heygen'},
+  {id:33, title:'Brand Designer',                      co:'ElevenLabs', cat:'brand',   catL:'Brand',           region:'remote', city:'Remote (Global)',    mode:'remote',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://elevenlabs.io/careers/d5fb656f-a8ac-457a-ab26-07304791e097/brand-design'},
+  {id:34, title:'Product Designer',                    co:'Figma',      cat:'product', catL:'Product Design',  region:'us',     city:'US Remote · SF · NYC',mode:'hybrid', lvl:'mid',   salary:150000, salL:'$150k – $190k', f50:false, nw:false, date:'Nov 2025', url:'https://job-boards.greenhouse.io/figma/jobs/5711571004'},
+  {id:35, title:'Product Designer, AI',                co:'Figma',      cat:'product', catL:'Product Design',  region:'us',     city:'US Remote · SF · NYC',mode:'hybrid', lvl:'mid',   salary:150000, salL:'$150k – $190k', f50:false, nw:false, date:'Oct 2025', url:'https://boards.greenhouse.io/figma/jobs/5575171004'},
+  {id:36, title:'Product Designer, Dev & AI Tools',    co:'Figma',      cat:'product', catL:'Product Design',  region:'us',     city:'US Remote · SF · NYC',mode:'hybrid', lvl:'mid',   salary:150000, salL:'$150k – $190k', f50:false, nw:false, date:'Nov 2025', url:'https://job-boards.greenhouse.io/figma/jobs/5711468004'},
+  {id:37, title:'Product Designer, Growth & Monetization',co:'Figma',   cat:'product', catL:'Product Design',  region:'us',     city:'US Remote · SF · NYC',mode:'hybrid', lvl:'senior',salary:160000, salL:'$160k – $210k', f50:false, nw:false, date:'Nov 2025', url:'https://job-boards.greenhouse.io/figma/jobs/5711595004'},
+  {id:38, title:'Early Career Product Designer 2026',  co:'Figma',      cat:'product', catL:'Product Design',  region:'us',     city:'SF · NYC',           mode:'hybrid',  lvl:'junior', salary:110000, salL:'$110k – $135k', f50:false, nw:false, date:'2026',     url:'http://job-boards.greenhouse.io/figma/jobs/5616455004'},
+  {id:39, title:'Senior Product Designer',             co:'Canva',      cat:'product', catL:'Product Design',  region:'asia',   city:'Sydney, Australia',  mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, nw:false, date:'Active',   url:'https://www.lifeatcanva.com/en/jobs/60b3fa96-5fc1-44ad-be99-d9339190cddd/senior-product-designer/'},
+  {id:40, title:'Lead Product Designer, Design Systems',co:'Canva',     cat:'product', catL:'Product Design',  region:'asia',   city:'Melbourne, Australia',mode:'hybrid',  lvl:'lead',  salary:0,      salL:'Undisclosed',   f50:false, nw:false, date:'Active',   url:'https://www.lifeatcanva.com/en/jobs/967b381d-187e-43f2-8f7e-466e94f038d7/lead-product-designer-design-systems/'},
+  {id:41, title:'Senior Digital Designer UX/UI',       co:'Canva',           cat:'ux',      catL:'UX / UI',         region:'asia',   city:'Sydney, Australia',   mode:'onsite',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:false, date:'Active',   url:'https://www.lifeatcanva.com/en/jobs/6000000000181975/senior-digital-designer-ux-ui-6-month-contract/'},
+  // Hugging Face — TIME100 AI 2026
+  {id:42, title:'UX/UI Designer',                      co:'Hugging Face',    cat:'ux',      catL:'UX / UI',         region:'remote', city:'Remote (USA)',         mode:'remote',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:false, t100:true,  nw:true,  date:'Mar 2026',  url:'https://apply.workable.com/huggingface/j/'},
+  // Meta — TIME100 AI 2026
+  {id:43, title:'Product Designer, Business AI',        co:'Meta',            cat:'product', catL:'Product Design',  region:'us',     city:'Menlo Park · NYC',    mode:'hybrid',  lvl:'senior', salary:203000, salL:'$203k – $280k', f50:false, t100:true,  nw:true,  date:'Apr 2026',  url:'https://www.metacareers.com/jobs/1011126817894920/'},
+  {id:44, title:'Product Designer, Generative AI',      co:'Meta',            cat:'product', catL:'Product Design',  region:'us',     city:'Menlo Park · NYC',    mode:'hybrid',  lvl:'senior', salary:203000, salL:'$203k – $280k', f50:false, t100:true,  nw:true,  date:'Apr 2026',  url:'https://www.metacareers.com/v2/jobs/178106124661005/'},
+  {id:45, title:'Product Design Prototyper, Reality Labs',co:'Meta',          cat:'product', catL:'Product Design',  region:'us',     city:'Redmond, WA',         mode:'onsite',  lvl:'senior', salary:180000, salL:'$180k – $240k', f50:false, t100:true,  nw:false, date:'Apr 2026',  url:'https://www.metacareers.com/jobs/412506247949277'},
+  // Google DeepMind — TIME100 AI 2026
+  {id:46, title:'UX Designer, Gemini',                  co:'Google DeepMind', cat:'ux',      catL:'UX / UI',         region:'us',     city:'Mountain View · NYC', mode:'hybrid',  lvl:'senior', salary:166000, salL:'$166k – $244k', f50:false, t100:true,  nw:true,  date:'Apr 2026',  url:'https://careers.google.com/jobs/results/?category=USER_EXPERIENCE&company=Google'},
+  {id:47, title:'Senior UX Designer, Google AI Studio', co:'Google DeepMind', cat:'ux',      catL:'UX / UI',         region:'us',     city:'Mountain View · SF',  mode:'hybrid',  lvl:'senior', salary:185000, salL:'$185k – $274k', f50:false, t100:true,  nw:false, date:'Apr 2026',  url:'https://careers.google.com/jobs/results/?category=USER_EXPERIENCE&company=Google'},
+  {id:48, title:'UX Designer, Motion Design, AI Products',co:'Google DeepMind',cat:'motion', catL:'Motion',          region:'us',     city:'Mountain View',       mode:'hybrid',  lvl:'mid',    salary:140000, salL:'$140k – $208k', f50:false, t100:true,  nw:false, date:'Mar 2026',  url:'https://careers.google.com/jobs/results/?category=USER_EXPERIENCE&company=Google'},
+  // ── xAI — Foundation lab ────────────────────────────────────────────────
+  {id:49, title:'Product Designer, Grok',                  co:'xAI',             cat:'product', catL:'Product Design',  region:'us',     city:'Palo Alto · SF',       mode:'onsite',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:true,  nw:true,  date:'Apr 2026',  url:'https://x.ai/careers/open-roles'},
+  {id:50, title:'Brand Designer',                          co:'xAI',             cat:'brand',   catL:'Brand',           region:'us',     city:'Palo Alto',            mode:'onsite',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:false, t100:true,  nw:true,  date:'Apr 2026',  url:'https://x.ai/careers/open-roles'},
+  {id:51, title:'Design Engineer, Grok Web',               co:'xAI',             cat:'eng',     catL:'Design Eng.',     region:'us',     city:'Palo Alto · SF',       mode:'onsite',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:true,  nw:false, date:'Apr 2026',  url:'https://x.ai/careers/open-roles'},
+  // ── Cohere — Foundation lab ─────────────────────────────────────────────
+  {id:52, title:'Senior Product Designer',                 co:'Cohere',          cat:'product', catL:'Product Design',  region:'us',     city:'Toronto · NYC · SF',   mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:true,  nw:true,  date:'Apr 2026',  url:'https://jobs.lever.co/cohere'},
+  {id:53, title:'Product Designer, Enterprise',            co:'Cohere',          cat:'product', catL:'Product Design',  region:'us',     city:'Toronto · NYC',        mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:false, t100:true,  nw:false, date:'Mar 2026',  url:'https://jobs.lever.co/cohere'},
+  // ── Inflection AI ───────────────────────────────────────────────────────
+  {id:54, title:'Product Designer, Pi',                    co:'Inflection AI',   cat:'product', catL:'Product Design',  region:'us',     city:'Palo Alto',            mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://inflection.ai/careers'},
+  // ── Stability AI ────────────────────────────────────────────────────────
+  {id:55, title:'Senior Product Designer',                 co:'Stability AI',    cat:'product', catL:'Product Design',  region:'remote', city:'Remote (UK · US)',     mode:'remote',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:false, date:'Mar 2026',  url:'https://stability.ai/careers'},
+  // ── Replicate ───────────────────────────────────────────────────────────
+  {id:56, title:'Design Engineer',                         co:'Replicate',       cat:'eng',     catL:'Design Eng.',     region:'remote', city:'Remote (Global)',      mode:'remote',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://replicate.com/about/jobs'},
+  {id:57, title:'Brand Designer',                          co:'Replicate',       cat:'brand',   catL:'Brand',           region:'remote', city:'Remote (Global)',      mode:'remote',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:false, date:'Mar 2026',  url:'https://replicate.com/about/jobs'},
+  // ── Pika Labs ───────────────────────────────────────────────────────────
+  {id:58, title:'Founding Product Designer',               co:'Pika Labs',       cat:'product', catL:'Product Design',  region:'us',     city:'Palo Alto',            mode:'onsite',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://pika.art/careers'},
+  // ── Suno ────────────────────────────────────────────────────────────────
+  {id:59, title:'Product Designer, Mobile',                co:'Suno',            cat:'product', catL:'Product Design',  region:'us',     city:'Cambridge, MA',        mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:true,  t100:true,  nw:false, date:'Mar 2026',  url:'https://suno.com/careers'},
+  {id:60, title:'Brand Designer',                          co:'Suno',            cat:'brand',   catL:'Brand',           region:'us',     city:'Cambridge, MA',        mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  t100:true,  nw:true,  date:'Apr 2026',  url:'https://suno.com/careers'},
+  // ── Glean ───────────────────────────────────────────────────────────────
+  {id:61, title:'Senior Product Designer',                 co:'Glean',           cat:'product', catL:'Product Design',  region:'us',     city:'Palo Alto',            mode:'hybrid',  lvl:'senior', salary:185000, salL:'$185k – $245k', f50:true,  t100:false, nw:false, date:'Mar 2026',  url:'https://www.glean.com/careers'},
+  // ── Harvey AI ───────────────────────────────────────────────────────────
+  {id:62, title:'Product Designer',                        co:'Harvey',          cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:true,  t100:false, nw:true,  date:'Apr 2026',  url:'https://www.harvey.ai/careers'},
+  // ── Decagon ─────────────────────────────────────────────────────────────
+  {id:63, title:'Founding Designer',                       co:'Decagon',         cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'onsite',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:true,  t100:false, nw:true,  date:'Apr 2026',  url:'https://decagon.ai/careers'},
+  // ── Sierra ──────────────────────────────────────────────────────────────
+  {id:64, title:'Product Designer, Conversational AI',     co:'Sierra',          cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:true,  t100:false, nw:false, date:'Mar 2026',  url:'https://sierra.ai/careers'},
+  // ── Scale AI ────────────────────────────────────────────────────────────
+  {id:65, title:'Senior Product Designer',                 co:'Scale AI',        cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'hybrid',  lvl:'senior', salary:175000, salL:'$175k – $230k', f50:false, t100:true,  nw:false, date:'Feb 2026',  url:'https://scale.com/careers'},
+  // ── Together AI ─────────────────────────────────────────────────────────
+  {id:66, title:'Product Designer',                        co:'Together AI',     cat:'product', catL:'Product Design',  region:'us',     city:'SF · Remote',          mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  t100:false, nw:false, date:'Mar 2026',  url:'https://www.together.ai/careers'},
+  // ── Notion AI ───────────────────────────────────────────────────────────
+  {id:67, title:'Product Designer, AI',                    co:'Notion',          cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco · NYC',  mode:'hybrid',  lvl:'senior', salary:200000, salL:'$200k – $260k', f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://www.notion.com/careers'},
+  // ── Crusoe ──────────────────────────────────────────────────────────────
+  {id:68, title:'Senior Brand Designer',                   co:'Crusoe',          cat:'brand',   catL:'Brand',           region:'us',     city:'San Francisco · Denver', mode:'hybrid',lvl:'senior', salary:0,      salL:'Undisclosed',   f50:true,  t100:false, nw:false, date:'Mar 2026',  url:'https://www.crusoe.ai/careers'},
+  // ── Synthesia ───────────────────────────────────────────────────────────
+  {id:69, title:'Senior Product Designer',                 co:'Synthesia',       cat:'product', catL:'Product Design',  region:'eu',     city:'London',               mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:false, date:'Mar 2026',  url:'https://www.synthesia.io/careers'},
+  // ── Krea ────────────────────────────────────────────────────────────────
+  {id:70, title:'Founding Designer',                       co:'Krea',            cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'onsite',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://www.krea.ai/careers'},
+  // ── Browserbase (YC) ────────────────────────────────────────────────────
+  {id:71, title:'Founding Designer',                       co:'Browserbase',     cat:'product', catL:'Product Design',  region:'us',     city:'New York',             mode:'onsite',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://www.browserbase.com/careers'},
+  // ── Reka AI ─────────────────────────────────────────────────────────────
+  {id:72, title:'Product Designer',                        co:'Reka AI',         cat:'product', catL:'Product Design',  region:'us',     city:'SF · Remote',          mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:false, date:'Mar 2026',  url:'https://reka.ai/careers'},
+  // ── Codeium / Windsurf ──────────────────────────────────────────────────
+  {id:73, title:'Product Designer',                        co:'Windsurf',        cat:'product', catL:'Product Design',  region:'us',     city:'Mountain View',        mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://codeium.com/careers'},
+  // ── Character.AI ────────────────────────────────────────────────────────
+  {id:74, title:'Senior Product Designer',                 co:'Character.AI',    cat:'product', catL:'Product Design',  region:'us',     city:'Menlo Park',           mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:true,  nw:false, date:'Mar 2026',  url:'https://character.ai/careers'},
+];
+
+const COMPANIES = [
+  // Foundation labs
+  {name:'OpenAI',         stage:'foundation', f50:true,  t100:true},
+  {name:'Anthropic',      stage:'foundation', f50:true,  t100:true},
+  {name:'xAI',            stage:'foundation', f50:false, t100:true},
+  {name:'Mistral AI',     stage:'foundation', f50:true,  t100:true},
+  {name:'Cohere',         stage:'foundation', f50:false, t100:true},
+  {name:'Inflection AI',  stage:'foundation', f50:false, t100:false},
+  {name:'Stability AI',   stage:'foundation', f50:false, t100:false},
+  {name:'Reka AI',        stage:'foundation', f50:false, t100:false},
+  // Public AI
+  {name:'Meta',           stage:'public',     f50:false, t100:true},
+  {name:'Google DeepMind',stage:'public',     f50:false, t100:true},
+  // Unicorns
+  {name:'Cursor',         stage:'unicorn',    f50:true,  t100:false},
+  {name:'Perplexity',     stage:'unicorn',    f50:true,  t100:false},
+  {name:'Runway',         stage:'unicorn',    f50:true,  t100:false},
+  {name:'ElevenLabs',     stage:'unicorn',    f50:true,  t100:false},
+  {name:'Glean',          stage:'unicorn',    f50:true,  t100:false},
+  {name:'Harvey',         stage:'unicorn',    f50:true,  t100:false},
+  {name:'Scale AI',       stage:'unicorn',    f50:false, t100:true},
+  {name:'Together AI',    stage:'unicorn',    f50:true,  t100:false},
+  {name:'Crusoe',         stage:'unicorn',    f50:true,  t100:false},
+  {name:'Suno',           stage:'unicorn',    f50:true,  t100:true},
+  {name:'Hugging Face',   stage:'unicorn',    f50:false, t100:true},
+  {name:'Character.AI',   stage:'unicorn',    f50:false, t100:true},
+  {name:'Notion',         stage:'unicorn',    f50:false, t100:false},
+  {name:'Figma',          stage:'unicorn',    f50:false, t100:false},
+  {name:'Canva',          stage:'unicorn',    f50:false, t100:false},
+  {name:'Synthesia',      stage:'unicorn',    f50:false, t100:false},
+  {name:'HeyGen',         stage:'unicorn',    f50:true,  t100:false},
+  // Startups
+  {name:'Lovable',        stage:'startup',    f50:true,  t100:false},
+  {name:'Decagon',        stage:'startup',    f50:true,  t100:false},
+  {name:'Sierra',         stage:'startup',    f50:true,  t100:false},
+  {name:'Replicate',      stage:'startup',    f50:false, t100:false},
+  {name:'Pika Labs',      stage:'startup',    f50:false, t100:false},
+  {name:'Krea',           stage:'startup',    f50:false, t100:false},
+  {name:'Browserbase',    stage:'startup',    f50:false, t100:false},
+  {name:'Windsurf',       stage:'startup',    f50:false, t100:false},
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────────
+const STAGE_BY_CO = Object.fromEntries(COMPANIES.map(c => [c.name, c.stage]));
+JOBS.forEach(j => { j.stage = STAGE_BY_CO[j.co] || 'startup'; });
+
+const S = { cat:'all', region:'all', mode:'all', lvl:'all', sal:'all', q:'', tR:false, tN:false, tFL:false, tPB:false, tUN:false, tST:false };
+
+function salOk(j) {
+  if (S.sal === 'all') return true;
+  if (S.sal === 'undisclosed') return j.salary === 0;
+  if (j.salary === 0) return false;
+  const mn = j.salary, mx = j.salaryMax || mn;
+  if (S.sal === 'u100')    return mx < 100000;
+  if (S.sal === '100_150') return mn <= 150000 && mx >= 100000;
+  if (S.sal === '150_200') return mn <= 200000 && mx >= 150000;
+  if (S.sal === '200p')    return mn >= 200000;
+  return true;
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────
+function render() {
+  const list = JOBS.filter(j => {
+    if (S.cat !== 'all' && j.cat !== S.cat) return false;
+    if (S.region !== 'all' && j.region !== S.region) return false;
+    if (S.mode !== 'all' && j.mode !== S.mode) return false;
+    if (S.lvl !== 'all' && j.lvl !== S.lvl) return false;
+    if (!salOk(j)) return false;
+    if (S.tR && j.mode !== 'remote') return false;
+    if (S.tN && !j.nw) return false;
+    if (S.tFL && j.stage !== 'foundation') return false;
+    if (S.tPB && j.stage !== 'public') return false;
+    if (S.tUN && j.stage !== 'unicorn') return false;
+    if (S.tST && j.stage !== 'startup') return false;
+    if (S.q) {
+      const q = S.q.toLowerCase();
+      if (!j.title.toLowerCase().includes(q) && !j.co.toLowerCase().includes(q) && !j.city.toLowerCase().includes(q)) return false;
+    }
+    return true;
+  });
+
+  document.getElementById('cnt').textContent = list.length;
+
+  const mBdg = m => {
+    if (m === 'remote') return `<span class="bdg rm">Remote</span>`;
+    if (m === 'hybrid') return `<span class="bdg hy">Hybrid</span>`;
+    return `<span class="bdg">On-site</span>`;
+  };
+  const catBdg = (cat, label) => `<span class="bdg cat-${cat}"><span class="jdot ${cat}" style="width:9px;height:9px;display:inline-block;vertical-align:middle;margin-right:7px"></span>${label}</span>`;
+
+  const el = document.getElementById('jlist');
+  const empty = document.getElementById('empty');
+
+  if (!list.length) { el.innerHTML = ''; empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+
+  el.innerHTML = list.map((j,i) => `
+    <div class="job" onclick="openDrawer(${j.id})">
+      <div class="jnum"><span class="jdot ${j.cat}"></span>${String(i+1).padStart(2,'0')}</div>
+      <div class="jinfo">
+        <div class="jtitle">${j.title}</div>
+        <div class="jco">${j.co}</div>
+      </div>
+      <div>${catBdg(j.cat, j.catL)}</div>
+      <div class="jloc">${j.city}</div>
+      <div class="tags-cell">
+        ${mBdg(j.mode)}
+        ${j.nw  ? '<span class="bdg nw">New</span>' : ''}
+        ${j.f50 ? '<span class="bdg f5">AI 50</span>' : ''}
+        ${j.t100 ? '<span class="bdg t1">TIME100</span>' : ''}
+      </div>
+      <div><span class="bdg sl">${j.salL}</span></div>
+      <div class="jdate">${j.date}</div>
+      <div class="jarr">→</div>
+    </div>`).join('');
+}
+
+// ── FILTERS ───────────────────────────────────────────────────────────────
+document.querySelectorAll('.fpills[data-group]').forEach(grp => {
+  grp.querySelectorAll('.pill[data-v]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      S[grp.dataset.group] = btn.dataset.v;
+      grp.querySelectorAll('.pill').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      render();
+    });
+  });
+});
+
+[['tg-remote','tR'],['tg-new','tN'],['tg-foundation','tFL'],['tg-public','tPB'],['tg-unicorn','tUN'],['tg-startup','tST']].forEach(([id,key]) => {
+  const btn = document.getElementById(id);
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    S[key] = !S[key];
+    btn.classList.toggle('on', S[key]);
+    render();
+  });
+});
+
+document.getElementById('srch').addEventListener('input', e => { S.q = e.target.value; render(); });
+
+// ── COMPANIES ─────────────────────────────────────────────────────────────
+const tagBase  = 'color:#999;font-size:13px;font-weight:400;letter-spacing:.04em;margin-left:12px';
+const tagAcc   = 'color:var(--accent);font-size:13px;font-weight:500;letter-spacing:.04em;margin-left:12px';
+const stageMap = {foundation:'Foundation lab', public:'Public', unicorn:'Unicorn', startup:'Startup'};
+document.getElementById('co-list').innerHTML = COMPANIES.map(c => `
+  <div class="co-item">
+    <span>${c.name}${c.stage ? ` <span style="${tagBase}">${stageMap[c.stage]||c.stage}</span>` : ''}${c.f50 ? ` <span style="${tagBase}">Forbes AI 50</span>` : ''}${c.t100 ? ` <span style="${tagAcc}">TIME100 AI</span>` : ''}</span>
+    <span class="co-arrow">→</span>
+  </div>`).join('');
+
+// ── DATE ──────────────────────────────────────────────────────────────────
+const ds = new Date().toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'});
+document.getElementById('n-date').textContent = 'Updated daily · ' + ds;
+document.getElementById('rdate').textContent = 'Updated ' + ds;
+document.getElementById('f-date').textContent = 'Updated daily · ' + ds;
+document.getElementById('s-roles').textContent = JOBS.length;
+document.getElementById('s-co').textContent = COMPANIES.length;
+
+// ── NAV: hide on scroll down, show on scroll up ────────────────────────
+(() => {
+  const navEl = document.querySelector('nav');
+  if (!navEl) return;
+  let lastY = window.scrollY;
+  let ticking = false;
+  const THRESHOLD = 8;
+  const TOP_OFFSET = 80;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      const delta = y - lastY;
+      if (y < TOP_OFFSET) {
+        navEl.classList.remove('nav-hidden');
+      } else if (delta > THRESHOLD) {
+        navEl.classList.add('nav-hidden');
+      } else if (delta < -THRESHOLD) {
+        navEl.classList.remove('nav-hidden');
+      }
+      lastY = y;
+      ticking = false;
+    });
+  }, { passive: true });
+})();
+
+// ── CURSOR + DATE TIP ────────────────────────────────────────────────────────
+const cur = document.getElementById('cur');
+const tip = document.getElementById('date-tip');
+
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top  = e.clientY + 'px';
+  tip.style.left = e.clientX + 'px';
+  tip.style.top  = e.clientY + 'px';
+});
+
+document.getElementById('jlist').addEventListener('mouseover', e => {
+  const job = e.target.closest('.job');
+  if (job) {
+    const date = job.querySelector('.jdate')?.textContent;
+    if (date) { tip.textContent = 'Posted: ' + date; tip.style.opacity = '1'; }
+  } else {
+    tip.style.opacity = '0';
+  }
+});
+document.getElementById('jlist').addEventListener('mouseleave', () => { tip.style.opacity = '0'; });
+document.addEventListener('mouseleave', () => { tip.style.opacity = '0'; });
+
+render();
+
+// ── DRAWER ────────────────────────────────────────────────────────────────────
+let drawer, drawerBg;
+function initDrawer() {
+  drawer   = document.getElementById('drawer');
+  drawerBg = document.getElementById('drawer-bg');
+  const closeBtn = document.getElementById('dr-close');
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (drawerBg) drawerBg.addEventListener('click', closeDrawer);
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initDrawer);
+} else {
+  initDrawer();
+}
+
+function openDrawer(id) {
+  if (!drawer) initDrawer();
+  const j = JOBS.find(x => x.id === id);
+  if (!j) return;
+  const modeLabel = { remote:'Remote', hybrid:'Hybrid', onsite:'On-site' };
+  const lvlLabel  = { junior:'Junior', mid:'Mid', senior:'Senior', lead:'Lead / Staff' };
+  const badges = [
+    j.f50    ? '<span class="dr-badge">Forbes AI 50</span>' : '',
+    j.t100   ? '<span class="dr-badge">TIME100 AI</span>'  : '',
+    j.nw     ? '<span class="dr-badge dr-new">New this week</span>' : '',
+  ].filter(Boolean).join('');
+  document.getElementById('dr-co').textContent    = j.co;
+  document.getElementById('dr-title').textContent = j.title;
+  document.getElementById('dr-badges').innerHTML  = badges;
+  document.getElementById('dr-cat').textContent   = j.catL;
+  document.getElementById('dr-city').textContent  = j.city;
+  document.getElementById('dr-mode').textContent  = modeLabel[j.mode] || j.mode;
+  document.getElementById('dr-lvl').textContent   = lvlLabel[j.lvl]  || j.lvl;
+  document.getElementById('dr-sal').textContent   = j.salL;
+  document.getElementById('dr-date').textContent  = j.date;
+  document.getElementById('dr-apply').href        = j.url;
+  drawer.classList.add('open');
+  drawerBg.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  if (drawer) drawer.classList.remove('open');
+  if (drawerBg) drawerBg.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDrawer(); closeSubmitModal(); } });
+
+// ── SUBMIT MODAL ───────────────────────────────────────────────────────
+function openSubmitModal() {
+  document.getElementById('submit-bg').classList.add('open');
+  document.getElementById('submit-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('sm-company')?.focus(), 200);
+}
+function closeSubmitModal() {
+  document.getElementById('submit-bg').classList.remove('open');
+  document.getElementById('submit-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+const smForm = document.getElementById('sm-form');
+if (smForm) {
+  smForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('sm-submit-btn');
+    const err = document.getElementById('sm-error');
+    err.classList.remove('show');
+    btn.disabled = true; btn.textContent = 'Submitting…';
+    try {
+      const res = await fetch(smForm.action, {
+        method: 'POST',
+        body: new FormData(smForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        smForm.style.display = 'none';
+        document.getElementById('sm-success').classList.add('show');
+      } else {
+        throw new Error('bad response');
+      }
+    } catch (e2) {
+      err.classList.add('show');
+      btn.disabled = false; btn.textContent = 'Submit role →';
+    }
+  });
+}
+</script>
+<!-- SUBMIT MODAL -->
+<div id="submit-bg" onclick="closeSubmitModal()"></div>
+<div id="submit-modal" role="dialog" aria-modal="true" aria-labelledby="sm-title">
+  <div class="sm-head">
+    <div>
+      <h3 id="sm-title">Submit a design role</h3>
+      <p>We review every submission. <strong style="color:var(--accent);font-weight:500">Free during launch</strong> — paid plans coming soon.</p>
+    </div>
+    <button class="sm-close" onclick="closeSubmitModal()" aria-label="Close">×</button>
+  </div>
+  <form class="sm-form" id="sm-form" action="https://formspree.io/f/mykoyvvv" method="POST">
+    <div class="sm-row">
+      <div class="sm-field">
+        <label class="sm-label" for="sm-company">Company name <span class="req">*</span></label>
+        <input class="sm-input" id="sm-company" name="company" type="text" required>
+      </div>
+      <div class="sm-field">
+        <label class="sm-label" for="sm-website">Company website <span class="req">*</span></label>
+        <input class="sm-input" id="sm-website" name="website" type="url" placeholder="https://" required>
+      </div>
+    </div>
+
+    <div class="sm-field">
+      <label class="sm-label" for="sm-title-i">Role title <span class="req">*</span></label>
+      <input class="sm-input" id="sm-title-i" name="role_title" type="text" placeholder="e.g. Senior Product Designer, Platform" required>
+    </div>
+
+    <div class="sm-row">
+      <div class="sm-field">
+        <label class="sm-label" for="sm-cat">Role type <span class="req">*</span></label>
+        <select class="sm-select" id="sm-cat" name="role_type" required>
+          <option value="">Select…</option>
+          <option>Product Design</option>
+          <option>Brand</option>
+          <option>UX / UI</option>
+          <option>Design Engineering</option>
+          <option>Motion</option>
+          <option>Content Design</option>
+          <option>Design Lead / Manager</option>
+        </select>
+      </div>
+      <div class="sm-field">
+        <label class="sm-label" for="sm-lvl">Level <span class="req">*</span></label>
+        <select class="sm-select" id="sm-lvl" name="level" required>
+          <option value="">Select…</option>
+          <option>Junior</option>
+          <option>Mid</option>
+          <option>Senior</option>
+          <option>Staff / Principal</option>
+          <option>Lead / Manager</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="sm-row">
+      <div class="sm-field">
+        <label class="sm-label" for="sm-loc">Location <span class="req">*</span></label>
+        <input class="sm-input" id="sm-loc" name="location" type="text" placeholder="e.g. San Francisco · NYC" required>
+      </div>
+      <div class="sm-field">
+        <label class="sm-label" for="sm-mode">Work mode <span class="req">*</span></label>
+        <select class="sm-select" id="sm-mode" name="work_mode" required>
+          <option value="">Select…</option>
+          <option>On-site</option>
+          <option>Hybrid</option>
+          <option>Remote</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="sm-row">
+      <div class="sm-field">
+        <label class="sm-label" for="sm-sal">Salary range</label>
+        <input class="sm-input" id="sm-sal" name="salary" type="text" placeholder="e.g. $180k – $240k">
+      </div>
+      <div class="sm-field">
+        <label class="sm-label" for="sm-url">Application URL <span class="req">*</span></label>
+        <input class="sm-input" id="sm-url" name="application_url" type="url" placeholder="https://" required>
+      </div>
+    </div>
+
+    <div class="sm-field">
+      <label class="sm-label" for="sm-desc">Role description</label>
+      <textarea class="sm-textarea" id="sm-desc" name="description" placeholder="Brief summary of the role and what makes it interesting."></textarea>
+    </div>
+
+    <div class="sm-row">
+      <div class="sm-field">
+        <label class="sm-label" for="sm-name">Your name <span class="req">*</span></label>
+        <input class="sm-input" id="sm-name" name="contact_name" type="text" required>
+      </div>
+      <div class="sm-field">
+        <label class="sm-label" for="sm-email">Your email <span class="req">*</span></label>
+        <input class="sm-input" id="sm-email" name="contact_email" type="email" required>
+      </div>
+    </div>
+
+    <input type="hidden" name="_subject" value="New role submission — AIDesignJobs">
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email jobs@aidesignjobs.com.</div>
+
+    <div class="sm-foot">
+      <span class="sm-note">We review submissions within 48h.</span>
+      <button class="sm-submit" type="submit" id="sm-submit-btn">Submit role →</button>
+    </div>
+  </form>
+  <div class="sm-success" id="sm-success">
+    <h4>Thanks — submission received.</h4>
+    <p>We'll review your role within 48 hours and email you when it goes live.</p>
+  </div>
+</div>
+
+<!-- DRAWER BACKDROP -->
+<div id="drawer-bg"></div>
+
+<!-- DRAWER -->
+<div id="drawer">
+  <div class="dr-header">
+    <div>
+      <div class="dr-co" id="dr-co"></div>
+      <div class="dr-title" id="dr-title"></div>
+      <div class="dr-badges" id="dr-badges"></div>
+    </div>
+    <button class="dr-close" id="dr-close">✕</button>
+  </div>
+
+  <div class="dr-body">
+    <div class="dr-row"><span class="dr-key">Role type</span><span id="dr-cat"></span></div>
+    <div class="dr-row"><span class="dr-key">Location</span><span id="dr-city"></span></div>
+    <div class="dr-row"><span class="dr-key">Work mode</span><span id="dr-mode"></span></div>
+    <div class="dr-row"><span class="dr-key">Seniority</span><span id="dr-lvl"></span></div>
+    <div class="dr-row"><span class="dr-key">Salary</span><span id="dr-sal"></span></div>
+    <div class="dr-row"><span class="dr-key">Posted</span><span id="dr-date"></span></div>
+  </div>
+
+  <div class="dr-foot">
+    <a id="dr-apply" href="#" target="_blank" rel="noopener" class="dr-btn">Apply now →</a>
+    <p class="dr-note">You'll be redirected to the company's official careers page.</p>
+  </div>
+</div>
+
+</body>
+</html>
