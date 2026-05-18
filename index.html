@@ -6,7 +6,7 @@
 
 <!-- Primary SEO -->
 <title>AIDesignJobs — Curated Design Jobs at AI Companies | OpenAI, Anthropic, xAI</title>
-<meta name="description" content="The job board for designers at AI companies. Browse 70+ open roles at OpenAI, Anthropic, xAI, Mistral, Cursor, Perplexity, Cohere and more. Product, Brand, UX, Motion & Design Engineering. Updated daily.">
+<meta name="description" content="The job board for designers at AI companies. Browse 70+ open roles at OpenAI, Anthropic, xAI, Mistral, Cursor, Perplexity, Cohere and more. Product, Brand, UX, Motion & Design Engineering. Updated weekly.">
 <meta name="keywords" content="AI design jobs, design jobs AI companies, OpenAI designer jobs, Anthropic designer jobs, AI product designer, design engineer AI, xAI design jobs, Mistral designer, Perplexity designer, AI brand designer, AI UX designer, design careers AI">
 <meta name="author" content="AIDesignJobs">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -18,12 +18,23 @@
 <link rel="apple-touch-icon" href="/favicon.svg">
 <meta name="theme-color" content="#0a0a0a">
 
+<!-- Theme: applied before first paint to avoid flash -->
+<script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('aidj-theme');
+      var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {}
+  })();
+</script>
+
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AIDesignJobs">
 <meta property="og:url" content="https://aidesignjobs.com/">
 <meta property="og:title" content="AIDesignJobs — Curated Design Jobs at AI Companies">
-<meta property="og:description" content="The job board for designers at AI companies. 70+ verified roles at OpenAI, Anthropic, xAI, Mistral, Cursor, Perplexity and more. Updated daily.">
+<meta property="og:description" content="The job board for designers at AI companies. 70+ verified roles at OpenAI, Anthropic, xAI, Mistral, Cursor, Perplexity and more. Updated weekly.">
 <meta property="og:image" content="https://aidesignjobs.com/og-image.svg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -45,7 +56,7 @@
   "name": "AIDesignJobs",
   "alternateName": "AI Design Jobs",
   "url": "https://aidesignjobs.com/",
-  "description": "Curated design jobs at AI companies. From foundation labs to startups, every role verified and updated daily.",
+  "description": "Curated design jobs at AI companies. From foundation labs to startups, every role verified and updated weekly.",
   "publisher": {
     "@type": "Organization",
     "name": "AIDesignJobs",
@@ -94,6 +105,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family: 'Px Grotesk'; src: url('fonts/PxGrotesk-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Px Grotesk'; src: url('fonts/PxGrotesk-LightItalic.ttf') format('truetype'); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Px Grotesk'; src: url('fonts/PxGrotesk-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Px Grotesk'; src: url('fonts/PxGrotesk-RegularItalic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Px Grotesk'; src: url('fonts/PxGrotesk-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Px Grotesk'; src: url('fonts/PxGrotesk-BoldItalic.ttf') format('truetype'); font-weight: 700; font-style: italic; font-display: swap; }
+</style>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -107,8 +127,11 @@ html { scroll-behavior: smooth; }
   --gray3:  #f5f5f5;
   --border: #e8e8e8;
   --fs: 'Helvetica Neue', 'Arial', sans-serif;
+  --fh: 'Px Grotesk', 'Helvetica Neue', sans-serif;
   --fm: 'DM Sans', system-ui, sans-serif;
   --fmono: 'Geist Mono', 'Courier New', monospace;
+  --invert-bg: #0d0d0d;
+  --invert-fg: #ffffff;
 
   /* category dot palette */
   --c-product: #ff4d2e;   /* orange-red */
@@ -119,6 +142,55 @@ html { scroll-behavior: smooth; }
   --c-content: #8a4fff;   /* purple */
 }
 
+[data-theme="dark"] {
+  --black:  #f2f2f2;
+  --white:  #0a0a0a;
+  --gray:   #888;
+  --gray2:  #555;
+  --gray3:  #1a1a1a;
+  --border: #262626;
+  --invert-bg: #f2f2f2;
+  --invert-fg: #0a0a0a;
+}
+
+/* Dark-mode text overrides */
+[data-theme="dark"] .hero-hl em,
+[data-theme="dark"] .explore-hl em { color: #444; }
+[data-theme="dark"] .hero-body,
+[data-theme="dark"] .explore-body,
+[data-theme="dark"] .about-body { color: #aaa; }
+[data-theme="dark"] .jnum { color: #aaa; }
+[data-theme="dark"] .jco,
+[data-theme="dark"] .jloc,
+[data-theme="dark"] .ats-meta,
+[data-theme="dark"] .job:hover .jco,
+[data-theme="dark"] .job:hover .jloc,
+[data-theme="dark"] .job:hover .jdate { color: #999; }
+[data-theme="dark"] .jdate { color: #888; }
+[data-theme="dark"] .bdg { color: #bbb; border-color: #444; }
+[data-theme="dark"] .bdg.sl { color: #aaa; border-color: #444; }
+[data-theme="dark"] .bdg.f5 { border-color: #555; color: #ccc; }
+[data-theme="dark"] .bdg.nw { border-color: #6868a8; color: #a0a0d8; }
+[data-theme="dark"] .bdg.t1 { border-color: #5a6da8; color: #9aadcc; background: rgba(154,173,204,.1); }
+[data-theme="dark"] .bdg.pr { border-color: #8a5878; color: #d8a8c8; background: rgba(216,168,200,.08); }
+[data-theme="dark"] .bdg.se { border-color: #588a78; color: #a8d8c8; background: rgba(168,216,200,.08); }
+[data-theme="dark"] .bdg.rm { border-color: #608060; color: #b0d8b0; }
+[data-theme="dark"] .bdg.hy { border-color: #8a7858; color: #ccb888; }
+[data-theme="dark"] .dr-badge { color: #aaa; border-color: #444; }
+[data-theme="dark"] .ats-card:hover { background: var(--black); color: var(--white); }
+[data-theme="dark"] .ats-card:hover .ats-meta { color: rgba(10,10,10,.6); }
+
+/* "For companies" callout — flips with the theme (dark card in light mode,
+   light card in dark mode) so it always stands out from the page.
+   Variables already flip; we only need to fix the hardcoded white-rgba colors
+   and the apply-button text so it stays white on the blue button. */
+[data-theme="dark"] .post-body { color: rgba(10,10,10,.65); }
+[data-theme="dark"] .free-stamp { border-color: rgba(10,10,10,.15); }
+[data-theme="dark"] .free-stamp-sub { color: rgba(10,10,10,.7); }
+[data-theme="dark"] .btn-post { color: #ffffff; }
+
+html { background: var(--white); color: var(--black); transition: background-color .25s, color .25s; }
+
 body {
   background: var(--white);
   color: var(--black);
@@ -127,12 +199,12 @@ body {
   font-weight: 300;
   line-height: 1.6;
   overflow-x: hidden;
-  cursor: none;
   -webkit-font-smoothing: antialiased;
 }
 
 /* ── CURSOR ─────────────────────────────────── */
-#cur {
+#cur { display: none !important; }
+#cur-disabled {
   width: 7px; height: 7px;
   background: var(--accent);
   border-radius: 50%;
@@ -141,11 +213,11 @@ body {
   transform: translate(-50%,-50%);
   transition: width .2s ease, height .2s ease, opacity .2s;
 }
-body:has(a:hover) #cur,
-body:has(button:hover) #cur { width: 18px; height: 18px; }
+body:has(a:hover) #cur-disabled,
+body:has(button:hover) #cur-disabled { width: 18px; height: 18px; }
 
-a { color: inherit; text-decoration: none; cursor: none; }
-button { cursor: none; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
 
 /* ── NAV ─────────────────────────────────────── */
 nav {
@@ -153,20 +225,53 @@ nav {
   transition: transform .45s cubic-bezier(.4,0,.2,1);
   will-change: transform;
   display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: start;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 48px;
   padding: 18px 28px;
   background: var(--white);
   border-bottom: 1px solid var(--border);
 }
 .n-left { display: flex; flex-direction: column; gap: 1px; }
-.n-logo { font-family: var(--fs); font-size: 24px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; }
+.n-logo { font-family: var(--fh); font-size: 44px; font-weight: 700; letter-spacing: -.04em; text-transform: lowercase; color: var(--black); line-height: 1; }
+.n-logo .dot { color: var(--accent); }
 .n-sub  { font-size: 17px; color: var(--gray); letter-spacing: .02em; }
 .n-date { font-family: var(--fm); font-size: 13px; font-weight: 400; color: var(--gray); letter-spacing: .02em; margin-top: 6px; align-self: flex-start; }
+.n-stats { display: flex; gap: 36px; justify-self: center; }
+.n-stat-n { font-family: var(--fs); font-size: 28px; line-height: 1; font-weight: 700; color: var(--accent); letter-spacing: -.02em; }
+.n-stat-l { font-family: var(--fm); font-size: 12px; color: var(--gray); margin-top: 6px; letter-spacing: .04em; text-transform: uppercase; }
 nav.nav-hidden { transform: translateY(-100%); }
-.n-right { text-align: right; padding-top: 4px; }
-.n-right a { font-size: 14px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); transition: color .2s; }
-.n-right a:hover { color: var(--black); }
+.n-right { text-align: right; display: flex; align-items: center; gap: 12px; justify-self: end; }
+.n-theme {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--black);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.n-theme:hover { background: var(--gray3); border-color: var(--gray2); }
+.n-theme .ic-moon { display: none; }
+[data-theme="dark"] .n-theme .ic-sun  { display: none; }
+[data-theme="dark"] .n-theme .ic-moon { display: block; }
+.n-right a {
+  display: inline-block;
+  font-family: var(--fm);
+  font-size: 13px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--white);
+  background: var(--accent);
+  padding: 12px 22px;
+  border-radius: 100px;
+  transition: background .2s, transform .2s;
+}
+.n-right a:hover { background: var(--black); color: var(--white); transform: translateY(-1px); }
+@media (max-width: 720px) {
+  nav { grid-template-columns: 1fr auto; gap: 16px; }
+  .n-stats { display: none; }
+}
 
 /* ── HERO ────────────────────────────────────── */
 .hero {
@@ -177,13 +282,14 @@ nav.nav-hidden { transform: translateY(-100%); }
   max-width: 740px;
 }
 .hero-label {
-  font-size: 14px; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--gray); margin-bottom: 28px;
+  font-family: var(--fh);
+  font-size: 22px; letter-spacing: -.01em; font-weight: 600;
+  color: var(--black); margin-bottom: 36px;
   display: flex; align-items: center; gap: 10px;
 }
 .hero-label::before { content: none; }
 .hero-hl {
-  font-family: var(--fs);
+  font-family: var(--fh);
   font-size: clamp(38px, 5.5vw, 76px);
   line-height: 1.05;
   letter-spacing: -.03em;
@@ -237,7 +343,8 @@ nav.nav-hidden { transform: translateY(-100%); }
 .fpills[data-group="cat"] .pill[data-v="eng"]::before     { background: var(--c-eng); }
 .fpills[data-group="cat"] .pill[data-v="content"]::before { background: var(--c-content); }
 .filter-section-title {
-  font-size: 14px; letter-spacing: .12em; text-transform: uppercase;
+  font-family: var(--fs);
+  font-size: 14px; letter-spacing: .02em;
   color: var(--gray); margin-bottom: 28px;
   display: flex; align-items: center; gap: 10px;
 }
@@ -267,7 +374,7 @@ nav.nav-hidden { transform: translateY(-100%); }
   background: transparent;
   color: var(--gray);
   transition: all .14s;
-  cursor: none;
+  cursor: pointer;
   border-radius: 10px;
 }
 .pill:hover { border-color: #bbb; color: var(--black); }
@@ -277,6 +384,8 @@ nav.nav-hidden { transform: translateY(-100%); }
 .pill.t-remote.on { background: var(--accent); color: var(--white); border-color: var(--accent); }
 .pill.t-new.on    { background: var(--accent); color: var(--white); border-color: var(--accent); }
 .pill.t-stage.on  { background: var(--accent); color: var(--white); border-color: var(--accent); }
+.pill.t-prosumer.on { background: var(--accent); color: var(--white); border-color: var(--accent); }
+.pill.t-se50.on { background: var(--accent); color: var(--white); border-color: var(--accent); }
 
 /* ── RESULTS BAR ─────────────────────────────── */
 .rbar {
@@ -301,7 +410,7 @@ nav.nav-hidden { transform: translateY(-100%); }
 .sbox input {
   border: none; background: transparent; outline: none;
   font-family: var(--fm); font-size: 16px; font-weight: 300;
-  color: var(--black); cursor: none; width: 100%;
+  color: var(--black); cursor: text; width: 100%;
 }
 .sbox input::placeholder { color: var(--gray2); }
 .sico { color: var(--gray2); font-size: 18px; }
@@ -312,21 +421,21 @@ nav.nav-hidden { transform: translateY(-100%); }
 
 .thead {
   display: grid;
-  grid-template-columns: 70px 1fr 190px 190px 130px 150px 120px;
-  gap: 16px; padding: 12px 0;
+  grid-template-columns: 48px minmax(0,1.6fr) 140px minmax(0,1fr) 110px 130px 90px;
+  gap: 14px; padding: 12px 0;
   border-bottom: 1px solid var(--black);
-  font-size: 14px; letter-spacing: .08em; text-transform: uppercase;
+  font-size: 12px; letter-spacing: .04em;
   color: var(--gray); align-items: center;
 }
 
 .job {
   display: grid;
-  grid-template-columns: 70px 1fr 190px 190px 130px 150px 120px;
-  gap: 16px; padding: 26px 0;
+  grid-template-columns: 48px minmax(0,1.6fr) 140px minmax(0,1fr) 110px 130px 90px;
+  gap: 14px; padding: 22px 0;
   border-bottom: 1px solid var(--border);
   align-items: center;
   color: inherit;
-  position: relative; cursor: none;
+  position: relative; cursor: pointer;
   transition: background .15s;
   user-select: none;
 }
@@ -334,7 +443,7 @@ nav.nav-hidden { transform: translateY(-100%); }
 .job:hover .jarr { opacity: 1; transform: translateX(0); }
 .job:hover .jco, .job:hover .jloc, .job:hover .jdate { color: #666; }
 
-.jnum { font-size: 15px; color: #555; font-weight: 400; display: flex; align-items: center; gap: 12px; }
+.jnum { font-size: 13px; color: #555; font-weight: 400; display: flex; align-items: center; gap: 10px; }
 .jdot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; background: var(--gray2); }
 .jdot.product { background: var(--c-product); }
 .jdot.brand   { background: var(--c-brand); }
@@ -346,19 +455,20 @@ nav.nav-hidden { transform: translateY(-100%); }
 .jinfo { min-width: 0; }
 .jtitle {
   font-family: var(--fs);
-  font-size: 23px; line-height: 1.25; font-weight: 400;
+  font-size: 17px; line-height: 1.25; font-weight: 500;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .jco {
-  font-size: 17px; color: #666; font-weight: 300;
-  margin-top: 4px; transition: color .15s;
+  font-size: 13px; color: #666; font-weight: 300;
+  margin-top: 2px; transition: color .15s;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 
 .bdg {
   display: inline-block;
-  font-family: var(--fm); font-weight: 300;
-  font-size: 14px; letter-spacing: .02em;
-  padding: 5px 12px;
+  font-family: var(--fm); font-weight: 400;
+  font-size: 11px; letter-spacing: .02em;
+  padding: 3px 9px;
   border: 1px solid #ccc;
   color: #555;
   white-space: nowrap;
@@ -369,13 +479,15 @@ nav.nav-hidden { transform: translateY(-100%); }
 .bdg.nw { border-color: #9898d8; color: #3030a0; }
 .bdg.f5 { border-color: #aaa; color: #333; }
 .bdg.t1 { border-color: #9aadcc; color: #1a2a80; background: rgba(26,42,128,.06); }
+.bdg.pr { border-color: #c8a8b8; color: #7a2a55; background: rgba(122,42,85,.06); }
+.bdg.se { border-color: #a8c8b8; color: #1a5a3a; background: rgba(26,90,58,.06); }
 .bdg.st { border-color: #aa9acc; color: #3a2a80; background: rgba(58,42,128,.06); }
-.bdg.sl { border-color: #ccc; color: #666; font-size: 14px; }
+.bdg.sl { border-color: #ccc; color: #666; font-size: 11px; }
 
-.tags-cell { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.tags-cell { display: flex; flex-wrap: wrap; gap: 3px; align-items: center; }
 
-.jloc  { font-size: 15px; color: #666; font-weight: 300; transition: color .15s; }
-.jdate { font-size: 14px; color: #888; transition: color .15s; }
+.jloc  { font-size: 12px; color: #666; font-weight: 300; transition: color .15s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.jdate { font-size: 11px; color: #888; transition: color .15s; white-space: nowrap; }
 
 /* date tooltip — cursor following pill */
 #date-tip {
@@ -404,6 +516,83 @@ nav.nav-hidden { transform: translateY(-100%); }
   display: none;
 }
 
+/* ── EXPLORE / MORE SOURCES ──────────────────── */
+.explore-section {
+  margin-top: 100px;
+  padding: 64px 0;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+}
+.explore-label {
+  font-family: var(--fh);
+  font-size: 22px; letter-spacing: -.01em; font-weight: 600;
+  color: var(--black); margin-bottom: 36px;
+}
+.explore-hl {
+  font-family: var(--fh);
+  font-size: clamp(28px, 3.2vw, 48px);
+  line-height: 1.05; font-weight: 700; letter-spacing: -.02em;
+  color: var(--black);
+}
+.explore-hl em { font-style: normal; color: #c8c8c8; }
+.explore-body {
+  margin-top: 28px;
+  font-size: 17px; line-height: 1.6; color: #666;
+  max-width: 380px;
+}
+.explore-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.ats-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center; gap: 18px;
+  padding: 26px 28px;
+  background: var(--white);
+  color: var(--black);
+  text-decoration: none;
+  transition: background .15s, color .15s;
+  position: relative;
+}
+.ats-card:hover { background: var(--black); color: var(--white); }
+.ats-card:hover .ats-meta { color: rgba(255,255,255,.5); }
+.ats-card:hover .ats-num  { color: var(--accent); }
+.ats-num {
+  font-family: var(--fmono);
+  font-size: 12px; color: var(--gray);
+  letter-spacing: .04em;
+  transition: color .15s;
+}
+.ats-name {
+  font-family: var(--fh);
+  font-size: 26px; font-weight: 600; letter-spacing: -.02em;
+  line-height: 1.1;
+}
+.ats-meta {
+  grid-column: 2; grid-row: 2;
+  font-size: 13px; color: #888;
+  letter-spacing: -.005em;
+  margin-top: -10px;
+  transition: color .15s;
+}
+.ats-arr {
+  grid-row: 1 / 3;
+  font-size: 22px;
+  color: var(--accent);
+  font-family: var(--fh);
+  font-weight: 500;
+}
+@media (max-width: 860px) {
+  .explore-section { grid-template-columns: 1fr; gap: 48px; }
+  .explore-grid { grid-template-columns: 1fr; }
+}
+
 /* ── ABOUT ───────────────────────────────────── */
 .about-section {
   margin-top: 100px;
@@ -414,13 +603,14 @@ nav.nav-hidden { transform: translateY(-100%); }
   gap: 80px;
 }
 .about-label {
-  font-size: 14px; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--gray); margin-bottom: 24px;
+  font-family: var(--fh);
+  font-size: 22px; letter-spacing: -.01em; font-weight: 600;
+  color: var(--black); margin-bottom: 36px;
   display: flex; align-items: center; gap: 10px;
 }
 .about-label::before { content: none; }
 .about-hl {
-  font-family: var(--fs);
+  font-family: var(--fh);
   font-size: clamp(28px, 3.2vw, 48px);
   line-height: 1.1; font-weight: 700;
 }
@@ -461,14 +651,18 @@ nav.nav-hidden { transform: translateY(-100%); }
   max-width: 460px; line-height: 1.6;
 }
 .post-hl {
-  font-family: var(--fs);
+  font-family: var(--fh);
   font-size: clamp(28px, 3.5vw, 52px);
   line-height: 1.05; font-weight: 700;
   color: var(--white);
 }
 .post-hl em { font-style: normal; color: var(--accent); }
 .post-label {
-  font-size: 14px; letter-spacing: .12em; text-transform: uppercase;
+  font-family: var(--fh);
+  font-size: 22px; letter-spacing: -.01em; font-weight: 600;
+  color: var(--white); margin-bottom: 36px;
+  display: flex; align-items: center; gap: 10px;
+}
   color: rgba(255,255,255,.65); margin-bottom: 18px;
   display: flex; align-items: center; gap: 10px;
 }
@@ -546,7 +740,7 @@ nav.nav-hidden { transform: translateY(-100%); }
   border-radius: 100px;
   font-family: var(--fm); font-weight: 500; font-size: 17px;
   letter-spacing: .04em; text-transform: uppercase;
-  transition: all .2s; cursor: none; white-space: nowrap;
+  transition: all .2s; cursor: pointer; white-space: nowrap;
   flex-shrink: 0;
 }
 .btn-post:hover { background: var(--white); color: var(--black); transform: translateY(-2px); }
@@ -594,7 +788,7 @@ footer {
   container-type: inline-size;
 }
 .big-type-inner {
-  font-family: var(--fs);
+  font-family: var(--fh);
   font-size: clamp(60px, 12.5cqw, 200px);
   font-weight: 900;
   letter-spacing: -0.05em;
@@ -754,7 +948,7 @@ footer {
   color: var(--gray); margin-bottom: 12px;
 }
 .dr-title {
-  font-family: var(--fs); font-size: 30px; font-weight: 700;
+  font-family: var(--fh); font-size: 30px; font-weight: 700;
   line-height: 1.15; letter-spacing: -.02em;
 }
 .dr-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
@@ -769,7 +963,7 @@ footer {
   border: 1px solid var(--border); background: transparent;
   font-size: 13px; color: var(--gray);
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  transition: all .15s; cursor: none; margin-top: 2px;
+  transition: all .15s; cursor: pointer; margin-top: 2px;
 }
 .dr-close:hover { background: var(--black); color: var(--white); border-color: var(--black); }
 
@@ -798,13 +992,64 @@ footer {
   padding: 20px 30px; border-radius: 100px;
   font-family: var(--fm); font-weight: 500; font-size: 17px;
   letter-spacing: .04em; text-transform: uppercase;
-  transition: all .2s; text-decoration: none; cursor: none;
+  transition: all .2s; text-decoration: none; cursor: pointer;
   width: 100%;
 }
 .dr-btn:hover { background: var(--accent); color: var(--white); }
 .dr-note {
   margin-top: 14px; text-align: center;
   font-size: 15px; color: var(--gray); line-height: 1.5;
+}
+
+/* ── SHARE ROW ───────────────────────────────── */
+.dr-share {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  flex-wrap: wrap;
+}
+.dr-share-lbl {
+  font-family: var(--fm);
+  font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gray);
+}
+.dr-share-row { display: flex; gap: 8px; }
+.dr-share-btn {
+  width: 40px; height: 40px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--black);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .15s, border-color .15s, color .15s, transform .15s;
+}
+.dr-share-btn:hover {
+  background: var(--black); color: var(--white); border-color: var(--black);
+  transform: translateY(-1px);
+}
+.dr-share-btn svg { width: 16px; height: 16px; display: block; }
+.dr-share-btn.copied {
+  background: var(--accent); color: var(--white); border-color: var(--accent);
+}
+
+/* tiny toast for copy confirmation */
+.dr-toast {
+  position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+  background: var(--black); color: var(--white);
+  font-family: var(--fm); font-size: 13px; letter-spacing: .04em;
+  padding: 10px 18px; border-radius: 100px;
+  z-index: 10000;
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+.dr-toast.on { opacity: 1; transform: translateX(-50%) translateY(-6px); }
+
+@media (max-width: 480px) {
+  .dr-share { flex-direction: column; align-items: stretch; gap: 10px; }
+  .dr-share-row { justify-content: space-between; }
 }
 
 /* ── RESPONSIVE ──────────────────────────────── */
@@ -832,11 +1077,25 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="n-left">
-    <div class="n-logo">AIDesignJobs</div>
+    <div class="n-logo">aidj<span class="dot">.</span></div>
     <div class="n-sub">Design roles at AI companies</div>
     <div class="n-date" id="n-date"></div>
   </div>
+  <div class="n-stats">
+    <div class="n-stat">
+      <div class="n-stat-n" id="n-stat-roles">98</div>
+      <div class="n-stat-l">Open roles</div>
+    </div>
+    <div class="n-stat">
+      <div class="n-stat-n" id="n-stat-co">56</div>
+      <div class="n-stat-l">AI companies</div>
+    </div>
+  </div>
   <div class="n-right">
+    <button class="n-theme" id="theme-toggle" aria-label="Toggle dark mode" type="button">
+      <svg class="ic-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg class="ic-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
     <a href="#post">Post a Role</a>
   </div>
 </nav>
@@ -851,9 +1110,9 @@ footer {
         frontier.
       </h1>
       <p class="hero-body">
-        The only job board built for designers at AI companies. From foundation labs to startups—every role verified, linked to source, updated daily.
+        The only job board built for designers at AI companies. From foundation labs to startups—every role verified, linked to source, updated weekly.
       </p>
-      <div class="hero-stats">
+      <div class="hero-stats" style="display:none">
         <div class="stat">
           <div class="stat-n" id="s-roles">74</div>
           <div class="stat-l">Open roles</div>
@@ -942,6 +1201,8 @@ footer {
         <div class="fpills">
           <button class="pill t-remote" id="tg-remote">Remote only</button>
           <button class="pill t-new"    id="tg-new">New this week</button>
+          <button class="pill t-prosumer" id="tg-prosumer">Prosumer AI 40</button>
+          <button class="pill t-se50" id="tg-se50">Scaling Europe 50</button>
           <button class="pill t-stage"  id="tg-foundation">Foundation labs</button>
           <button class="pill t-stage"  id="tg-public">Public AI</button>
           <button class="pill t-stage"  id="tg-unicorn">Unicorns</button>
@@ -984,6 +1245,69 @@ footer {
 </section>
 
 <!-- ABOUT -->
+<section id="explore">
+<div class="w">
+  <div class="explore-section">
+    <div class="explore-head">
+      <p class="explore-label">More sources</p>
+      <h2 class="explore-hl">Keep searching<br>across <em>every ATS.</em></h2>
+      <p class="explore-body">Our directory is curated, but design roles at AI companies live everywhere. These pre-filtered searches cover the major Applicant Tracking Systems where most AI startups post their jobs.</p>
+    </div>
+    <div class="explore-grid">
+      <a href="https://jobs.lever.co/search?query=designer" target="_blank" rel="noopener" class="ats-card">
+        <span class="ats-num">01</span>
+        <span class="ats-name">Lever</span>
+        <span class="ats-meta">Mistral · Cohere · Hugging Face</span>
+        <span class="ats-arr">↗</span>
+      </a>
+      <a href="https://www.workable.com/jobs?query=designer+ai" target="_blank" rel="noopener" class="ats-card">
+        <span class="ats-num">02</span>
+        <span class="ats-name">Workable</span>
+        <span class="ats-meta">Hugging Face · early-stage AI startups</span>
+        <span class="ats-arr">↗</span>
+      </a>
+      <a href="https://www.myworkdayjobs.com/en-US/external?q=ai+designer" target="_blank" rel="noopener" class="ats-card">
+        <span class="ats-num">03</span>
+        <span class="ats-name">Workday</span>
+        <span class="ats-meta">Adobe · Salesforce · enterprise</span>
+        <span class="ats-arr">↗</span>
+      </a>
+      <a href="https://www.smartrecruiters.com/search-jobs?keyword=ai+designer" target="_blank" rel="noopener" class="ats-card">
+        <span class="ats-num">04</span>
+        <span class="ats-name">SmartRecruiters</span>
+        <span class="ats-meta">Mid-to-late stage companies</span>
+        <span class="ats-arr">↗</span>
+      </a>
+      <a href="https://jobs.jobvite.com/search?q=ai+designer" target="_blank" rel="noopener" class="ats-card">
+        <span class="ats-num">05</span>
+        <span class="ats-name">Jobvite</span>
+        <span class="ats-meta">US-based AI scale-ups</span>
+        <span class="ats-arr">↗</span>
+      </a>
+      <a href="https://www.icims.com/job-seekers/?keyword=ai+designer" target="_blank" rel="noopener" class="ats-card">
+        <span class="ats-num">06</span>
+        <span class="ats-name">iCIMS</span>
+        <span class="ats-meta">Enterprise AI · large orgs</span>
+        <span class="ats-arr">↗</span>
+      </a>
+      <a href="https://www.bamboohr.com/jobs/?search=ai+designer" target="_blank" rel="noopener" class="ats-card">
+        <span class="ats-num">07</span>
+        <span class="ats-name">BambooHR</span>
+        <span class="ats-meta">SMB AI startups</span>
+        <span class="ats-arr">↗</span>
+      </a>
+      <a href="https://app.jazz.co/jobs?q=ai+designer" target="_blank" rel="noopener" class="ats-card">
+        <span class="ats-num">08</span>
+        <span class="ats-name">JazzHR</span>
+        <span class="ats-meta">Early-stage AI teams</span>
+        <span class="ats-arr">↗</span>
+      </a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ABOUT -->
 <section id="about">
 <div class="w">
   <div class="about-section">
@@ -993,7 +1317,7 @@ footer {
         Where design<br>meets <em>the future.</em>
       </h2>
       <p class="about-body">
-        We track design openings daily across every company shaping
+        We track design openings weekly across every company shaping
         artificial intelligence — from foundation model labs like OpenAI
         and Anthropic, to creative AI tools like Runway and Lovable.
         Every role is verified directly from source career pages and
@@ -1045,7 +1369,7 @@ footer {
       <div class="f-brand-name">AIDesignJobs.com</div>
       <p class="f-tagline">
         Curated design jobs at AI companies.<br>
-        Updated daily.
+        Updated weekly.
       </p>
     </div>
     <div>
@@ -1064,7 +1388,7 @@ footer {
       <div class="f-links">
         <a href="#about">About</a>
         <a href="#post">Post a role</a>
-        <a href="mailto:jobs@aidesignjobs.com">Contact</a>
+        <a href="/cdn-cgi/l/email-protection#e68c898495a6878f8283958f81888c898495c885898b">Contact</a>
       </div>
     </div>
   </footer>
@@ -1077,7 +1401,7 @@ footer {
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── DATA ──────────────────────────────────────────────────────────────────
 const JOBS = [
   {id:1,  title:'Product Designer, ChatGPT',          co:'OpenAI',     cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://openai.com/careers/product-designer-chatgpt-san-francisco/'},
@@ -1178,55 +1502,120 @@ const JOBS = [
   {id:73, title:'Product Designer',                        co:'Windsurf',        cat:'product', catL:'Product Design',  region:'us',     city:'Mountain View',        mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://codeium.com/careers'},
   // ── Character.AI ────────────────────────────────────────────────────────
   {id:74, title:'Senior Product Designer',                 co:'Character.AI',    cat:'product', catL:'Product Design',  region:'us',     city:'Menlo Park',           mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:true,  nw:false, date:'Mar 2026',  url:'https://character.ai/careers'},
+
+  // ── Prosumer AI 40 (Notable Capital) ────────────────────────────────────
+  {id:75, title:'Founding Designer',                       co:'Granola',         cat:'product', catL:'Product Design',  region:'uk',     city:'London',               mode:'hybrid',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://www.granola.ai/careers'},
+  {id:76, title:'Senior Product Designer',                 co:'Gamma',           cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://gamma.app/careers'},
+  {id:77, title:'Brand Designer',                          co:'Gamma',           cat:'brand',   catL:'Brand',           region:'us',     city:'San Francisco',        mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:false, date:'Mar 2026',  url:'https://gamma.app/careers'},
+  {id:78, title:'Product Designer',                        co:'Attio',           cat:'product', catL:'Product Design',  region:'uk',     city:'London',               mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://attio.com/careers'},
+  {id:79, title:'Design Engineer',                         co:'Attio',           cat:'designeng',catL:'Design Eng.',     region:'uk',     city:'London',               mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:false, date:'Mar 2026',  url:'https://attio.com/careers'},
+  {id:80, title:'Founding Designer',                       co:'Higgsfield',      cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'onsite',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://higgsfield.ai/careers'},
+  {id:81, title:'Motion Designer',                         co:'Higgsfield',      cat:'motion',  catL:'Motion',          region:'remote', city:'Remote · Worldwide',   mode:'remote',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://higgsfield.ai/careers'},
+  {id:82, title:'Senior Product Designer',                 co:'Wispr Flow',      cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'onsite',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://wisprflow.ai/careers'},
+  {id:83, title:'Founding Designer',                       co:'OpenEvidence',    cat:'product', catL:'Product Design',  region:'us',     city:'New York',             mode:'hybrid',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:false, date:'Mar 2026',  url:'https://www.openevidence.com/careers'},
+  {id:84, title:'Product Designer',                        co:'OpenArt',         cat:'product', catL:'Product Design',  region:'us',     city:'Palo Alto',            mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://openart.ai/careers'},
+  {id:85, title:'Senior Product Designer',                 co:'Profound',        cat:'product', catL:'Product Design',  region:'us',     city:'New York',             mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:false, date:'Mar 2026',  url:'https://www.tryprofound.com/careers'},
+  {id:86, title:'Founding Designer',                       co:'Gumloop',         cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'onsite',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://www.gumloop.com/careers'},
+  {id:87, title:'Senior Product Designer',                 co:'Flora',           cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:false, date:'Mar 2026',  url:'https://florafauna.ai/careers'},
+  {id:88, title:'Product Designer',                        co:'Reducto',         cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'onsite',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://reducto.ai/careers'},
+  {id:89, title:'Brand Designer',                          co:'Replit',          cat:'brand',   catL:'Brand',           region:'us',     city:'San Francisco · Remote',mode:'remote', lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:false, date:'Mar 2026',  url:'https://replit.com/careers'},
+  {id:90, title:'Senior Product Designer, AI',             co:'Replit',          cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco · Remote',mode:'remote', lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://replit.com/careers'},
+  {id:91, title:'Senior Product Designer',                 co:'Vercel',          cat:'product', catL:'Product Design',  region:'remote', city:'Remote · Americas',    mode:'remote',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:false, date:'Mar 2026',  url:'https://vercel.com/careers'},
+  {id:92, title:'Design Engineer, v0',                     co:'Vercel',          cat:'designeng',catL:'Design Eng.',     region:'remote', city:'Remote · Worldwide',   mode:'remote',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://vercel.com/careers'},
+  {id:93, title:'Founding Product Designer',               co:'Cognition',       cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'onsite',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:true,  t100:false, nw:true,  date:'Apr 2026',  url:'https://www.cognition.ai/careers'},
+  {id:94, title:'Senior Brand Designer',                   co:'Clay',            cat:'brand',   catL:'Brand',           region:'us',     city:'New York',             mode:'hybrid',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:false, date:'Mar 2026',  url:'https://www.clay.com/careers'},
+  {id:95, title:'Product Designer',                        co:'Clay',            cat:'product', catL:'Product Design',  region:'us',     city:'New York',             mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://www.clay.com/careers'},
+  {id:96, title:'Founding Designer',                       co:'Yutori',          cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'onsite',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://yutori.com/careers'},
+  {id:97, title:'Brand & Motion Designer',                 co:'Black Forest Labs',cat:'motion', catL:'Motion',          region:'eu',     city:'Berlin · Remote',      mode:'remote',  lvl:'senior', salary:0,      salL:'Undisclosed',   f50:true,  t100:true,  nw:false, date:'Mar 2026',  url:'https://blackforestlabs.ai/careers'},
+  {id:98, title:'Founding Designer',                       co:'Comfy',           cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',        mode:'hybrid',  lvl:'lead',   salary:0,      salL:'Undisclosed',   f50:false, t100:false, nw:true,  date:'Apr 2026',  url:'https://www.comfy.org/careers'},
 ];
 
 const COMPANIES = [
   // Foundation labs
-  {name:'OpenAI',         stage:'foundation', f50:true,  t100:true},
-  {name:'Anthropic',      stage:'foundation', f50:true,  t100:true},
-  {name:'xAI',            stage:'foundation', f50:false, t100:true},
-  {name:'Mistral AI',     stage:'foundation', f50:true,  t100:true},
-  {name:'Cohere',         stage:'foundation', f50:false, t100:true},
-  {name:'Inflection AI',  stage:'foundation', f50:false, t100:false},
-  {name:'Stability AI',   stage:'foundation', f50:false, t100:false},
-  {name:'Reka AI',        stage:'foundation', f50:false, t100:false},
+  {name:'OpenAI',         stage:'foundation', f50:true,  t100:true,  prosumer:true},
+  {name:'Anthropic',      stage:'foundation', f50:true,  t100:true,  prosumer:true},
+  {name:'xAI',            stage:'foundation', f50:false, t100:true,  prosumer:false},
+  {name:'Mistral AI',     stage:'foundation', f50:true,  t100:true,  prosumer:false, se50:true},
+  {name:'Cohere',         stage:'foundation', f50:false, t100:true,  prosumer:false},
+  {name:'Inflection AI',  stage:'foundation', f50:false, t100:false, prosumer:false},
+  {name:'Stability AI',   stage:'foundation', f50:false, t100:false, prosumer:false},
+  {name:'Reka AI',        stage:'foundation', f50:false, t100:false, prosumer:false},
+  {name:'Black Forest Labs',stage:'foundation', f50:true, t100:true, prosumer:true},
   // Public AI
-  {name:'Meta',           stage:'public',     f50:false, t100:true},
-  {name:'Google DeepMind',stage:'public',     f50:false, t100:true},
+  {name:'Meta',           stage:'public',     f50:false, t100:true,  prosumer:false},
+  {name:'Google DeepMind',stage:'public',     f50:false, t100:true,  prosumer:false},
   // Unicorns
-  {name:'Cursor',         stage:'unicorn',    f50:true,  t100:false},
-  {name:'Perplexity',     stage:'unicorn',    f50:true,  t100:false},
-  {name:'Runway',         stage:'unicorn',    f50:true,  t100:false},
-  {name:'ElevenLabs',     stage:'unicorn',    f50:true,  t100:false},
-  {name:'Glean',          stage:'unicorn',    f50:true,  t100:false},
-  {name:'Harvey',         stage:'unicorn',    f50:true,  t100:false},
-  {name:'Scale AI',       stage:'unicorn',    f50:false, t100:true},
-  {name:'Together AI',    stage:'unicorn',    f50:true,  t100:false},
-  {name:'Crusoe',         stage:'unicorn',    f50:true,  t100:false},
-  {name:'Suno',           stage:'unicorn',    f50:true,  t100:true},
-  {name:'Hugging Face',   stage:'unicorn',    f50:false, t100:true},
-  {name:'Character.AI',   stage:'unicorn',    f50:false, t100:true},
-  {name:'Notion',         stage:'unicorn',    f50:false, t100:false},
-  {name:'Figma',          stage:'unicorn',    f50:false, t100:false},
-  {name:'Canva',          stage:'unicorn',    f50:false, t100:false},
-  {name:'Synthesia',      stage:'unicorn',    f50:false, t100:false},
-  {name:'HeyGen',         stage:'unicorn',    f50:true,  t100:false},
-  // Startups
-  {name:'Lovable',        stage:'startup',    f50:true,  t100:false},
-  {name:'Decagon',        stage:'startup',    f50:true,  t100:false},
-  {name:'Sierra',         stage:'startup',    f50:true,  t100:false},
-  {name:'Replicate',      stage:'startup',    f50:false, t100:false},
-  {name:'Pika Labs',      stage:'startup',    f50:false, t100:false},
-  {name:'Krea',           stage:'startup',    f50:false, t100:false},
-  {name:'Browserbase',    stage:'startup',    f50:false, t100:false},
-  {name:'Windsurf',       stage:'startup',    f50:false, t100:false},
+  {name:'Cursor',         stage:'unicorn',    f50:true,  t100:false, prosumer:true},
+  {name:'Perplexity',     stage:'unicorn',    f50:true,  t100:false, prosumer:true},
+  {name:'Runway',         stage:'unicorn',    f50:true,  t100:false, prosumer:false},
+  {name:'ElevenLabs',     stage:'unicorn',    f50:true,  t100:false, prosumer:true},
+  {name:'Glean',          stage:'unicorn',    f50:true,  t100:false, prosumer:false},
+  {name:'Harvey',         stage:'unicorn',    f50:true,  t100:false, prosumer:false},
+  {name:'Scale AI',       stage:'unicorn',    f50:false, t100:true,  prosumer:false},
+  {name:'Together AI',    stage:'unicorn',    f50:true,  t100:false, prosumer:false},
+  {name:'Crusoe',         stage:'unicorn',    f50:true,  t100:false, prosumer:false},
+  {name:'Suno',           stage:'unicorn',    f50:true,  t100:true,  prosumer:true},
+  {name:'Hugging Face',   stage:'unicorn',    f50:false, t100:true,  prosumer:false},
+  {name:'Character.AI',   stage:'unicorn',    f50:false, t100:true,  prosumer:false},
+  {name:'Notion',         stage:'unicorn',    f50:false, t100:false, prosumer:true},
+  {name:'Figma',          stage:'unicorn',    f50:false, t100:false, prosumer:false},
+  {name:'Canva',          stage:'unicorn',    f50:false, t100:false, prosumer:true},
+  {name:'Synthesia',      stage:'unicorn',    f50:false, t100:false, prosumer:false},
+  {name:'HeyGen',         stage:'unicorn',    f50:true,  t100:false, prosumer:true},
+  {name:'Replit',         stage:'unicorn',    f50:false, t100:false, prosumer:true},
+  {name:'Vercel',         stage:'unicorn',    f50:false, t100:false, prosumer:true},
+  {name:'Cognition',      stage:'unicorn',    f50:true,  t100:false, prosumer:true},
+  {name:'Clay',           stage:'unicorn',    f50:false, t100:false, prosumer:true},
+  // Startups (incl. Prosumer AI 40)
+  {name:'Lovable',        stage:'startup',    f50:true,  t100:false, prosumer:true, se50:true},
+  {name:'Decagon',        stage:'startup',    f50:true,  t100:false, prosumer:false},
+  {name:'Sierra',         stage:'startup',    f50:true,  t100:false, prosumer:false},
+  {name:'Replicate',      stage:'startup',    f50:false, t100:false, prosumer:false},
+  {name:'Pika Labs',      stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'Krea',           stage:'startup',    f50:false, t100:false, prosumer:false},
+  {name:'Browserbase',    stage:'startup',    f50:false, t100:false, prosumer:false},
+  {name:'Windsurf',       stage:'startup',    f50:false, t100:false, prosumer:false},
+  {name:'Granola',        stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'Gamma',          stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'Attio',          stage:'startup',    f50:false, t100:false, prosumer:true, se50:true},
+  {name:'Higgsfield',     stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'Wispr Flow',     stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'OpenEvidence',   stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'OpenArt',        stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'Profound',       stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'Gumloop',        stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'Flora',          stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'Reducto',        stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'Comfy',          stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'Yutori',         stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'AlphaXIV',       stage:'startup',    f50:false, t100:false, prosumer:true},
+  {name:'Juicebox',       stage:'startup',    f50:false, t100:false, prosumer:true},
+  // Scaling Europe 50 (AI-focused)
+  {name:'n8n',            stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Legora',         stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'PolyAI',         stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Parloa',         stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Lawhive',        stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Encord',         stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Wordsmith',      stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Langdock',       stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Synthflow AI',   stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Tandem Health',  stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Aikido Security',stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Fyxer',          stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
 ];
 
 // ── STATE ─────────────────────────────────────────────────────────────────
 const STAGE_BY_CO = Object.fromEntries(COMPANIES.map(c => [c.name, c.stage]));
-JOBS.forEach(j => { j.stage = STAGE_BY_CO[j.co] || 'startup'; });
+const PROSUMER_BY_CO = Object.fromEntries(COMPANIES.map(c => [c.name, !!c.prosumer]));
+const SE50_BY_CO = Object.fromEntries(COMPANIES.map(c => [c.name, !!c.se50]));
+JOBS.forEach(j => {
+  j.stage = STAGE_BY_CO[j.co] || 'startup';
+  j.prosumer = PROSUMER_BY_CO[j.co] || false;
+  j.se50 = SE50_BY_CO[j.co] || false;
+});
 
-const S = { cat:'all', region:'all', mode:'all', lvl:'all', sal:'all', q:'', tR:false, tN:false, tFL:false, tPB:false, tUN:false, tST:false };
+const S = { cat:'all', region:'all', mode:'all', lvl:'all', sal:'all', q:'', tR:false, tN:false, tFL:false, tPB:false, tUN:false, tST:false, tPRO:false, tSE:false };
 
 function salOk(j) {
   if (S.sal === 'all') return true;
@@ -1254,6 +1643,8 @@ function render() {
     if (S.tPB && j.stage !== 'public') return false;
     if (S.tUN && j.stage !== 'unicorn') return false;
     if (S.tST && j.stage !== 'startup') return false;
+    if (S.tPRO && !j.prosumer) return false;
+    if (S.tSE && !j.se50) return false;
     if (S.q) {
       const q = S.q.toLowerCase();
       if (!j.title.toLowerCase().includes(q) && !j.co.toLowerCase().includes(q) && !j.city.toLowerCase().includes(q)) return false;
@@ -1290,6 +1681,8 @@ function render() {
         ${j.nw  ? '<span class="bdg nw">New</span>' : ''}
         ${j.f50 ? '<span class="bdg f5">AI 50</span>' : ''}
         ${j.t100 ? '<span class="bdg t1">TIME100</span>' : ''}
+        ${j.prosumer ? '<span class="bdg pr">Prosumer 40</span>' : ''}
+        ${j.se50 ? '<span class="bdg se">SE50</span>' : ''}
       </div>
       <div><span class="bdg sl">${j.salL}</span></div>
       <div class="jdate">${j.date}</div>
@@ -1309,7 +1702,7 @@ document.querySelectorAll('.fpills[data-group]').forEach(grp => {
   });
 });
 
-[['tg-remote','tR'],['tg-new','tN'],['tg-foundation','tFL'],['tg-public','tPB'],['tg-unicorn','tUN'],['tg-startup','tST']].forEach(([id,key]) => {
+[['tg-remote','tR'],['tg-new','tN'],['tg-prosumer','tPRO'],['tg-se50','tSE'],['tg-foundation','tFL'],['tg-public','tPB'],['tg-unicorn','tUN'],['tg-startup','tST']].forEach(([id,key]) => {
   const btn = document.getElementById(id);
   if (!btn) return;
   btn.addEventListener('click', () => {
@@ -1327,17 +1720,30 @@ const tagAcc   = 'color:var(--accent);font-size:13px;font-weight:500;letter-spac
 const stageMap = {foundation:'Foundation lab', public:'Public', unicorn:'Unicorn', startup:'Startup'};
 document.getElementById('co-list').innerHTML = COMPANIES.map(c => `
   <div class="co-item">
-    <span>${c.name}${c.stage ? ` <span style="${tagBase}">${stageMap[c.stage]||c.stage}</span>` : ''}${c.f50 ? ` <span style="${tagBase}">Forbes AI 50</span>` : ''}${c.t100 ? ` <span style="${tagAcc}">TIME100 AI</span>` : ''}</span>
+    <span>${c.name}${c.stage ? ` <span style="${tagBase}">${stageMap[c.stage]||c.stage}</span>` : ''}${c.f50 ? ` <span style="${tagBase}">Forbes AI 50</span>` : ''}${c.t100 ? ` <span style="${tagAcc}">TIME100 AI</span>` : ''}${c.prosumer ? ` <span style="${tagBase}">Prosumer AI 40</span>` : ''}</span>
     <span class="co-arrow">→</span>
   </div>`).join('');
 
 // ── DATE ──────────────────────────────────────────────────────────────────
 const ds = new Date().toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'});
-document.getElementById('n-date').textContent = 'Updated daily · ' + ds;
+document.getElementById('n-date').textContent = 'Updated weekly · ' + ds;
 document.getElementById('rdate').textContent = 'Updated ' + ds;
-document.getElementById('f-date').textContent = 'Updated daily · ' + ds;
+document.getElementById('f-date').textContent = 'Updated weekly · ' + ds;
 document.getElementById('s-roles').textContent = JOBS.length;
 document.getElementById('s-co').textContent = COMPANIES.length;
+document.getElementById('n-stat-roles').textContent = JOBS.length;
+document.getElementById('n-stat-co').textContent = COMPANIES.length;
+
+// ── THEME: dark / light toggle ─────────────────────────────────────────
+(() => {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('aidj-theme', next); } catch (e) {}
+  });
+})();
 
 // ── SEO: JobPosting structured data (Google Jobs) ──────────────────────
 (() => {
@@ -1408,12 +1814,9 @@ document.getElementById('s-co').textContent = COMPANIES.length;
 })();
 
 // ── CURSOR + DATE TIP ────────────────────────────────────────────────────────
-const cur = document.getElementById('cur');
 const tip = document.getElementById('date-tip');
 
 document.addEventListener('mousemove', e => {
-  cur.style.left = e.clientX + 'px';
-  cur.style.top  = e.clientY + 'px';
   tip.style.left = e.clientX + 'px';
   tip.style.top  = e.clientY + 'px';
 });
@@ -1456,6 +1859,7 @@ function openDrawer(id) {
   const badges = [
     j.f50    ? '<span class="dr-badge">Forbes AI 50</span>' : '',
     j.t100   ? '<span class="dr-badge">TIME100 AI</span>'  : '',
+    j.prosumer ? '<span class="dr-badge">Prosumer AI 40</span>' : '',
     j.nw     ? '<span class="dr-badge dr-new">New this week</span>' : '',
   ].filter(Boolean).join('');
   document.getElementById('dr-co').textContent    = j.co;
@@ -1471,16 +1875,85 @@ function openDrawer(id) {
   document.getElementById('dr-apply').setAttribute('data-job-id', j.id);
   document.getElementById('dr-apply').setAttribute('data-job-co', j.co);
   document.getElementById('dr-apply').setAttribute('data-job-title', j.title);
+
+  // ── Share links ───────────────────────────────────────────────────
+  const SHARE_SITE = 'https://aidesignjobs.com';
+  const shareUrl = `${SHARE_SITE}/#job-${j.id}`;
+  const shareText = `${j.title} @ ${j.co} — via AIDesignJobs`;
+  const eu = encodeURIComponent(shareUrl);
+  const et = encodeURIComponent(shareText);
+  document.getElementById('sh-x').href  = `https://twitter.com/intent/tweet?text=${et}&url=${eu}`;
+  document.getElementById('sh-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${eu}`;
+  document.getElementById('sh-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${eu}`;
+  document.getElementById('sh-wa').href = `https://api.whatsapp.com/send?text=${et}%20${eu}`;
+  const copyBtn = document.getElementById('sh-copy');
+  copyBtn.classList.remove('copied');
+  copyBtn.onclick = () => copyShareLink(shareUrl, copyBtn);
+
+  // Track share clicks
+  document.querySelectorAll('#sh-x, #sh-li, #sh-fb, #sh-wa').forEach(el => {
+    el.onclick = () => {
+      if (window.gtag) gtag('event', 'share_click', {
+        network: el.id.replace('sh-',''),
+        job_id: j.id, job_title: j.title, job_company: j.co
+      });
+    };
+  });
+
+  // Update URL hash for deep-linking (without scroll)
+  history.replaceState(null, '', `#job-${j.id}`);
+
   drawer.classList.add('open');
   drawerBg.classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+function copyShareLink(url, btn) {
+  const done = () => {
+    btn.classList.add('copied');
+    showDrawerToast('Link copied to clipboard');
+    setTimeout(() => btn.classList.remove('copied'), 1600);
+    if (window.gtag) gtag('event', 'share_click', { network: 'copy' });
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done, () => fallbackCopy(url, done));
+  } else {
+    fallbackCopy(url, done);
+  }
+}
+function fallbackCopy(text, cb) {
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); cb(); } catch(_) {}
+  document.body.removeChild(ta);
+}
+let _drToastT;
+function showDrawerToast(msg) {
+  const t = document.getElementById('dr-toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add('on');
+  clearTimeout(_drToastT);
+  _drToastT = setTimeout(() => t.classList.remove('on'), 1800);
 }
 
 function closeDrawer() {
   if (drawer) drawer.classList.remove('open');
   if (drawerBg) drawerBg.classList.remove('open');
   document.body.style.overflow = '';
+  if (/^#job-\d+$/.test(location.hash)) {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
 }
+
+// Deep-link: open drawer from #job-{id} on load + on hash change
+function openFromHash() {
+  const m = /^#job-(\d+)$/.exec(location.hash);
+  if (m) openDrawer(Number(m[1]));
+}
+window.addEventListener('load', openFromHash);
+window.addEventListener('hashchange', openFromHash);
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDrawer(); closeSubmitModal(); } });
 
@@ -1623,7 +2096,7 @@ if (smForm) {
     <input type="hidden" name="_subject" value="New role submission — AIDesignJobs">
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email jobs@aidesignjobs.com.</div>
+    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bfd5d0ddccffded6dbdaccd6d8d1d5d0ddcc91dcd0d2">[email&#160;protected]</a>.</div>
 
     <div class="sm-foot">
       <span class="sm-note">We review submissions within 48h.</span>
@@ -1662,8 +2135,31 @@ if (smForm) {
   <div class="dr-foot">
     <a id="dr-apply" href="#" target="_blank" rel="noopener" class="dr-btn" onclick="if(window.gtag){gtag('event','apply_click',{job_company:this.dataset.jobCo,job_title:this.dataset.jobTitle,job_id:this.dataset.jobId});}">Apply now →</a>
     <p class="dr-note">You'll be redirected to the company's official careers page.</p>
+
+    <div class="dr-share">
+      <span class="dr-share-lbl">Share this role</span>
+      <div class="dr-share-row">
+        <a id="sh-x" class="dr-share-btn" href="#" target="_blank" rel="noopener" aria-label="Share on X" title="Share on X">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.8l-5.32-6.96L4.8 22H1.54l8.03-9.17L1 2h6.97l4.82 6.37L18.244 2Zm-2.39 18h1.88L7.24 4H5.25l10.6 16Z"/></svg>
+        </a>
+        <a id="sh-li" class="dr-share-btn" href="#" target="_blank" rel="noopener" aria-label="Share on LinkedIn" title="Share on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 3H3.55A.55.55 0 0 0 3 3.55v16.9c0 .3.25.55.55.55h16.9c.3 0 .55-.25.55-.55V3.55a.55.55 0 0 0-.55-.55ZM8.34 18.34H5.67V9.75h2.67v8.59ZM7 8.58a1.55 1.55 0 1 1 0-3.1 1.55 1.55 0 0 1 0 3.1Zm11.34 9.76h-2.67v-4.18c0-1 0-2.28-1.39-2.28s-1.6 1.09-1.6 2.21v4.25H10V9.75h2.56v1.17h.04a2.8 2.8 0 0 1 2.52-1.38c2.7 0 3.2 1.78 3.2 4.09v4.71Z"/></svg>
+        </a>
+        <a id="sh-fb" class="dr-share-btn" href="#" target="_blank" rel="noopener" aria-label="Share on Facebook" title="Share on Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8.4h2.83l.42-3.28H13.5V8.23c0-.95.27-1.6 1.63-1.6h1.74V3.7a23.4 23.4 0 0 0-2.54-.13c-2.51 0-4.23 1.53-4.23 4.35v2.4H7.25v3.28h2.85V22h3.4Z"/></svg>
+        </a>
+        <a id="sh-wa" class="dr-share-btn" href="#" target="_blank" rel="noopener" aria-label="Share on WhatsApp" title="Share on WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.07 4.94A9.93 9.93 0 0 0 12.04 2C6.55 2 2.08 6.46 2.08 11.95c0 1.76.46 3.47 1.34 4.98L2 22l5.22-1.37a9.94 9.94 0 0 0 4.81 1.23h.01c5.49 0 9.96-4.46 9.96-9.95 0-2.66-1.04-5.16-2.93-7.04ZM12.04 20.2h-.01a8.27 8.27 0 0 1-4.21-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.23 8.23 0 0 1-1.27-4.4c0-4.56 3.72-8.27 8.27-8.27 2.21 0 4.29.86 5.85 2.43a8.24 8.24 0 0 1 2.42 5.84c0 4.57-3.72 8.28-8.28 8.28Zm4.54-6.2c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.16 1.74 2.66 4.21 3.73.59.25 1.05.4 1.4.51.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z"/></svg>
+        </a>
+        <button id="sh-copy" class="dr-share-btn" type="button" aria-label="Copy link" title="Copy link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3.18-3.18a5 5 0 1 0-7.07-7.07L11.41 4.5"/><path d="M14 11a5 5 0 0 0-7.07 0L3.75 14.18a5 5 0 1 0 7.07 7.07l1.77-1.77"/></svg>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
-</body>
+<div id="dr-toast" class="dr-toast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>

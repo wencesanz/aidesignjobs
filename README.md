@@ -1,6 +1,6 @@
 # AIDesignJobs
 
-Curated design roles at AI companies. From foundation labs to startups — every role verified, linked to source, updated daily.
+Curated design roles at AI companies. From foundation labs to startups — every role verified, linked to source, updated weekly.
 
 ## Stack
 
