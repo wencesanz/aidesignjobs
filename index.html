@@ -840,6 +840,34 @@ footer {
 }
 #submit-bg.open { opacity: 1; pointer-events: all; }
 
+/* Contact modal mirrors the submit-modal chrome */
+#contact-bg {
+  position: fixed; inset: 0; z-index: 700;
+  background: rgba(0,0,0,.5);
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s;
+}
+#contact-bg.open { opacity: 1; pointer-events: all; }
+
+#contact-modal {
+  position: fixed; top: 50%; left: 50%; z-index: 800;
+  transform: translate(-50%, -48%) scale(.96);
+  width: 92%; max-width: 580px;
+  max-height: 88vh;
+  background: var(--white);
+  color: var(--black);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.25);
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s, transform .3s cubic-bezier(.77,0,.18,1);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+#contact-modal.open {
+  opacity: 1; pointer-events: all;
+  transform: translate(-50%, -50%) scale(1);
+}
+
 #submit-modal {
   position: fixed; top: 50%; left: 50%; z-index: 800;
   transform: translate(-50%, -48%) scale(.96);
@@ -1196,7 +1224,7 @@ footer {
       <svg class="ic-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
       <svg class="ic-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
-    <a href="#post">Post a Role</a>
+    <a href="#" onclick="openContactModal();return false;">Post a Role</a>
   </div>
 </nav>
 
@@ -1452,7 +1480,6 @@ footer {
           <span class="free-stamp-sub"><strong>$0 per listing</strong> for a limited time only.</span>
         </div>
       </div>
-      <a href="#" class="btn-post" onclick="openSubmitModal();return false;">Submit a role →</a>
     </div>
   </div>
 </div>
@@ -1483,8 +1510,8 @@ footer {
       <p class="f-col-title">Info</p>
       <div class="f-links">
         <a href="#about">About</a>
-        <a href="#post">Post a role</a>
-        <a href="/cdn-cgi/l/email-protection#f892979a8bb899919c92d68f978a93">Contact</a>
+        <a href="#" onclick="openContactModal();return false;">Post a role</a>
+        <a href="#" onclick="openContactModal();return false;">Contact</a>
       </div>
     </div>
   </footer>
@@ -1497,7 +1524,7 @@ footer {
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── DATA ──────────────────────────────────────────────────────────────────
 const JOBS = [
   {id:1,  title:'Product Designer, ChatGPT',          co:'OpenAI',     cat:'product', catL:'Product Design',  region:'us',     city:'San Francisco',      mode:'hybrid',  lvl:'mid',    salary:0,      salL:'Undisclosed',   f50:true,  nw:false, date:'Active',   url:'https://openai.com/careers/product-designer-chatgpt-san-francisco/'},
@@ -2049,7 +2076,7 @@ function openFromHash() {
 window.addEventListener('load', openFromHash);
 window.addEventListener('hashchange', openFromHash);
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDrawer(); closeSubmitModal(); } });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDrawer(); closeSubmitModal(); closeContactModal(); } });
 
 // ── SUBMIT MODAL ───────────────────────────────────────────────────────
 function openSubmitModal() {
@@ -2062,6 +2089,43 @@ function closeSubmitModal() {
   document.getElementById('submit-bg').classList.remove('open');
   document.getElementById('submit-modal').classList.remove('open');
   document.body.style.overflow = '';
+}
+
+// ── CONTACT MODAL ──────────────────────────────────────────────────────
+function openContactModal() {
+  document.getElementById('contact-bg').classList.add('open');
+  document.getElementById('contact-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('cm-name')?.focus(), 200);
+}
+function closeContactModal() {
+  document.getElementById('contact-bg').classList.remove('open');
+  document.getElementById('contact-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+const cmForm = document.getElementById('cm-form');
+if (cmForm) {
+  cmForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('cm-submit-btn');
+    const err = document.getElementById('cm-error');
+    err.classList.remove('show');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      const res = await fetch(cmForm.action, {
+        method: 'POST',
+        body: new FormData(cmForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (!res.ok) throw new Error('bad status ' + res.status);
+      cmForm.style.display = 'none';
+      document.getElementById('cm-success').classList.add('show');
+      if (window.gtag) gtag('event', 'contact_submit', { method: 'formsubmit' });
+    } catch (e2) {
+      err.classList.add('show');
+      btn.disabled = false; btn.textContent = 'Send message →';
+    }
+  });
 }
 const smForm = document.getElementById('sm-form');
 if (smForm) {
@@ -2190,7 +2254,7 @@ if (smForm) {
     <input type="hidden" name="_subject" value="New role submission — AIDesignJobs">
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0862676a7b4869616c62267f677a63">[email&#160;protected]</a>.</div>
+    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b5dfdad7c6f5d4dcd1df9bc2dac7de">[email&#160;protected]</a>.</div>
 
     <div class="sm-foot">
       <span class="sm-note">We review submissions within 48h.</span>
@@ -2200,6 +2264,64 @@ if (smForm) {
   <div class="sm-success" id="sm-success">
     <h4>Thanks — submission received.</h4>
     <p>We'll review your role within 48 hours and email you when it goes live.</p>
+  </div>
+</div>
+
+<!-- CONTACT MODAL -->
+<div id="contact-bg" onclick="closeContactModal()"></div>
+<div id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="cm-title">
+  <div class="sm-head">
+    <div>
+      <h3 id="cm-title">Get in touch</h3>
+      <p>Drop us a line and we'll get back to you within 48h.</p>
+    </div>
+    <button class="sm-close" onclick="closeContactModal()" aria-label="Close" type="button">×</button>
+  </div>
+  <form class="sm-form" id="cm-form" action="https://formsubmit.co/wencesanz@gmail.com" method="POST">
+    <div class="sm-row">
+      <div class="sm-field">
+        <label class="sm-label" for="cm-name">Name <span class="req">*</span></label>
+        <input class="sm-input" id="cm-name" name="name" type="text" required>
+      </div>
+      <div class="sm-field">
+        <label class="sm-label" for="cm-email">Email <span class="req">*</span></label>
+        <input class="sm-input" id="cm-email" name="email" type="email" required>
+      </div>
+    </div>
+
+    <div class="sm-row">
+      <div class="sm-field">
+        <label class="sm-label" for="cm-company">Company <span class="req">*</span></label>
+        <input class="sm-input" id="cm-company" name="company" type="text" required>
+      </div>
+      <div class="sm-field">
+        <label class="sm-label" for="cm-role">Role <span class="req">*</span></label>
+        <input class="sm-input" id="cm-role" name="role" type="text" placeholder="e.g. Design Lead, Recruiter…" required>
+      </div>
+    </div>
+
+    <div class="sm-field">
+      <label class="sm-label" for="cm-reason">Reason for contact <span class="req">*</span></label>
+      <textarea class="sm-textarea" id="cm-reason" name="reason" rows="5" placeholder="How can we help?" required></textarea>
+    </div>
+
+    <!-- FormSubmit config -->
+    <input type="hidden" name="_subject" value="New contact — aidj.work">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://aidj.work/?contact=ok">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+    <div class="sm-error" id="cm-error">Something went wrong. Please try again later.</div>
+
+    <div class="sm-foot">
+      <span class="sm-note">We reply within 48h.</span>
+      <button class="sm-submit" type="submit" id="cm-submit-btn">Send message →</button>
+    </div>
+  </form>
+  <div class="sm-success" id="cm-success">
+    <h4>Thanks — message sent.</h4>
+    <p>We'll get back to you within 48 hours.</p>
   </div>
 </div>
 
