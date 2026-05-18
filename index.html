@@ -5,13 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Primary SEO -->
-<title>AIDesignJobs — Curated Design Jobs at AI Companies | OpenAI, Anthropic, xAI</title>
-<meta name="description" content="The job board for designers at AI companies. Browse 70+ open roles at OpenAI, Anthropic, xAI, Mistral, Cursor, Perplexity, Cohere and more. Product, Brand, UX, Motion & Design Engineering. Updated weekly.">
+<title>aidj.work — Design Jobs at AI Companies</title>
+<meta name="description" content="Curated design jobs at AI companies. 70+ verified roles in Product, Brand, UX, Motion and Design Engineering at OpenAI, Anthropic, xAI, Figma, Cursor, Perplexity and more. Updated weekly.">
 <meta name="keywords" content="AI design jobs, design jobs AI companies, OpenAI designer jobs, Anthropic designer jobs, AI product designer, design engineer AI, xAI design jobs, Mistral designer, Perplexity designer, AI brand designer, AI UX designer, design careers AI">
-<meta name="author" content="AIDesignJobs">
+<meta name="author" content="aidj.work">
+<meta name="color-scheme" content="light dark">
+<meta name="format-detection" content="telephone=no">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="googlebot" content="index, follow">
-<link rel="canonical" href="https://aidesignjobs.com/">
+<link rel="canonical" href="https://aidj.work/">
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -31,22 +33,21 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="AIDesignJobs">
-<meta property="og:url" content="https://aidesignjobs.com/">
-<meta property="og:title" content="AIDesignJobs — Curated Design Jobs at AI Companies">
-<meta property="og:description" content="The job board for designers at AI companies. 70+ verified roles at OpenAI, Anthropic, xAI, Mistral, Cursor, Perplexity and more. Updated weekly.">
-<meta property="og:image" content="https://aidesignjobs.com/og-image.svg">
+<meta property="og:site_name" content="aidj.work">
+<meta property="og:url" content="https://aidj.work/">
+<meta property="og:title" content="aidj.work — Design Jobs at AI Companies">
+<meta property="og:description" content="Curated design jobs at AI companies. 70+ verified roles at OpenAI, Anthropic, xAI, Figma, Cursor, Perplexity and more. Updated weekly.">
+<meta property="og:image" content="https://aidj.work/og-image.svg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="AIDesignJobs — Design jobs at the AI frontier">
+<meta property="og:image:alt" content="aidj.work — Design jobs at the AI frontier">
 <meta property="og:locale" content="en_US">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@aidesignjobs">
-<meta name="twitter:title" content="AIDesignJobs — Curated Design Jobs at AI Companies">
-<meta name="twitter:description" content="The job board for designers at AI companies. 70+ verified roles at OpenAI, Anthropic, xAI, Mistral, Cursor, Perplexity and more.">
-<meta name="twitter:image" content="https://aidesignjobs.com/og-image.svg">
+<meta name="twitter:title" content="aidj.work — Design Jobs at AI Companies">
+<meta name="twitter:description" content="Curated design jobs at AI companies. 70+ verified roles at OpenAI, Anthropic, xAI, Figma, Cursor, Perplexity and more.">
+<meta name="twitter:image" content="https://aidj.work/og-image.svg">
 
 <!-- Structured data: Website -->
 <script type="application/ld+json">
@@ -55,20 +56,20 @@
   "@type": "WebSite",
   "name": "AIDesignJobs",
   "alternateName": "AI Design Jobs",
-  "url": "https://aidesignjobs.com/",
+  "url": "https://aidj.work/",
   "description": "Curated design jobs at AI companies. From foundation labs to startups, every role verified and updated weekly.",
   "publisher": {
     "@type": "Organization",
     "name": "AIDesignJobs",
-    "url": "https://aidesignjobs.com/",
+    "url": "https://aidj.work/",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://aidesignjobs.com/favicon.svg"
+      "url": "https://aidj.work/favicon.svg"
     }
   },
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://aidesignjobs.com/?q={search_term_string}",
+    "target": "https://aidj.work/?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
@@ -80,8 +81,8 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "AIDesignJobs",
-  "url": "https://aidesignjobs.com/",
-  "logo": "https://aidesignjobs.com/favicon.svg",
+  "url": "https://aidj.work/",
+  "logo": "https://aidj.work/favicon.svg",
   "description": "The curated job board for designers at AI companies — Product, Brand, UX, Motion and Design Engineering roles at foundation labs, public AI giants, unicorns and startups.",
   "sameAs": []
 }
@@ -116,7 +117,7 @@
 </style>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 :root {
   --black:  #0d0d0d;
@@ -145,6 +146,7 @@ html { scroll-behavior: smooth; }
 [data-theme="dark"] {
   --black:  #f2f2f2;
   --white:  #0a0a0a;
+  --accent: #FF8E35;
   --gray:   #888;
   --gray2:  #555;
   --gray3:  #1a1a1a;
@@ -153,20 +155,37 @@ html { scroll-behavior: smooth; }
   --invert-fg: #0a0a0a;
 }
 
-/* Dark-mode text overrides */
-[data-theme="dark"] .hero-hl em,
-[data-theme="dark"] .explore-hl em { color: #444; }
+/* Dark-mode text overrides — softer contrast (80% primary / 60% secondary) */
+[data-theme="dark"] body { color: rgba(255,255,255,.8); }
+[data-theme="dark"] .n-logo,
+[data-theme="dark"] .hero-hl,
+[data-theme="dark"] .explore-hl,
+[data-theme="dark"] .about-hl,
+[data-theme="dark"] .jtitle,
+[data-theme="dark"] .ats-name,
+[data-theme="dark"] .f-brand-name,
+[data-theme="dark"] .filter-section-title,
+[data-theme="dark"] .explore-label,
+[data-theme="dark"] .about-label { color: rgba(255,255,255,.8); }
 [data-theme="dark"] .hero-body,
 [data-theme="dark"] .explore-body,
-[data-theme="dark"] .about-body { color: #aaa; }
-[data-theme="dark"] .jnum { color: #aaa; }
+[data-theme="dark"] .about-body { color: rgba(255,255,255,.6); }
+[data-theme="dark"] .jnum { color: rgba(255,255,255,.6); }
 [data-theme="dark"] .jco,
 [data-theme="dark"] .jloc,
 [data-theme="dark"] .ats-meta,
 [data-theme="dark"] .job:hover .jco,
 [data-theme="dark"] .job:hover .jloc,
-[data-theme="dark"] .job:hover .jdate { color: #999; }
-[data-theme="dark"] .jdate { color: #888; }
+[data-theme="dark"] .job:hover .jdate { color: rgba(255,255,255,.6); }
+[data-theme="dark"] .jdate,
+[data-theme="dark"] .n-sub,
+[data-theme="dark"] .n-date,
+[data-theme="dark"] .stat-l,
+[data-theme="dark"] .rlbl,
+[data-theme="dark"] .rdate,
+[data-theme="dark"] .fkey,
+[data-theme="dark"] .f-tagline,
+[data-theme="dark"] .dr-note { color: rgba(255,255,255,.6); }
 [data-theme="dark"] .bdg { color: #bbb; border-color: #444; }
 [data-theme="dark"] .bdg.sl { color: #aaa; border-color: #444; }
 [data-theme="dark"] .bdg.f5 { border-color: #555; color: #ccc; }
@@ -183,10 +202,15 @@ html { scroll-behavior: smooth; }
 /* "For companies" callout — flips with the theme (dark card in light mode,
    light card in dark mode) so it always stands out from the page.
    Variables already flip; we only need to fix the hardcoded white-rgba colors
-   and the apply-button text so it stays white on the blue button. */
-[data-theme="dark"] .post-body { color: rgba(10,10,10,.65); }
-[data-theme="dark"] .free-stamp { border-color: rgba(10,10,10,.15); }
-[data-theme="dark"] .free-stamp-sub { color: rgba(10,10,10,.7); }
+   and the apply-button text so it stays white on the blue button.
+   In dark mode the card uses black 80% / 60% for softer contrast on the light surface. */
+[data-theme="dark"] .post-hl,
+[data-theme="dark"] .post-label,
+[data-theme="dark"] .free-stamp-core,
+[data-theme="dark"] .free-stamp-sub strong { color: rgba(0,0,0,.8); }
+[data-theme="dark"] .post-body { color: rgba(0,0,0,.6); }
+[data-theme="dark"] .free-stamp { border-color: rgba(0,0,0,.15); }
+[data-theme="dark"] .free-stamp-sub { color: rgba(0,0,0,.6); }
 [data-theme="dark"] .btn-post { color: #ffffff; }
 
 html { background: var(--white); color: var(--black); transition: background-color .25s, color .25s; }
@@ -230,7 +254,6 @@ nav {
   gap: 48px;
   padding: 18px 28px;
   background: var(--white);
-  border-bottom: 1px solid var(--border);
 }
 .n-left { display: flex; flex-direction: column; gap: 1px; }
 .n-logo { font-family: var(--fh); font-size: 44px; font-weight: 700; letter-spacing: -.04em; text-transform: lowercase; color: var(--black); line-height: 1; }
@@ -276,7 +299,6 @@ nav.nav-hidden { transform: translateY(-100%); }
 /* ── HERO ────────────────────────────────────── */
 .hero {
   padding: 200px 28px 80px;
-  border-bottom: 1px solid var(--border);
 }
 .hero-inner {
   max-width: 740px;
@@ -295,7 +317,7 @@ nav.nav-hidden { transform: translateY(-100%); }
   letter-spacing: -.03em;
   font-weight: 700;
 }
-.hero-hl em { font-style: normal; color: #c8c8c8; }
+.hero-hl em { font-style: normal; color: inherit; }
 .hero-body {
   margin-top: 32px;
   font-size: 21px; line-height: 1.65; font-weight: 300;
@@ -303,18 +325,26 @@ nav.nav-hidden { transform: translateY(-100%); }
   max-width: 620px;
 }
 .hero-stats {
-  display: flex; gap: 48px;
-  margin-top: 52px;
-  padding-top: 32px;
-  border-top: 1px solid var(--border);
+  display: inline-flex; align-items: center;
+  margin-top: 44px;
+  padding: 10px 22px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  gap: 22px;
 }
-.stat { }
+.stat { display: inline-flex; align-items: baseline; gap: 8px; }
+.stat + .stat { padding-left: 22px; border-left: 1px solid var(--border); }
 .stat-n {
   font-family: var(--fs);
-  font-size: 54px; line-height: 1;
+  font-size: 22px; line-height: 1;
   font-weight: 700; color: var(--accent);
+  letter-spacing: -.02em;
 }
-.stat-l { font-size: 15px; color: var(--gray); margin-top: 8px; letter-spacing: .02em; }
+.stat-l {
+  font-size: 12px; color: var(--gray);
+  letter-spacing: .06em; text-transform: uppercase;
+  font-weight: 500;
+}
 
 /* ── SECTION WRAPPER ─────────────────────────── */
 .w { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
@@ -536,7 +566,7 @@ nav.nav-hidden { transform: translateY(-100%); }
   line-height: 1.05; font-weight: 700; letter-spacing: -.02em;
   color: var(--black);
 }
-.explore-hl em { font-style: normal; color: #c8c8c8; }
+.explore-hl em { font-style: normal; color: inherit; }
 .explore-body {
   margin-top: 28px;
   font-size: 17px; line-height: 1.6; color: #666;
@@ -614,7 +644,7 @@ nav.nav-hidden { transform: translateY(-100%); }
   font-size: clamp(28px, 3.2vw, 48px);
   line-height: 1.1; font-weight: 700;
 }
-.about-hl em { font-style: normal; color: var(--accent); }
+.about-hl em { font-style: normal; color: inherit; }
 .about-body {
   margin-top: 24px;
   font-size: 19px; line-height: 1.7; font-weight: 300; color: #666;
@@ -1053,19 +1083,100 @@ footer {
 }
 
 /* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 1000px) {
+  .thead, .job {
+    grid-template-columns: 40px minmax(0, 2fr) minmax(0, 1.2fr) 100px 90px;
+  }
+  .thead .col-lvl, .thead .col-region,
+  .job .col-lvl, .job .col-region { display: none; }
+  .jlvl, .jregion { display: none; }
+}
+
+@media (max-width: 900px) {
+  .w { padding: 0 22px; }
+  .hero { padding: 160px 0 60px; }
+  .post-card { padding: 40px 32px; gap: 28px; flex-direction: column; }
+  .post-hl { font-size: clamp(28px, 6vw, 44px); }
+  .post-right { min-width: 0; width: 100%; }
+  .about-section, .explore-section { padding: 48px 0; margin-top: 64px; }
+  .thead, .job {
+    grid-template-columns: 36px minmax(0, 2.2fr) minmax(0, 1fr) 90px;
+  }
+  .thead .col-mode, .job .col-mode { display: none; }
+  .jmode { display: none; }
+}
+
 @media (max-width: 700px) {
   .thead { display: none; }
-  .job { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
-  .jnum, .jdate { display: none; }
-  .jtitle { font-size: 20px; }
-  .about-section { grid-template-columns: 1fr; gap: 48px; }
-  footer { grid-template-columns: 1fr 1fr; }
-  .post-section { flex-direction: column; align-items: flex-start; }
-  nav { grid-template-columns: 1fr 1fr; }
-  .n-center { display: none; }
-  .hero { padding-top: 160px; }
-  .hero-stats { flex-wrap: wrap; gap: 28px; }
-  .fkey { width: 78px; font-size: 9px; }
+  .job {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 18px 0;
+  }
+  .jnum, .jdate, .jcat-pill { display: none; }
+  .jtitle { font-size: 19px; line-height: 1.3; }
+  .about-section { grid-template-columns: 1fr; gap: 40px; padding: 40px 0; }
+  .explore-section { grid-template-columns: 1fr; gap: 36px; padding: 40px 0; }
+  footer { grid-template-columns: 1fr 1fr; gap: 32px; }
+  nav {
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    padding: 14px 18px;
+  }
+  .n-logo { font-size: 30px; }
+  .n-right a { padding: 10px 14px; font-size: 12px; }
+  .n-theme { width: 38px; height: 38px; }
+  .hero { padding: 130px 0 48px; }
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 8px 16px;
+    width: auto;
+    max-width: 100%;
+  }
+  .stat + .stat { padding-left: 14px; }
+  .stat-n { font-size: 18px; }
+  .stat-l { font-size: 11px; }
+  .frow {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 0;
+    gap: 8px;
+  }
+  .fkey { width: 100%; padding-top: 0; padding-bottom: 0; }
+  .filter-section { padding: 36px 0 0; }
+  .post-card { padding: 32px 22px; margin-top: 48px; border-radius: 16px; }
+  .free-stamp { padding: 18px 22px; }
+  .btn-post { width: 100%; justify-content: center; padding: 18px 24px; font-size: 14px; }
+  .rbar { padding: 28px 0 0; flex-direction: column; align-items: flex-start; }
+  .rn { font-size: 44px; }
+  .rlbl { font-size: 16px; }
+  .sbox { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .w { padding: 0 18px; }
+  footer { grid-template-columns: 1fr; gap: 28px; padding: 40px 0 0; }
+  .f-bottom { flex-direction: column; gap: 8px; text-align: center; padding: 20px 0; }
+  .hero-hl { font-size: clamp(32px, 9vw, 48px); }
+  .hero-body { font-size: 16px; margin-top: 22px; }
+  .hero-stats {
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 18px;
+  }
+  #drawer { width: 100vw; max-width: 100vw; }
+  .dr-header { padding: 20px 22px; gap: 14px; }
+  .dr-body { padding: 6px 22px; }
+  .dr-foot { padding: 20px 22px 26px; }
+  .dr-title { font-size: 22px; }
+  .dr-row { font-size: 15px; padding: 16px 0; }
+  .dr-key { font-size: 12px; }
+  .post-hl br { display: none; }
+  .post-hl { font-size: 30px; }
+  .about-hl, .explore-hl { font-size: clamp(28px, 8vw, 38px); }
+  .post-label { font-size: 18px; margin-bottom: 24px; }
 }
 </style>
 </head>
@@ -1077,19 +1188,8 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="n-left">
-    <div class="n-logo">aidj<span class="dot">.</span></div>
-    <div class="n-sub">Design roles at AI companies</div>
+    <div class="n-logo">aidj<span class="dot">.</span>work</div>
     <div class="n-date" id="n-date"></div>
-  </div>
-  <div class="n-stats">
-    <div class="n-stat">
-      <div class="n-stat-n" id="n-stat-roles">98</div>
-      <div class="n-stat-l">Open roles</div>
-    </div>
-    <div class="n-stat">
-      <div class="n-stat-n" id="n-stat-co">56</div>
-      <div class="n-stat-l">AI companies</div>
-    </div>
   </div>
   <div class="n-right">
     <button class="n-theme" id="theme-toggle" aria-label="Toggle dark mode" type="button">
@@ -1112,7 +1212,7 @@ footer {
       <p class="hero-body">
         The only job board built for designers at AI companies. From foundation labs to startups—every role verified, linked to source, updated weekly.
       </p>
-      <div class="hero-stats" style="display:none">
+      <div class="hero-stats">
         <div class="stat">
           <div class="stat-n" id="s-roles">74</div>
           <div class="stat-l">Open roles</div>
@@ -1120,10 +1220,6 @@ footer {
         <div class="stat">
           <div class="stat-n" id="s-co">35</div>
           <div class="stat-l">AI companies</div>
-        </div>
-        <div class="stat">
-          <div class="stat-n">19</div>
-          <div class="stat-l">Forbes AI 50</div>
         </div>
       </div>
     </div>
@@ -1366,7 +1462,7 @@ footer {
 <div class="w">
   <footer>
     <div>
-      <div class="f-brand-name">AIDesignJobs.com</div>
+      <div class="f-brand-name">aidj.work</div>
       <p class="f-tagline">
         Curated design jobs at AI companies.<br>
         Updated weekly.
@@ -1388,12 +1484,12 @@ footer {
       <div class="f-links">
         <a href="#about">About</a>
         <a href="#post">Post a role</a>
-        <a href="/cdn-cgi/l/email-protection#e68c898495a6878f8283958f81888c898495c885898b">Contact</a>
+        <a href="/cdn-cgi/l/email-protection#f892979a8bb899919c92d68f978a93">Contact</a>
       </div>
     </div>
   </footer>
   <div class="f-bottom">
-    <span>© 2026 AIDesignJobs.com</span>
+    <span>© 2026 aidj.work</span>
     <span id="f-date"></span>
   </div>
   <div class="big-type">
@@ -1731,8 +1827,6 @@ document.getElementById('rdate').textContent = 'Updated ' + ds;
 document.getElementById('f-date').textContent = 'Updated weekly · ' + ds;
 document.getElementById('s-roles').textContent = JOBS.length;
 document.getElementById('s-co').textContent = COMPANIES.length;
-document.getElementById('n-stat-roles').textContent = JOBS.length;
-document.getElementById('n-stat-co').textContent = COMPANIES.length;
 
 // ── THEME: dark / light toggle ─────────────────────────────────────────
 (() => {
@@ -1747,7 +1841,7 @@ document.getElementById('n-stat-co').textContent = COMPANIES.length;
 
 // ── SEO: JobPosting structured data (Google Jobs) ──────────────────────
 (() => {
-  const SITE = 'https://aidesignjobs.com';
+  const SITE = 'https://aidj.work';
   const today = new Date().toISOString().slice(0,10);
   const validThrough = new Date(Date.now() + 60*24*60*60*1000).toISOString().slice(0,10);
   const regionMap = {us:'US', eu:'EU', uk:'GB', remote:'Remote'};
@@ -1877,7 +1971,7 @@ function openDrawer(id) {
   document.getElementById('dr-apply').setAttribute('data-job-title', j.title);
 
   // ── Share links ───────────────────────────────────────────────────
-  const SHARE_SITE = 'https://aidesignjobs.com';
+  const SHARE_SITE = 'https://aidj.work';
   const shareUrl = `${SHARE_SITE}/#job-${j.id}`;
   const shareText = `${j.title} @ ${j.co} — via AIDesignJobs`;
   const eu = encodeURIComponent(shareUrl);
@@ -2096,7 +2190,7 @@ if (smForm) {
     <input type="hidden" name="_subject" value="New role submission — AIDesignJobs">
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bfd5d0ddccffded6dbdaccd6d8d1d5d0ddcc91dcd0d2">[email&#160;protected]</a>.</div>
+    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0862676a7b4869616c62267f677a63">[email&#160;protected]</a>.</div>
 
     <div class="sm-foot">
       <span class="sm-note">We review submissions within 48h.</span>
