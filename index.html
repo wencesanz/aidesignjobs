@@ -127,6 +127,10 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
   --gray2:  #ccc;
   --gray3:  #f5f5f5;
   --border: #e8e8e8;
+  /* Aliases used by the submit + contact modals (originally from admin.html) */
+  --ink:    var(--black);
+  --ink-2:  #666;
+  --bg-2:   #f5f5f5;
   --fs: 'Helvetica Neue', 'Arial', sans-serif;
   --fh: 'Px Grotesk', 'Helvetica Neue', sans-serif;
   --fm: 'DM Sans', system-ui, sans-serif;
@@ -786,9 +790,9 @@ footer {
 .f-brand-name {
   font-family: var(--fm); font-size: 16px; font-weight: 500;
   letter-spacing: .04em; text-transform: uppercase;
+  margin-bottom: 18px;
 }
 .f-tagline {
-  margin-top: 12px;
   font-size: 16px; font-weight: 300; color: #999; line-height: 1.6;
 }
 .f-col-title {
@@ -2105,6 +2109,11 @@ function closeContactModal() {
 }
 const cmForm = document.getElementById('cm-form');
 if (cmForm) {
+  // Obfuscate destination email so it isn't sitting in the raw HTML for scrapers.
+  // Replace later with a FormSubmit hash code once activation completes.
+  const _u = ['wencesanz', 'gmail.com'].join('\u0040');
+  cmForm.action = 'https://formsubmit.co/' + _u;
+
   cmForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('cm-submit-btn');
@@ -2254,7 +2263,7 @@ if (smForm) {
     <input type="hidden" name="_subject" value="New role submission — AIDesignJobs">
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b5dfdad7c6f5d4dcd1df9bc2dac7de">[email&#160;protected]</a>.</div>
+    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cfa5a0adbc8faea6aba5e1b8a0bda4">[email&#160;protected]</a>.</div>
 
     <div class="sm-foot">
       <span class="sm-note">We review submissions within 48h.</span>
@@ -2277,7 +2286,7 @@ if (smForm) {
     </div>
     <button class="sm-close" onclick="closeContactModal()" aria-label="Close" type="button">×</button>
   </div>
-  <form class="sm-form" id="cm-form" action="https://formsubmit.co/wencesanz@gmail.com" method="POST">
+  <form class="sm-form" id="cm-form" method="POST" data-formsubmit="1">
     <div class="sm-row">
       <div class="sm-field">
         <label class="sm-label" for="cm-name">Name <span class="req">*</span></label>
