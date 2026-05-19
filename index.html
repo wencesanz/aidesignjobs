@@ -659,12 +659,41 @@ nav.nav-hidden { transform: translateY(-100%); }
 .co-item {
   display: flex; align-items: center; justify-content: space-between;
   padding: 18px 0;
+  gap: 16px;
   border-top: 1px solid var(--border);
-  font-size: 20px; font-weight: 400;
   color: var(--black); transition: color .2s;
 }
+.co-row {
+  display: flex; flex-direction: column; gap: 6px;
+  min-width: 0; flex: 1;
+}
+.co-name {
+  font-size: 18px; font-weight: 500;
+  letter-spacing: -.005em;
+}
+.co-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.co-tag {
+  display: inline-block;
+  font-family: var(--fm);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: .02em;
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--gray);
+  white-space: nowrap;
+  transition: border-color .2s, color .2s;
+}
+.co-tag-acc {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
 .co-item:hover { color: var(--accent); }
-.co-arrow { font-size: 15px; opacity: 0; transition: opacity .2s; color: var(--accent); }
+.co-item:hover .co-tag:not(.co-tag-acc) { border-color: var(--gray2); }
+.co-arrow { font-size: 15px; opacity: 0; transition: opacity .2s; color: var(--accent); flex-shrink: 0; }
 .co-item:hover .co-arrow { opacity: 1; }
 
 /* ── POST ────────────────────────────────────── */
@@ -1806,11 +1835,11 @@ function render() {
       <div class="jloc">${j.city}</div>
       <div class="tags-cell">
         ${mBdg(j.mode)}
-        ${j.nw  ? '<span class="bdg nw">New</span>' : ''}
-        ${j.f50 ? '<span class="bdg f5">AI 50</span>' : ''}
-        ${j.t100 ? '<span class="bdg t1">TIME100</span>' : ''}
-        ${j.prosumer ? '<span class="bdg pr">Prosumer 40</span>' : ''}
-        ${j.se50 ? '<span class="bdg se">SE50</span>' : ''}
+        ${j.nw  ? '<span class="bdg nw" title="Posted in the last 7 days">New</span>' : ''}
+        ${j.f50 ? '<span class="bdg f5" title="Forbes AI 50 — top private AI companies 2026">Forbes&nbsp;AI&nbsp;50</span>' : ''}
+        ${j.t100 ? '<span class="bdg t1" title="TIME100 AI 2026 — most influential AI companies">TIME100&nbsp;AI</span>' : ''}
+        ${j.prosumer ? '<span class="bdg pr" title="Notable Capital Prosumer AI 40 — leading consumer/prosumer AI apps">Prosumer&nbsp;AI&nbsp;40</span>' : ''}
+        ${j.se50 ? '<span class="bdg se" title="Scaling Europe 50 — top European AI scaleups">Scaling&nbsp;Europe&nbsp;50</span>' : ''}
       </div>
       <div><span class="bdg sl">${j.salL}</span></div>
       <div class="jdate">${j.date}</div>
@@ -1843,14 +1872,23 @@ document.querySelectorAll('.fpills[data-group]').forEach(grp => {
 document.getElementById('srch').addEventListener('input', e => { S.q = e.target.value; render(); });
 
 // ── COMPANIES ─────────────────────────────────────────────────────────────
-const tagBase  = 'color:#999;font-size:13px;font-weight:400;letter-spacing:.04em;margin-left:12px';
-const tagAcc   = 'color:var(--accent);font-size:13px;font-weight:500;letter-spacing:.04em;margin-left:12px';
-const stageMap = {foundation:'Foundation lab', public:'Public', unicorn:'Unicorn', startup:'Startup'};
-document.getElementById('co-list').innerHTML = COMPANIES.map(c => `
-  <div class="co-item">
-    <span>${c.name}${c.stage ? ` <span style="${tagBase}">${stageMap[c.stage]||c.stage}</span>` : ''}${c.f50 ? ` <span style="${tagBase}">Forbes AI 50</span>` : ''}${c.t100 ? ` <span style="${tagAcc}">TIME100 AI</span>` : ''}${c.prosumer ? ` <span style="${tagBase}">Prosumer AI 40</span>` : ''}</span>
-    <span class="co-arrow">→</span>
-  </div>`).join('');
+const stageMap = {foundation:'Foundation lab', public:'Public AI', unicorn:'Unicorn', startup:'Startup'};
+document.getElementById('co-list').innerHTML = COMPANIES.map(c => {
+  const tags = [];
+  if (c.stage)     tags.push(`<span class="co-tag" title="Company stage">${stageMap[c.stage] || c.stage}</span>`);
+  if (c.f50)       tags.push(`<span class="co-tag" title="Forbes AI 50 — top private AI companies 2026">Forbes AI 50</span>`);
+  if (c.t100)      tags.push(`<span class="co-tag co-tag-acc" title="TIME100 AI 2026 — most influential AI companies">TIME100 AI</span>`);
+  if (c.prosumer)  tags.push(`<span class="co-tag" title="Notable Capital Prosumer AI 40 — leading consumer/prosumer AI apps">Prosumer AI 40</span>`);
+  if (c.se50)      tags.push(`<span class="co-tag" title="Scaling Europe 50 — top European AI scaleups">Scaling Europe 50</span>`);
+  return `
+    <div class="co-item">
+      <div class="co-row">
+        <span class="co-name">${c.name}</span>
+        <span class="co-tags">${tags.join('')}</span>
+      </div>
+      <span class="co-arrow">→</span>
+    </div>`;
+}).join('');
 
 // ── DATE ──────────────────────────────────────────────────────────────────
 const ds = new Date().toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'});
@@ -2264,7 +2302,7 @@ if (smForm) {
     <input type="hidden" name="_subject" value="New role submission — AIDesignJobs">
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3d9dcd1c0f3d2dad7d99dc4dcc1d8">[email&#160;protected]</a>.</div>
+    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="87ede8e5f4c7e6eee3eda9f0e8f5ec">[email&#160;protected]</a>.</div>
 
     <div class="sm-foot">
       <span class="sm-note">We review submissions within 48h.</span>
