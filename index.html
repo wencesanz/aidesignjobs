@@ -120,18 +120,17 @@
 html { scroll-behavior: smooth; overflow-x: hidden; }
 
 :root {
-  /* Maben-inspired palette: near-white warm + soft near-black + terracotta */
-  --black:  #2A2520;
-  --white:  #FAF6F0;
-  --accent: #C5571B;
-  --gray:   #9a8f7e;
-  --gray2:  #c8bcab;
-  --gray3:  #f0ebe3;
-  --border: #e6dfd2;
+  --black:  #0d0d0d;
+  --white:  #ffffff;
+  --accent: #FF8E35;
+  --gray:   #999;
+  --gray2:  #ccc;
+  --gray3:  #f5f5f5;
+  --border: #e8e8e8;
   /* Aliases used by the submit + contact modals (originally from admin.html) */
   --ink:    var(--black);
-  --ink-2:  #6e6555;
-  --bg-2:   #ddd2bf;
+  --ink-2:  #666;
+  --bg-2:   #f5f5f5;
   --fs: 'Helvetica Neue', 'Arial', sans-serif;
   --fh: 'Px Grotesk', 'Helvetica Neue', sans-serif;
   --fm: 'DM Sans', system-ui, sans-serif;
@@ -139,8 +138,8 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
   --invert-bg: #0d0d0d;
   --invert-fg: #ffffff;
 
-  /* category dot palette — warm muted tones aligned with Maben aesthetic */
-  --c-product:   #C5571B;   /* terracotta (accent) — primary category */
+  /* category dot palette — muted warm tones, product matches the accent */
+  --c-product:   #FF8E35;   /* orange (accent) — primary category */
   --c-brand:     #D4A24B;   /* warm ochre */
   --c-ux:        #5B8B8E;   /* muted teal */
   --c-motion:    #C77B8A;   /* dusty rose */
@@ -150,15 +149,15 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
 }
 
 [data-theme="dark"] {
-  --black:  #E8DDCB;
-  --white:  #1C1916;
-  --accent: #D97A3F;
-  --gray:   #8a7d6a;
-  --gray2:  #4a4239;
-  --gray3:  #2a2620;
-  --border: #3a342d;
-  --invert-bg: #E8DDCB;
-  --invert-fg: #1C1916;
+  --black:  #f2f2f2;
+  --white:  #0a0a0a;
+  --accent: #FF8E35;
+  --gray:   #888;
+  --gray2:  #555;
+  --gray3:  #1a1a1a;
+  --border: #262626;
+  --invert-bg: #f2f2f2;
+  --invert-fg: #0a0a0a;
 }
 
 /* Dark-mode text overrides — softer contrast (80% primary / 60% secondary) */
@@ -2254,7 +2253,7 @@ if (smForm) {
     <input type="hidden" name="_subject" value="New role submission — AIDesignJobs">
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a707578695a7b737e70346d756871">[email&#160;protected]</a>.</div>
+    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="462c29243506272f222c683129342d">[email&#160;protected]</a>.</div>
 
     <div class="sm-foot">
       <span class="sm-note">We review submissions within 48h.</span>
