@@ -21,7 +21,7 @@ Single static HTML file. No build step.
 
 ### 1. Replace placeholder URLs
 
-Search & replace `https://aidesignjobs.com` with your actual domain in:
+Search & replace `https://aidj.work` with your actual domain in:
 - `index.html` (canonical, og:url, JSON-LD)
 - `sitemap.xml`
 - `robots.txt`

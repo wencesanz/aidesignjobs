@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin · AIDesignJobs</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #fafaf7;
+  --panel: #ffffff;
+  --ink: #0a0a0a;
+  --ink-2: #666;
+  --ink-3: #999;
+  --border: #e5e5e0;
+  --accent: #1a56f0;
+  --danger: #dc2626;
+  --success: #16a34a;
+  --fm: 'DM Sans', system-ui, sans-serif;
+  --fmono: ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+html, body { background: var(--bg); color: var(--ink); font-family: var(--fm); font-size: 14px; line-height: 1.5; }
+body { min-height: 100vh; padding: 24px; }
+
+.shell { max-width: 1400px; margin: 0 auto; }
+
+/* ── HEAD ─────────────────────────────────────── */
+.head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 20px; margin-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+.head h1 { font-size: 22px; font-weight: 600; letter-spacing: -.02em; }
+.head h1 .acc { color: var(--accent); }
+.head-meta { font-family: var(--fmono); font-size: 12px; color: var(--ink-3); }
+
+/* ── TABS ─────────────────────────────────────── */
+.tabs { display: flex; gap: 4px; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+.tab {
+  padding: 12px 18px;
+  font: inherit; font-weight: 500;
+  background: none; border: 0;
+  color: var(--ink-3); cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.tab:hover { color: var(--ink); }
+.tab.on { color: var(--ink); border-bottom-color: var(--accent); }
+
+/* ── BARS ─────────────────────────────────────── */
+.toolbar {
+  display: flex; gap: 10px; align-items: center;
+  margin-bottom: 20px; flex-wrap: wrap;
+}
+.search {
+  flex: 1; min-width: 240px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--panel);
+  font: inherit;
+}
+.search:focus { outline: none; border-color: var(--ink); }
+.btn {
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--ink);
+  border-radius: 3px;
+  font: inherit; font-weight: 500;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.btn:hover { border-color: var(--ink); }
+.btn.primary { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+.btn.primary:hover { background: var(--accent); border-color: var(--accent); }
+.btn.danger:hover { color: var(--danger); border-color: var(--danger); }
+.btn.success { background: var(--success); color: white; border-color: var(--success); }
+.btn-sm { padding: 6px 10px; font-size: 12px; }
+
+.count { font-family: var(--fmono); font-size: 12px; color: var(--ink-3); margin-right: auto; }
+
+/* ── LIST ─────────────────────────────────────── */
+.list {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.list-row {
+  display: grid;
+  grid-template-columns: 50px 1fr 160px 130px 90px 100px 100px;
+  gap: 14px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+.list-row:last-child { border-bottom: 0; }
+.list-row.header {
+  background: var(--bg);
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-3);
+  padding: 10px 18px;
+}
+.list-row:hover:not(.header) { background: rgba(26,86,240,.03); }
+.row-id { font-family: var(--fmono); font-size: 12px; color: var(--ink-3); }
+.row-title { font-weight: 500; }
+.row-meta { font-size: 12px; color: var(--ink-2); margin-top: 2px; }
+.row-co { font-size: 13px; }
+.row-actions { display: flex; gap: 6px; justify-content: flex-end; }
+
+.pill {
+  display: inline-block;
+  font-size: 11px; padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--ink-2);
+}
+.pill.green { color: var(--success); border-color: rgba(22,163,74,.3); background: rgba(22,163,74,.06); }
+.pill.blue  { color: var(--accent);  border-color: rgba(26,86,240,.3); background: rgba(26,86,240,.06); }
+
+/* ── EDITOR (right drawer) ────────────────────── */
+.editor-bg {
+  position: fixed; inset: 0; z-index: 90;
+  background: rgba(0,0,0,.3);
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s;
+}
+.editor-bg.on { opacity: 1; pointer-events: all; }
+.editor {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 100;
+  width: 520px; max-width: 100vw;
+  background: var(--panel);
+  border-left: 1px solid var(--border);
+  transform: translateX(100%);
+  transition: transform .3s cubic-bezier(.77,0,.18,1);
+  display: flex; flex-direction: column;
+}
+.editor.on { transform: translateX(0); }
+.editor-head {
+  padding: 24px 28px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.editor-head h3 { font-size: 18px; font-weight: 600; }
+.editor-close {
+  width: 30px; height: 30px;
+  border: 0; background: none;
+  font-size: 22px; line-height: 1;
+  color: var(--ink-3); cursor: pointer;
+  border-radius: 50%;
+}
+.editor-close:hover { background: var(--bg); color: var(--ink); }
+.editor-body { flex: 1; overflow-y: auto; padding: 22px 28px; }
+.editor-foot {
+  padding: 18px 28px;
+  border-top: 1px solid var(--border);
+  display: flex; gap: 10px; justify-content: space-between;
+}
+
+.field { margin-bottom: 16px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.field-row .field { margin-bottom: 0; }
+label {
+  display: block;
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .06em;
+  color: var(--ink-3);
+  margin-bottom: 5px;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--panel);
+  color: var(--ink);
+  font: inherit; font-size: 13px;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--ink); }
+textarea { resize: vertical; min-height: 60px; font-family: var(--fmono); font-size: 12px; }
+
+.checks { display: flex; flex-wrap: wrap; gap: 14px; }
+.checks label {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 400; color: var(--ink);
+  text-transform: none; letter-spacing: 0;
+  margin: 0;
+}
+.checks input[type="checkbox"] { width: auto; }
+
+/* ── EXPORT MODAL ─────────────────────────────── */
+.modal-bg {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,.4);
+  display: none; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.modal-bg.on { display: flex; }
+.modal {
+  background: var(--panel);
+  border-radius: 5px;
+  width: 760px; max-width: 100%;
+  max-height: 86vh;
+  display: flex; flex-direction: column;
+}
+.modal-head {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.modal-head h3 { font-size: 16px; font-weight: 600; }
+.modal-body { flex: 1; overflow: hidden; display: flex; flex-direction: column; padding: 20px 24px; gap: 14px; }
+.modal-body p { color: var(--ink-2); font-size: 13px; }
+.modal-body code { font-family: var(--fmono); background: var(--bg); padding: 2px 6px; border-radius: 2px; }
+.export-area {
+  flex: 1;
+  font-family: var(--fmono); font-size: 12px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--bg);
+  white-space: pre;
+  overflow: auto;
+  min-height: 200px;
+}
+.modal-foot {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  display: flex; gap: 10px; justify-content: flex-end;
+}
+
+.toast {
+  position: fixed; bottom: 30px; left: 50%; translate: -50% 0;
+  background: var(--ink); color: white;
+  padding: 12px 22px;
+  border-radius: 100px;
+  font-size: 13px; font-weight: 500;
+  z-index: 300;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s, translate .25s;
+}
+.toast.on { opacity: 1; translate: -50% -10px; }
+.toast.danger { background: var(--danger); }
+.toast.success { background: var(--success); }
+
+@media (max-width: 900px) {
+  .list-row { grid-template-columns: 40px 1fr 90px; }
+  .col-cat, .col-mode, .col-lvl, .col-region { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="head">
+    <h1>aidj<span class="acc">.</span>work admin</h1>
+    <span class="head-meta" id="meta-info">—</span>
+  </div>
+
+  <div class="tabs">
+    <button class="tab on" data-tab="jobs" type="button">Jobs</button>
+    <button class="tab" data-tab="companies" type="button">Companies</button>
+  </div>
+
+  <!-- JOBS TAB -->
+  <div class="tab-pane" id="pane-jobs">
+    <div class="toolbar">
+      <input class="search" id="search-jobs" placeholder="Search jobs by title, company, city…" type="text">
+      <span class="count" id="count-jobs">0</span>
+      <button class="btn" id="btn-load-current" type="button">↻ Load from site</button>
+      <button class="btn" id="btn-import" type="button">⬆ Import JSON</button>
+      <button class="btn primary" id="btn-new-job" type="button">+ New job</button>
+      <button class="btn success" id="btn-export-jobs" type="button">⬇ Export JSON</button>
+    </div>
+    <div class="list" id="list-jobs"></div>
+  </div>
+
+  <!-- COMPANIES TAB -->
+  <div class="tab-pane" id="pane-companies" style="display:none">
+    <div class="toolbar">
+      <input class="search" id="search-cos" placeholder="Search companies…" type="text">
+      <span class="count" id="count-cos">0</span>
+      <button class="btn primary" id="btn-new-co" type="button">+ New company</button>
+      <button class="btn success" id="btn-export-cos" type="button">⬇ Export JSON</button>
+    </div>
+    <div class="list" id="list-cos"></div>
+  </div>
+
+</div>
+
+<!-- JOB EDITOR -->
+<div class="editor-bg" id="ed-bg"></div>
+<div class="editor" id="ed">
+  <div class="editor-head">
+    <h3 id="ed-title">New job</h3>
+    <button class="editor-close" id="ed-close" type="button">×</button>
+  </div>
+  <div class="editor-body" id="ed-body"></div>
+  <div class="editor-foot">
+    <button class="btn danger" id="ed-delete" type="button">Delete</button>
+    <div style="display:flex;gap:10px">
+      <button class="btn" id="ed-cancel" type="button">Cancel</button>
+      <button class="btn primary" id="ed-save" type="button">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- EXPORT MODAL -->
+<div class="modal-bg" id="export-bg">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="export-title">Export</h3>
+      <button class="editor-close" id="export-close" type="button">×</button>
+    </div>
+    <div class="modal-body">
+      <p id="export-help">Replace <code>const JOBS = [...]</code> in your <code>index.html</code> with the block below.</p>
+      <textarea class="export-area" id="export-area" readonly></textarea>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" id="export-copy" type="button">Copy to clipboard</button>
+      <button class="btn" id="export-download" type="button">Download .json</button>
+    </div>
+  </div>
+</div>
+
+<!-- IMPORT MODAL (reused) -->
+<div class="modal-bg" id="import-bg">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Import JSON</h3>
+      <button class="editor-close" id="import-close" type="button">×</button>
+    </div>
+    <div class="modal-body">
+      <p>Paste a JSON array of jobs. Will replace the current list.</p>
+      <textarea class="export-area" id="import-area" placeholder="[ { id: 1, title: ... }, ... ]"></textarea>
+    </div>
+    <div class="modal-foot">
+      <button class="btn" id="import-cancel" type="button">Cancel</button>
+      <button class="btn primary" id="import-confirm" type="button">Import</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="admin.js"></script>
+</body>
+</html>
