@@ -552,6 +552,30 @@ nav.nav-hidden { transform: translateY(-100%); }
   display: none;
 }
 
+/* ── PAGINATION ──────────────────────────────── */
+.pager {
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px; flex-wrap: wrap;
+  margin-top: 48px;
+}
+.pager:empty { display: none; }
+.pager button {
+  min-width: 40px; height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--black);
+  font-family: var(--fm); font-size: 15px; font-weight: 400;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color .15s, background .15s, color .15s;
+}
+.pager button:hover:not(:disabled):not(.on) { border-color: var(--accent); color: var(--accent); }
+.pager button.on { background: var(--accent); border-color: var(--accent); color: var(--white); cursor: default; }
+.pager button:disabled { opacity: .35; cursor: not-allowed; }
+.pager .pager-gap { color: var(--gray2); padding: 0 4px; }
+.pager .pager-nav { font-weight: 500; }
+
 /* ── EXPLORE / MORE SOURCES ──────────────────── */
 .explore-section {
   margin-top: 100px;
@@ -656,49 +680,29 @@ nav.nav-hidden { transform: translateY(-100%); }
   font-size: 19px; line-height: 1.7; font-weight: 300; color: #666;
 }
 
-.co-list { margin-top: 24px; }
-.co-item {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 0;
-  gap: 16px;
-  border-top: 1px solid var(--border);
-  color: var(--black); transition: color .2s;
+.co-list {
+  margin-top: 24px;
+  display: flex; flex-wrap: wrap; gap: 8px;
 }
-.co-row {
-  display: flex; flex-direction: column; gap: 6px;
-  min-width: 0; flex: 1;
-}
-.co-name {
-  font-size: 18px; font-weight: 500;
-  letter-spacing: -.005em;
-}
-.co-tags {
-  display: flex; flex-wrap: wrap; gap: 6px;
-}
-.co-tag {
-  display: inline-block;
-  font-family: var(--fm);
-  font-size: 11px; font-weight: 500;
-  letter-spacing: .02em;
-  padding: 3px 9px;
+.co-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 14px;
   border: 1px solid var(--border);
   border-radius: 100px;
-  color: var(--gray);
+  font-size: 14px; font-weight: 400;
+  color: var(--black);
+  cursor: default;
+  transition: border-color .18s, color .18s, background .18s;
   white-space: nowrap;
-  transition: border-color .2s, color .2s;
 }
-.co-tag-acc {
-  color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
-  background: color-mix(in srgb, var(--accent) 6%, transparent);
+.co-chip:hover { border-color: var(--accent); color: var(--accent); }
+.co-chip .co-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
 }
-.co-item:hover { color: var(--accent); }
-.co-item:hover .co-tag:not(.co-tag-acc) { border-color: var(--gray2); }
-.co-arrow { font-size: 15px; opacity: 0; transition: opacity .2s; color: var(--accent); flex-shrink: 0; }
-.co-item:hover .co-arrow { opacity: 1; }
 
-/* ── POST ────────────────────────────────────── */
-.post-card {
+/* ── POST ────────────────────────────────────── */.post-card {
   position: relative;
   display: flex;
   align-items: center;
@@ -1396,6 +1400,7 @@ footer {
     </div>
     <div id="jlist"></div>
     <div class="empty" id="empty">No roles found.</div>
+    <div class="pager" id="pager"></div>
   </div>
 
 </div>
@@ -1731,6 +1736,15 @@ const COMPANIES = [
   {name:'Tandem Health',  stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
   {name:'Aikido Security',stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
   {name:'Fyxer',          stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  // Added — companies with active design roles
+  {name:'Databricks',     stage:'public',     f50:true,  t100:true,  prosumer:false},
+  {name:'Linear',         stage:'unicorn',    f50:false, t100:false, prosumer:true},
+  {name:'Mercor',         stage:'unicorn',    f50:true,  t100:false, prosumer:false},
+  {name:'Helsing',        stage:'unicorn',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Poolside',       stage:'unicorn',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Pigment',        stage:'unicorn',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Dust',           stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  {name:'Photoroom',      stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
 ];
 
 // ── STATE ─────────────────────────────────────────────────────────────────
@@ -1744,6 +1758,10 @@ JOBS.forEach(j => {
 });
 
 const S = { cat:'all', region:'all', mode:'all', lvl:'all', sal:'all', q:'', tR:false, tN:false, tFL:false, tPB:false, tUN:false, tST:false, tPRO:false, tSE:false };
+
+// Pagination state
+const PER_PAGE = 20;
+let page = 1;
 
 function salOk(j) {
   if (S.sal === 'all') return true;
@@ -1791,13 +1809,21 @@ function render() {
 
   const el = document.getElementById('jlist');
   const empty = document.getElementById('empty');
+  const pager = document.getElementById('pager');
 
-  if (!list.length) { el.innerHTML = ''; empty.style.display = 'block'; return; }
+  if (!list.length) { el.innerHTML = ''; pager.innerHTML = ''; empty.style.display = 'block'; return; }
   empty.style.display = 'none';
 
-  el.innerHTML = list.map((j,i) => `
+  // ── Pagination ──
+  const totalPages = Math.ceil(list.length / PER_PAGE);
+  if (page > totalPages) page = totalPages;
+  if (page < 1) page = 1;
+  const startIdx = (page - 1) * PER_PAGE;
+  const pageItems = list.slice(startIdx, startIdx + PER_PAGE);
+
+  el.innerHTML = pageItems.map((j,i) => `
     <div class="job" onclick="openDrawer(${j.id})">
-      <div class="jnum"><span class="jdot ${j.cat}"></span>${String(i+1).padStart(2,'0')}</div>
+      <div class="jnum"><span class="jdot ${j.cat}"></span>${String(startIdx+i+1).padStart(2,'0')}</div>
       <div class="jinfo">
         <div class="jtitle">${j.title}</div>
         <div class="jco">${j.co}</div>
@@ -1816,6 +1842,44 @@ function render() {
       <div class="jdate">${j.date}</div>
       <div class="jarr">→</div>
     </div>`).join('');
+
+  renderPager(totalPages);
+}
+
+function renderPager(totalPages) {
+  const pager = document.getElementById('pager');
+  if (totalPages <= 1) { pager.innerHTML = ''; return; }
+
+  // Build a compact page-number window: 1 … (p-1) p (p+1) … last
+  const pages = [];
+  const add = n => pages.push(n);
+  add(1);
+  const lo = Math.max(2, page - 1), hi = Math.min(totalPages - 1, page + 1);
+  if (lo > 2) pages.push('…');
+  for (let n = lo; n <= hi; n++) add(n);
+  if (hi < totalPages - 1) pages.push('…');
+  if (totalPages > 1) add(totalPages);
+
+  let html = `<button class="pager-nav" ${page === 1 ? 'disabled' : ''} data-page="${page-1}">←</button>`;
+  html += pages.map(p =>
+    p === '…'
+      ? `<span class="pager-gap">…</span>`
+      : `<button class="${p === page ? 'on' : ''}" data-page="${p}">${p}</button>`
+  ).join('');
+  html += `<button class="pager-nav" ${page === totalPages ? 'disabled' : ''} data-page="${page+1}">→</button>`;
+  pager.innerHTML = html;
+
+  pager.querySelectorAll('button[data-page]').forEach(b => {
+    b.addEventListener('click', () => {
+      const target = Number(b.dataset.page);
+      if (target === page || b.disabled) return;
+      page = target;
+      render();
+      // Scroll back to the top of the results table
+      const top = document.getElementById('jobs');
+      if (top) window.scrollTo({ top: top.offsetTop - 20, behavior: 'smooth' });
+    });
+  });
 }
 
 // ── FILTERS ───────────────────────────────────────────────────────────────
@@ -1825,6 +1889,7 @@ document.querySelectorAll('.fpills[data-group]').forEach(grp => {
       S[grp.dataset.group] = btn.dataset.v;
       grp.querySelectorAll('.pill').forEach(b => b.classList.remove('on'));
       btn.classList.add('on');
+      page = 1;
       render();
     });
   });
@@ -1836,29 +1901,31 @@ document.querySelectorAll('.fpills[data-group]').forEach(grp => {
   btn.addEventListener('click', () => {
     S[key] = !S[key];
     btn.classList.toggle('on', S[key]);
+    page = 1;
     render();
   });
 });
 
-document.getElementById('srch').addEventListener('input', e => { S.q = e.target.value; render(); });
+document.getElementById('srch').addEventListener('input', e => { S.q = e.target.value; page = 1; render(); });
 
 // ── COMPANIES ─────────────────────────────────────────────────────────────
-const stageMap = {foundation:'Foundation lab', public:'Public AI', unicorn:'Unicorn', startup:'Startup'};
-document.getElementById('co-list').innerHTML = COMPANIES.map(c => {
-  const tags = [];
-  if (c.stage)     tags.push(`<span class="co-tag" title="Company stage">${stageMap[c.stage] || c.stage}</span>`);
-  if (c.f50)       tags.push(`<span class="co-tag" title="Forbes AI 50 — top private AI companies 2026">Forbes AI 50</span>`);
-  if (c.t100)      tags.push(`<span class="co-tag co-tag-acc" title="TIME100 AI 2026 — most influential AI companies">TIME100 AI</span>`);
-  if (c.prosumer)  tags.push(`<span class="co-tag" title="Notable Capital Prosumer AI 40 — leading consumer/prosumer AI apps">Prosumer AI 40</span>`);
-  if (c.se50)      tags.push(`<span class="co-tag" title="Scaling Europe 50 — top European AI scaleups">Scaling Europe 50</span>`);
-  return `
-    <div class="co-item">
-      <div class="co-row">
-        <span class="co-name">${c.name}</span>
-        <span class="co-tags">${tags.join('')}</span>
-      </div>
-      <span class="co-arrow">→</span>
-    </div>`;
+// Sort: companies with active roles first, then notable (Forbes/TIME100), then alpha
+const activeCos = new Set(JOBS.map(j => j.co));
+const sortedCos = [...COMPANIES].sort((a, b) => {
+  const aw = (activeCos.has(a.name) ? 2 : 0) + ((a.f50 || a.t100) ? 1 : 0);
+  const bw = (activeCos.has(b.name) ? 2 : 0) + ((b.f50 || b.t100) ? 1 : 0);
+  if (aw !== bw) return bw - aw;
+  return a.name.localeCompare(b.name);
+});
+document.getElementById('co-list').innerHTML = sortedCos.map(c => {
+  const notable = c.f50 || c.t100;
+  const tip = [
+    c.f50 ? 'Forbes AI 50' : '',
+    c.t100 ? 'TIME100 AI' : '',
+    c.prosumer ? 'Prosumer AI 40' : '',
+    c.se50 ? 'Scaling Europe 50' : '',
+  ].filter(Boolean).join(' · ');
+  return `<span class="co-chip" title="${tip || c.name}">${notable ? '<span class="co-dot"></span>' : ''}${c.name}</span>`;
 }).join('');
 
 // ── DATE ──────────────────────────────────────────────────────────────────
@@ -2273,7 +2340,7 @@ if (smForm) {
     <input type="hidden" name="_subject" value="New role submission — AIDesignJobs">
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5f35303d2c1f3e363b357128302d34">[email&#160;protected]</a>.</div>
+    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="761c19140536171f121c580119041d">[email&#160;protected]</a>.</div>
 
     <div class="sm-foot">
       <span class="sm-note">We review submissions within 48h.</span>
