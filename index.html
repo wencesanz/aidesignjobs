@@ -120,43 +120,43 @@
 html { scroll-behavior: smooth; overflow-x: hidden; }
 
 :root {
-  --black:  #0a0a0a;
+  --black:  #0d0d0d;
   --white:  #ffffff;
-  --accent: #0a0a0a;            /* monochrome: accent collapses to ink */
-  --gray:   #8c8c8c;
-  --gray2:  #c4c4c4;
-  --gray3:  #f4f4f2;
-  --border: #e4e4e1;
+  --accent: #FF8E35;
+  --gray:   #999;
+  --gray2:  #ccc;
+  --gray3:  #f5f5f5;
+  --border: #e8e8e8;
   /* Aliases used by the submit + contact modals (originally from admin.html) */
   --ink:    var(--black);
-  --ink-2:  #6b6b6b;
-  --bg-2:   #f4f4f2;
+  --ink-2:  #666;
+  --bg-2:   #f5f5f5;
   --fs: 'Helvetica Neue', 'Arial', sans-serif;
   --fh: 'Px Grotesk', 'Helvetica Neue', sans-serif;
   --fm: 'DM Sans', system-ui, sans-serif;
   --fmono: 'Geist Mono', 'Courier New', monospace;
-  --invert-bg: #0a0a0a;
+  --invert-bg: #0d0d0d;
   --invert-fg: #ffffff;
 
-  /* category dot palette — saturated but refined tones */
-  --c-product:   #2F5FE0;   /* blue */
-  --c-brand:     #C8841A;   /* ochre/amber */
-  --c-ux:        #1C8C82;   /* teal */
-  --c-motion:    #C8456B;   /* rose */
-  --c-eng:       #4E8C3A;   /* green */
-  --c-content:   #8A4FC4;   /* violet */
-  --c-designeng: #4E8C3A;   /* same as eng */
+  /* category dot palette — muted warm tones, product matches the accent */
+  --c-product:   #FF8E35;   /* orange (accent) — primary category */
+  --c-brand:     #D4A24B;   /* warm ochre */
+  --c-ux:        #5B8B8E;   /* muted teal */
+  --c-motion:    #C77B8A;   /* dusty rose */
+  --c-eng:       #7A8F5A;   /* sage olive */
+  --c-content:   #9B6B7D;   /* warm plum */
+  --c-designeng: #7A8F5A;   /* same as eng */
 }
 
 [data-theme="dark"] {
-  --black:  #f4f4f2;
+  --black:  #f2f2f2;
   --white:  #0a0a0a;
-  --accent: #f4f4f2;
-  --gray:   #8c8c8c;
-  --gray2:  #4a4a4a;
-  --gray3:  #161616;
-  --border: #2a2a2a;
-  --invert-bg: #f4f4f2;
+  --accent: #FF8E35;
+  --gray:   #888;
+  --gray2:  #555;
+  --gray3:  #1a1a1a;
+  --border: #262626;
+  --invert-bg: #f2f2f2;
   --invert-fg: #0a0a0a;
 }
 
@@ -216,8 +216,6 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
 [data-theme="dark"] .post-body { color: rgba(0,0,0,.6); }
 [data-theme="dark"] .free-stamp { border-color: rgba(0,0,0,.15); }
 [data-theme="dark"] .free-stamp-sub { color: rgba(0,0,0,.6); }
-[data-theme="dark"] .free-stamp-zero { color: rgba(0,0,0,.75); }
-[data-theme="dark"] .free-stamp-zero::before { background: rgba(0,0,0,.75); }
 [data-theme="dark"] .btn-post { color: #ffffff; }
 
 html { background: var(--white); color: var(--black); transition: background-color .25s, color .25s; }
@@ -259,24 +257,21 @@ nav {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 48px;
-  padding: 22px 36px;
-  background: color-mix(in srgb, var(--white) 86%, transparent);
-  backdrop-filter: saturate(140%) blur(14px);
-  -webkit-backdrop-filter: saturate(140%) blur(14px);
-  border-bottom: 1px solid var(--border);
+  padding: 18px 28px;
+  background: var(--white);
 }
-.n-left { display: flex; align-items: baseline; gap: 16px; }
-.n-logo { font-family: var(--fh); font-size: 26px; font-weight: 700; letter-spacing: -.04em; text-transform: lowercase; color: var(--black); line-height: 1; }
+.n-left { display: flex; flex-direction: column; gap: 1px; }
+.n-logo { font-family: var(--fh); font-size: 44px; font-weight: 700; letter-spacing: -.04em; text-transform: lowercase; color: var(--black); line-height: 1; }
 .n-logo .dot { color: var(--accent); }
 .n-sub  { font-size: 17px; color: var(--gray); letter-spacing: .02em; }
-.n-date { font-family: var(--fmono); font-size: 11px; font-weight: 400; color: var(--gray); letter-spacing: .08em; text-transform: uppercase; align-self: baseline; white-space: nowrap; }
+.n-date { font-family: var(--fm); font-size: 13px; font-weight: 400; color: var(--gray); letter-spacing: .02em; margin-top: 6px; align-self: flex-start; }
 .n-stats { display: flex; gap: 36px; justify-self: center; }
 .n-stat-n { font-family: var(--fs); font-size: 28px; line-height: 1; font-weight: 700; color: var(--accent); letter-spacing: -.02em; }
 .n-stat-l { font-family: var(--fm); font-size: 12px; color: var(--gray); margin-top: 6px; letter-spacing: .04em; text-transform: uppercase; }
 nav.nav-hidden { transform: translateY(-100%); }
-.n-right { text-align: right; display: flex; align-items: center; gap: 22px; justify-self: end; }
+.n-right { text-align: right; display: flex; align-items: center; gap: 12px; justify-self: end; }
 .n-theme {
-  width: 38px; height: 38px;
+  width: 42px; height: 42px;
   border-radius: 50%;
   border: 1px solid var(--border);
   background: transparent;
@@ -290,22 +285,17 @@ nav.nav-hidden { transform: translateY(-100%); }
 [data-theme="dark"] .n-theme .ic-sun  { display: none; }
 [data-theme="dark"] .n-theme .ic-moon { display: block; }
 .n-right a {
-  position: relative;
   display: inline-block;
-  font-family: var(--fmono);
-  font-size: 12px; font-weight: 400;
-  letter-spacing: .12em; text-transform: uppercase;
-  color: var(--black);
-  background: transparent;
-  padding: 4px 0;
+  font-family: var(--fm);
+  font-size: 13px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--white);
+  background: var(--accent);
+  padding: 12px 22px;
+  border-radius: 100px;
+  transition: background .2s, transform .2s;
 }
-.n-right a::after {
-  content: ''; position: absolute; left: 0; right: 0; bottom: 0;
-  height: 1px; background: var(--black);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform .3s cubic-bezier(.4,0,.2,1);
-}
-.n-right a:hover::after { transform: scaleX(1); }
+.n-right a:hover { background: var(--black); color: var(--white); transform: translateY(-1px); }
 @media (max-width: 720px) {
   nav { grid-template-columns: 1fr auto; gap: 16px; }
   .n-stats { display: none; }
@@ -313,59 +303,52 @@ nav.nav-hidden { transform: translateY(-100%); }
 
 /* ── HERO ────────────────────────────────────── */
 .hero {
-  padding: 220px 28px 90px;
+  padding: 200px 28px 80px;
 }
 .hero-inner {
-  max-width: 1100px;
+  max-width: 740px;
 }
 .hero-label {
-  font-family: var(--fmono);
-  font-size: 13px; letter-spacing: .14em; font-weight: 400;
-  text-transform: uppercase;
-  color: var(--gray); margin-bottom: 44px;
+  font-family: var(--fh);
+  font-size: 22px; letter-spacing: -.01em; font-weight: 600;
+  color: var(--black); margin-bottom: 36px;
   display: flex; align-items: center; gap: 10px;
 }
 .hero-label::before { content: none; }
 .hero-hl {
   font-family: var(--fh);
-  font-size: clamp(52px, 10vw, 152px);
-  line-height: 0.94;
-  letter-spacing: -.045em;
+  font-size: clamp(38px, 5.5vw, 76px);
+  line-height: 1.05;
+  letter-spacing: -.03em;
   font-weight: 700;
-  text-wrap: balance;
 }
-.hero-hl em { font-style: normal; color: var(--gray2); }
+.hero-hl em { font-style: normal; color: inherit; }
 .hero-body {
-  margin-top: 44px;
-  font-size: clamp(19px, 1.8vw, 26px); line-height: 1.5; font-weight: 300;
-  color: var(--ink-2);
-  max-width: 680px;
+  margin-top: 32px;
+  font-size: 21px; line-height: 1.65; font-weight: 300;
+  color: #555;
+  max-width: 620px;
 }
 .hero-stats {
   display: inline-flex; align-items: center;
-  margin-top: 56px;
-  padding: 0;
-  border: 0;
-  border-top: 1px solid var(--black);
-  border-radius: 0;
-  gap: 0;
+  margin-top: 44px;
+  padding: 10px 22px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  gap: 22px;
 }
-.stat {
-  display: inline-flex; flex-direction: column; gap: 6px;
-  padding: 22px 40px 0 0;
-}
-.stat + .stat { padding-left: 40px; border-left: 1px solid var(--border); }
+.stat { display: inline-flex; align-items: baseline; gap: 8px; }
+.stat + .stat { padding-left: 22px; border-left: 1px solid var(--border); }
 .stat-n {
-  font-family: var(--fh);
-  font-size: 40px; line-height: 1;
-  font-weight: 700; color: var(--black);
-  letter-spacing: -.03em;
+  font-family: var(--fs);
+  font-size: 22px; line-height: 1;
+  font-weight: 700; color: var(--accent);
+  letter-spacing: -.02em;
 }
 .stat-l {
-  font-family: var(--fmono);
-  font-size: 11px; color: var(--gray);
-  letter-spacing: .1em; text-transform: uppercase;
-  font-weight: 400;
+  font-size: 12px; color: var(--gray);
+  letter-spacing: .06em; text-transform: uppercase;
+  font-weight: 500;
 }
 
 /* ── SECTION WRAPPER ─────────────────────────── */
@@ -395,40 +378,12 @@ nav.nav-hidden { transform: translateY(-100%); }
 .fpills[data-group="cat"] .pill[data-v="eng"]::before     { background: var(--c-eng); }
 .fpills[data-group="cat"] .pill[data-v="content"]::before { background: var(--c-content); }
 .filter-section-title {
-  font-family: var(--fmono);
-  font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+  font-family: var(--fs);
+  font-size: 14px; letter-spacing: .02em;
   color: var(--gray); margin-bottom: 28px;
   display: flex; align-items: center; gap: 10px;
 }
 .filter-section-title::before { content: none; }
-
-/* Aino-style section index numerals */
-.ix {
-  font-family: var(--fmono);
-  font-size: 12px; font-weight: 400;
-  letter-spacing: .08em;
-  color: var(--gray);
-  margin-right: 4px;
-}
-.ix::after { content: ' /'; color: var(--gray2); }
-
-/* Scroll reveal — subtle fade + rise. Gated on .js-reveal so content is
-   ALWAYS visible if JS/observer fails (base state = visible). */
-@media (prefers-reduced-motion: no-preference) {
-  .js-reveal [data-reveal] {
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1);
-    will-change: opacity, transform;
-  }
-  .js-reveal [data-reveal].in { opacity: 1; transform: none; }
-  .js-reveal [data-reveal-stagger] > * {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity .55s cubic-bezier(.4,0,.2,1), transform .55s cubic-bezier(.4,0,.2,1);
-  }
-  .js-reveal [data-reveal-stagger].in > * { opacity: 1; transform: none; }
-}
 
 .frows { display: flex; flex-direction: column; }
 
@@ -631,17 +586,17 @@ nav.nav-hidden { transform: translateY(-100%); }
   gap: 80px;
 }
 .explore-label {
-  font-family: var(--fmono);
-  font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 400;
-  color: var(--gray); margin-bottom: 28px;
+  font-family: var(--fh);
+  font-size: 22px; letter-spacing: -.01em; font-weight: 600;
+  color: var(--black); margin-bottom: 36px;
 }
 .explore-hl {
   font-family: var(--fh);
-  font-size: clamp(34px, 4.5vw, 68px);
-  line-height: 1.02; font-weight: 700; letter-spacing: -.04em;
+  font-size: clamp(28px, 3.2vw, 48px);
+  line-height: 1.05; font-weight: 700; letter-spacing: -.02em;
   color: var(--black);
 }
-.explore-hl em { font-style: normal; color: var(--gray2); }
+.explore-hl em { font-style: normal; color: inherit; }
 .explore-body {
   margin-top: 28px;
   font-size: 17px; line-height: 1.6; color: #666;
@@ -708,16 +663,15 @@ nav.nav-hidden { transform: translateY(-100%); }
   gap: 80px;
 }
 .about-label {
-  font-family: var(--fmono);
-  font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 400;
-  color: var(--gray); margin-bottom: 28px;
+  font-family: var(--fh);
+  font-size: 22px; letter-spacing: -.01em; font-weight: 600;
+  color: var(--black); margin-bottom: 36px;
   display: flex; align-items: center; gap: 10px;
 }
 .about-label::before { content: none; }
 .about-hl {
   font-family: var(--fh);
-  font-size: clamp(34px, 4.5vw, 68px);
-  letter-spacing: -.04em;
+  font-size: clamp(28px, 3.2vw, 48px);
   line-height: 1.1; font-weight: 700;
 }
 .about-hl em { font-style: normal; color: inherit; }
@@ -748,8 +702,7 @@ nav.nav-hidden { transform: translateY(-100%); }
   flex-shrink: 0;
 }
 
-/* ── POST ────────────────────────────────────── */
-.post-card {
+/* ── POST ────────────────────────────────────── */.post-card {
   position: relative;
   display: flex;
   align-items: center;
@@ -773,10 +726,10 @@ nav.nav-hidden { transform: translateY(-100%); }
   line-height: 1.05; font-weight: 700;
   color: var(--white);
 }
-.post-hl em { font-style: normal; color: rgba(255,255,255,.45); }
+.post-hl em { font-style: normal; color: var(--accent); }
 .post-label {
-  font-family: var(--fmono);
-  font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 400;
+  font-family: var(--fh);
+  font-size: 22px; letter-spacing: -.01em; font-weight: 600;
   color: var(--white); margin-bottom: 36px;
   display: flex; align-items: center; gap: 10px;
 }
@@ -810,13 +763,15 @@ nav.nav-hidden { transform: translateY(-100%); }
   font-family: var(--fs);
   font-size: 13px; font-weight: 600;
   text-transform: uppercase; letter-spacing: .18em;
-  color: rgba(255,255,255,.92);
+  color: var(--accent);
   display: flex; align-items: center; gap: 10px;
 }
 .free-stamp-zero::before {
   content: '';
   width: 7px; height: 7px; border-radius: 50%;
-  background: rgba(255,255,255,.92);
+  background: var(--accent);
+  box-shadow: 0 0 0 5px rgba(57,91,255,.18);
+  animation: stampPulse 2.4s ease-in-out infinite;
 }
 .free-stamp-sub {
   font-family: var(--fs);
@@ -1313,14 +1268,14 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <div class="w">
-    <div class="hero-inner" data-reveal>
-      <p class="hero-label">Curated · AI design careers</p>
+    <div class="hero-inner">
       <h1 class="hero-hl">
         Design jobs<br>
-        at the <em>AI</em> frontier.
+        at the <em>AI</em><br>
+        frontier.
       </h1>
       <p class="hero-body">
-        The only job board built for designers at AI companies. From foundation labs to startups — every role verified, linked to source, updated weekly.
+        The only job board built for designers at AI companies. From foundation labs to startups—every role verified, linked to source, updated weekly.
       </p>
       <div class="hero-stats">
         <div class="stat">
@@ -1342,7 +1297,7 @@ footer {
 
   <!-- FILTERS -->
   <div class="filter-section">
-    <p class="filter-section-title"><span class="ix">01</span>Filter roles</p>
+    <p class="filter-section-title">Filter roles</p>
     <div class="frows">
 
       <div class="frow">
@@ -1420,9 +1375,8 @@ footer {
   </div>
 
   <!-- RESULTS BAR -->
-  <div class="rbar" style="margin-top:36px" data-reveal>
+  <div class="rbar" style="margin-top:36px">
     <div class="rbar-left">
-      <span class="ix" style="align-self:flex-start;margin-top:6px">02</span>
       <span class="rn" id="cnt">41</span>
       <span class="rlbl">open roles</span>
     </div>
@@ -1434,7 +1388,7 @@ footer {
   </div>
 
   <!-- TABLE -->
-  <div class="table-wrap" data-reveal>
+  <div class="table-wrap">
     <div class="thead">
       <div></div>
       <div>Role</div>
@@ -1456,12 +1410,12 @@ footer {
 <section id="explore">
 <div class="w">
   <div class="explore-section">
-    <div class="explore-head" data-reveal>
-      <p class="explore-label"><span class="ix">03</span>More sources</p>
+    <div class="explore-head">
+      <p class="explore-label">More sources</p>
       <h2 class="explore-hl">Keep searching<br>across <em>every ATS.</em></h2>
       <p class="explore-body">Our directory is curated, but design roles at AI companies live everywhere. These pre-filtered searches cover the major Applicant Tracking Systems where most AI startups post their jobs.</p>
     </div>
-    <div class="explore-grid" data-reveal data-reveal-stagger>
+    <div class="explore-grid">
       <a href="https://jobs.lever.co/search?query=designer" target="_blank" rel="noopener" class="ats-card">
         <span class="ats-num">01</span>
         <span class="ats-name">Lever</span>
@@ -1518,9 +1472,9 @@ footer {
 <!-- ABOUT -->
 <section id="about">
 <div class="w">
-  <div class="about-section" data-reveal>
+  <div class="about-section">
     <div>
-      <p class="about-label"><span class="ix">04</span>About</p>
+      <p class="about-label">About</p>
       <h2 class="about-hl">
         Where design<br>meets <em>the future.</em>
       </h2>
@@ -1539,7 +1493,7 @@ footer {
       </p>
     </div>
     <div>
-      <p class="about-label"><span class="ix">05</span>Companies tracked</p>
+      <p class="about-label">Companies tracked</p>
       <div class="co-list" id="co-list"></div>
     </div>
   </div>
@@ -1549,7 +1503,7 @@ footer {
 <!-- POST -->
 <section id="post">
 <div class="w">
-  <div class="post-card" data-reveal>
+  <div class="post-card">
     <div>
       <p class="post-label">For companies</p>
       <h2 class="post-hl">
@@ -1791,6 +1745,14 @@ const COMPANIES = [
   {name:'Pigment',        stage:'unicorn',    f50:false, t100:false, prosumer:false, se50:true},
   {name:'Dust',           stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
   {name:'Photoroom',      stage:'startup',    f50:false, t100:false, prosumer:false, se50:true},
+  // Harmonic Hot 25 (Q1 2025) — design-forward, tracked for upcoming roles
+  {name:'LangChain',      stage:'startup',    f50:false, t100:false, prosumer:false, harmonic:true},
+  {name:'Artisan',        stage:'startup',    f50:false, t100:false, prosumer:false, harmonic:true},
+  {name:'Factory',        stage:'startup',    f50:false, t100:false, prosumer:false, harmonic:true},
+  {name:'Pylon',          stage:'startup',    f50:false, t100:false, prosumer:false, harmonic:true},
+  {name:'Landbase',       stage:'startup',    f50:false, t100:false, prosumer:false, harmonic:true},
+  {name:'LlamaIndex',     stage:'startup',    f50:false, t100:false, prosumer:false, harmonic:true},
+  {name:'Tabs',           stage:'startup',    f50:false, t100:false, prosumer:false, harmonic:true},
 ];
 
 // ── STATE ─────────────────────────────────────────────────────────────────
@@ -1970,6 +1932,7 @@ document.getElementById('co-list').innerHTML = sortedCos.map(c => {
     c.t100 ? 'TIME100 AI' : '',
     c.prosumer ? 'Prosumer AI 40' : '',
     c.se50 ? 'Scaling Europe 50' : '',
+    c.harmonic ? 'Harmonic Hot 25' : '',
   ].filter(Boolean).join(' · ');
   return `<span class="co-chip" title="${tip || c.name}">${notable ? '<span class="co-dot"></span>' : ''}${c.name}</span>`;
 }).join('');
@@ -2205,44 +2168,6 @@ window.addEventListener('hashchange', openFromHash);
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDrawer(); closeSubmitModal(); closeContactModal(); } });
 
-// ── SCROLL REVEAL (Aino-style subtle fade/rise) ────────────────────────
-(() => {
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const els = [...document.querySelectorAll('[data-reveal]')];
-  if (reduce) return;                       // leave base (visible) state
-  // Opt into the hidden initial state only now that JS is confirmed running.
-  document.documentElement.classList.add('js-reveal');
-
-  const show = el => {
-    if (el.hasAttribute('data-reveal-stagger')) {
-      [...el.children].forEach((c, i) => { c.style.transitionDelay = (i * 60) + 'ms'; });
-    }
-    el.classList.add('in');
-  };
-
-  // Reveal anything already within (or near) the viewport immediately.
-  const vh = window.innerHeight || document.documentElement.clientHeight;
-  const pending = [];
-  els.forEach(el => {
-    const r = el.getBoundingClientRect();
-    if (r.top < vh * 0.92) show(el); else pending.push(el);
-  });
-
-  if (pending.length && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { show(entry.target); io.unobserve(entry.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    pending.forEach(el => io.observe(el));
-    // Safety net: if the observer never fires (some embedded webviews),
-    // force everything visible shortly after load.
-    setTimeout(() => pending.forEach(show), 2500);
-  } else {
-    pending.forEach(show);
-  }
-})();
-
 // ── SUBMIT MODAL ───────────────────────────────────────────────────────
 function openSubmitModal() {
   document.getElementById('submit-bg').classList.add('open');
@@ -2424,7 +2349,7 @@ if (smForm) {
     <input type="hidden" name="_subject" value="New role submission — AIDesignJobs">
     <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
-    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email jobs@aidj.work.</div>
+    <div class="sm-error" id="sm-error">Something went wrong. Please try again or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="43292c213003222a27296d342c3128">[email&#160;protected]</a>.</div>
 
     <div class="sm-foot">
       <span class="sm-note">We review submissions within 48h.</span>
@@ -2547,5 +2472,5 @@ if (smForm) {
 
 <div id="dr-toast" class="dr-toast"></div>
 
-</body>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>
